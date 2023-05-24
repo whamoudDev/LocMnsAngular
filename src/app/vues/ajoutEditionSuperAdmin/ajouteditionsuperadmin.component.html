@@ -93,54 +93,61 @@
                   required
                   type="password"
                   matInput
-                  #pass1 
+                  [(ngModel)]="mdp1"
                 />
-                
-               <mat-error *ngIf="formulaire.get('motDePasseUtilisateur')?.invalid">
-                <ng-container *ngIf="formulaire.get('motDePasseUtilisateur')?.hasError('required')"
+
+                <mat-error
+                  *ngIf="formulaire.get('motDePasseUtilisateur')?.invalid"
                 >
-                  Mot de passe requis
-                </ng-container>
-                <ng-container
-                  *ngIf="
-                    formulaire
-                      .get('motDePasseUtilisateur')
-                      ?.hasError('minlength')
-                  "
+                  <ng-container
+                    *ngIf="
+                      formulaire
+                        .get('motDePasseUtilisateur')
+                        ?.hasError('required')
+                    "
+                  >
+                    Mot de passe requis
+                  </ng-container>
+                  <ng-container
+                    *ngIf="
+                      formulaire
+                        .get('motDePasseUtilisateur')
+                        ?.hasError('minlength')
+                    "
+                  >
+                    8 caractères minimum.
+                  </ng-container>
+                  <ng-container
+                    *ngIf="
+                      formulaire
+                        .get('motDePasseUtilisateur')
+                        ?.hasError('pasDeMajuscule')
+                    "
+                  >
+                    Une lettre majuscule minimum.
+                  </ng-container>
+                  <ng-container
+                    *ngIf="
+                      formulaire
+                        .get('motDePasseUtilisateur')
+                        ?.hasError('pasDeCaractereSpecial')
+                    "
+                  >
+                    Un caractère spécial (-!?$%) minimum.
+                  </ng-container>
+                  <ng-container
+                    *ngIf="
+                      formulaire
+                        .get('motDePasseUtilisateur')
+                        ?.hasError('pasDeChiffre')
+                    "
+                  >
+                    Un chiffre minimum.
+                  </ng-container></mat-error
                 >
-                  8 caractères minimum. 
-                </ng-container>
-                <ng-container
-                  *ngIf="
-                    formulaire
-                      .get('motDePasseUtilisateur')
-                      ?.hasError('pasDeMajuscule')
-                  "
-                >
-                  Une lettre majuscule minimum.
-                </ng-container>
-                <ng-container
-                  *ngIf="
-                    formulaire
-                      .get('motDePasseUtilisateur')
-                      ?.hasError('pasDeCaractereSpecial')
-                  "
-                >
-                  Un caractère spécial (-!?$%) minimum.
-                </ng-container>
-                <ng-container
-                  *ngIf="
-                    formulaire
-                      .get('motDePasseUtilisateur')
-                      ?.hasError('pasDeChiffre')
-                  "
-                >
-                  Un chiffre minimum.
-                </ng-container></mat-error>
               </mat-form-field>
 
-
-              <br/>
+              <br />
               <mat-form-field appearance="fill">
                 <mat-label>Confirmation mot de passe: </mat-label>
                 <input
@@ -149,60 +156,63 @@
                   required
                   type="password"
                   matInput
-                  #pass2
                 />
-                <mat-error *ngIf="formulaire.get('motDePasseVerif')?.hasError('mdpDifferent')">
-                <ng-container
-                  *ngIf="
-                    formulaire
-                      .get('motDePasseVerif')
-                      ?.hasError('required')
-                  "
-                >
-                  Mot de passe requis
-                </ng-container>
-                <ng-container
-                  *ngIf="
-                    formulaire
-                      .get('motDePasseVerif')
-                      ?.hasError('minlength')
-                  "
-                >
-                  8 caractères minimum. 
-                </ng-container>
-                <ng-container
-                  *ngIf="
-                    formulaire
-                      .get('motDePasseVerif')
-                      ?.hasError('pasDeMajuscule')
-                  "
-                >
-                  Une lettre majuscule minimum.
-                </ng-container>
-                <ng-container
-                  *ngIf="
-                    formulaire
-                      .get('motDePasseVerif')
-                      ?.hasError('pasDeCaractereSpecial')
-                  "
-                >
-                  Un caractère spécial (-!?$%) minimum.
-                </ng-container>
-                <ng-container
-                  *ngIf="
-                    formulaire
-                      .get('motDePasseVerif')
-                      ?.hasError('pasDeChiffre')
-                  "
-                >
-                  Un chiffre minimum.
-                </ng-container>
 
-                </mat-error>
-                  <mat-error >Les deux mots de passe ne correspondent pas.</mat-error>
-                </mat-form-field>
+                <mat-error *ngIf="formulaire.get('motDePasseVerif')?.invalid">
+                  <ng-container
+                    *ngIf="
+                      formulaire.get('motDePasseVerif')?.hasError('required')
+                    "
+                  >
+                    Mot de passe requis
+                  </ng-container>
+                  <ng-container
+                    *ngIf="
+                      formulaire.get('motDePasseVerif')?.hasError('minlength')
+                    "
+                  >
+                    8 caractères minimum.
+                  </ng-container>
+                  <ng-container
+                    *ngIf="
+                      formulaire
+                        .get('motDePasseVerif')
+                        ?.hasError('pasDeMajuscule')
+                    "
+                  >
+                    Une lettre majuscule minimum.
+                  </ng-container>
+                  <ng-container
+                    *ngIf="
+                      formulaire
+                        .get('motDePasseVerif')
+                        ?.hasError('pasDeCaractereSpecial')
+                    "
+                  >
+                    Un caractère spécial (-!?$%) minimum.
+                  </ng-container>
+                  <ng-container
+                    *ngIf="
+                      formulaire
+                        .get('motDePasseVerif')
+                        ?.hasError('pasDeChiffre')
+                    "
+                  >
+                    Un chiffre minimum.
+                  </ng-container>
+                  <ng-container
+                    *ngIf="
+                      formulaire
+                        .get('motDePasseVerif')
+                        ?.hasError('mdpDifferent')
+                    "
+                  >
+                    Les deux mot de passe ne correspondent pas.
+                  </ng-container></mat-error
+                >
+              </mat-form-field>
 
-              <br/><br/><br/>
+              <br /><br /><br />
 
               <div>
                 <button

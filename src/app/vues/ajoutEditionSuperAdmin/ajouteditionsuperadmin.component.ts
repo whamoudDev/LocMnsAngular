@@ -5,6 +5,7 @@ import {
   AbstractControl,
   FormBuilder,
   FormGroup,
+  ValidationErrors,
   ValidatorFn,
   Validators,
 } from '@angular/forms';
@@ -22,13 +23,17 @@ import { UtilisateurService } from 'src/app/services/utilisateur.service';
   styleUrls: ['./ajouteditionsuperadmin.component.scss'],
 })
 export class AjoutEditionSuperAdminComponent {
-  //Définition du formulaire et de ses règles
+  //Variable permettant de verifier la correspondance des mdp
+  mdp1: string = '';
+
+  //Définition du formulaire et de ses règles de validation
   formulaire: FormGroup = this.formBuilder.group({
     nomUtilisateur: ['', [Validators.required, Validators.minLength(3)]],
     prenomUtilisateur: ['', [Validators.required, Validators.minLength(3)]],
     adresseUtilisateur: ['', [Validators.required]],
     telephoneUtilisateur: ['', [Validators.required]],
     mailUtilisateur: ['', [Validators.required, Validators.email]],
+    localisation: ['', [Validators.required]],
     motDePasseUtilisateur: [
       '',
       [
@@ -47,10 +52,9 @@ export class AjoutEditionSuperAdminComponent {
         this.majusculeValidator,
         this.caractereSpecialValidator,
         this.chiffreValidator,
-        this.mdpDifferentValidator,
+        this.verifMdpWithContext(),
       ],
     ],
-    localisation: ['', [Validators.required]],
   });
 
   //Les listes
@@ -67,6 +71,7 @@ export class AjoutEditionSuperAdminComponent {
   ) {}
 
   ngOnInit() {
+
     //Récupération de la liste des localisation à l'initialisation
     this.serviceLocalisation.getListeLocalisationFromBdd().subscribe({
       next: (listeLocalisation) => {
@@ -86,7 +91,6 @@ export class AjoutEditionSuperAdminComponent {
 
   onSubmit() {
     //Si le formulaire est valide, on récupère les données du formulaire :
-
     if (this.formulaire.valid) {
       //D'abord l'ensemble des données
       const gestionnaireSuper: Gestionnaire = this.formulaire.value;
@@ -106,13 +110,18 @@ export class AjoutEditionSuperAdminComponent {
         })
       );
 
-      //Le formData est transmis au service qui Post les données et nous renvoi vers l'url
+      //Le formData est transmis au service utilisateur qui Post les données et nous redirige vers une autre page
       this.serviceUtilisateur
         .ajoutEditionUtilisateur(donneesFormulaire)
         .subscribe((resultat) => this.router.navigateByUrl('connexion'));
     }
   }
 
+  //Validateur pour une Majuscule minimum
+  //Reçois un abstractControl dans lequel on peut recuperer la valeur de l'input avec .value
+  //Retourne soit null, soit une erreur designe par nomValidator et sa valeur le boolean
+  //null si il n'y a pas d'erreur soit le but recherche
+  //true si il y a une erreur, empeche la validation du formulaire et permet l'affichage du mat-error cote html
   majusculeValidator(
     control: AbstractControl
   ): { [nomValidator: string]: boolean } | null {
@@ -124,6 +133,7 @@ export class AjoutEditionSuperAdminComponent {
     return null;
   }
 
+  //Validateur pour un caractere spéciale minimum
   caractereSpecialValidator(
     control: AbstractControl
   ): { [nomValidator: string]: boolean } | null {
@@ -135,6 +145,7 @@ export class AjoutEditionSuperAdminComponent {
     return null;
   }
 
+  //Validateur pour un chiffre minimum
   chiffreValidator(
     control: AbstractControl
   ): { [nomValidator: string]: boolean } | null {
@@ -146,22 +157,25 @@ export class AjoutEditionSuperAdminComponent {
     return null;
   }
 
-  mdpDifferentValidator(): ValidatorFn {
-    return (
-      control: AbstractControl
-    ): { [nomValidator: string]: boolean } | null => {
-      const motDePasseUtilisateur = control.get('motDePasseUtilisateur');
-      const motDePasseVerif = control.get('motDePasseVerif');
-
-      if (
-        motDePasseUtilisateur &&
-        motDePasseVerif &&
-        motDePasseUtilisateur.value !== motDePasseVerif.value
-      ) {
-        return { mdpDifferent: true };
-      }
-
-      return null;
+  //Validateur pour verifier la correspondance des mots de passe
+  verifMdpWithContext(): ValidatorFn {
+    //La fonction intermédiaire retourne un validateur. Voir le commentaire dans la fonction verifMdp
+    return (control: AbstractControl): ValidationErrors | null => {
+      return this.verifMdp(control);
     };
+  }
+
+  verifMdp(
+    control: AbstractControl
+  ): { [nomValidator: string]: boolean } | null {
+    //Le context de cette fonction n'est pas la classe d'ou la necessité de l'appeler
+    //dans une autre fonction dont le context est la classe, afin de pouvoir utiliser this
+    if (this.mdp1 !== control.value) {
+      //Retourne true si c'est en erreur, le validateur empeche le post du formulaire
+      return { mdpDifferent: true };
+    }
+
+    //Retourne null si il n'y a pas d'erreur, le validateur permet le post du formulaire
+    return null;
   }
 }
