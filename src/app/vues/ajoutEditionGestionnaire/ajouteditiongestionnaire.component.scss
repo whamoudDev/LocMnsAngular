@@ -1,0 +1,46 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  height: auto;
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+
+
+#mainForm{
+  width: 300px;
+}
+
+
+
+#btnLocForm {
+  border: 0px;
+  border-radius: 3px;
+
+}
+
+
+#blocFichier{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  border-radius: 3px;
+  background-color: #ececec;
+}
+#btnFichier {
+  width: 40px;
+  margin: 5px;
+  height: 40px;
+  border: 0px;
+  border-radius: 3px;
+  background-color: #ececec;
+}

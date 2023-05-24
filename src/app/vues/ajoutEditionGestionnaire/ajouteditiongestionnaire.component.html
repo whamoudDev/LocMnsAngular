@@ -1,0 +1,133 @@
+<body style="background-color: #2e3a6d">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100 ;">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div>
+          <div class="card-body p-5 text-center d-flex justify-content-center">
+            <form
+              class="d-flex flex-column"
+              id="mainForm"
+              [formGroup]="formulaire"
+              (ngSubmit)="onSubmit()"
+            >
+              <h2 class="fw-bold mb-2 mb-5" style="color: #fff">
+                Formulaire Utilisateur
+              </h2>
+
+              <mat-form-field appearance="fill">
+                <mat-label   >Nom: </mat-label>
+                <input
+
+                  formControlName="nomUtilisateur"
+                  placeholder="Nom"
+                  required
+                  autofocus
+                  matInput
+                />
+                <mat-error> Nom obligatoire minimum 3 lettres </mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Prénom: </mat-label>
+                <input
+                  formControlName="prenomUtilisateur"
+                  placeholder="Prénom"
+                  required
+                  matInput
+                />
+                <mat-error> Prénom obligatoire minimum 3 lettres </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Adresse: </mat-label>
+                <input
+                  formControlName="adresseUtilisateur"
+                  placeholder="Adresse"
+                  required
+                  matInput
+                />
+                <mat-error> Adresse obligatoire</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Telephone: </mat-label>
+                <input
+                  formControlName="telephoneUtilisateur"
+                  placeholder="Numéro de téléphone"
+                  required
+                  matInput
+                />
+                <mat-error> Telephone obligatoire</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Email: </mat-label>
+                <input
+                  formControlName="mailUtilisateur"
+                  placeholder="Adresse mail"
+                  required
+                  matInput
+                />
+                <mat-error>Email absent ou mauvais format ...@...</mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Lieu : </mat-label>
+                <mat-select formControlName="localisation" [compareWith]="compareLocalisation">
+                  <mat-option
+                    *ngFor="let localisation of listeLocalisation"
+                    [value]="localisation"
+                  >
+                    {{ localisation.libelleLocalisation }}
+                  </mat-option>
+                </mat-select>
+                <mat-error> Lieu obligatoire</mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Rôle : </mat-label>
+                <mat-select formControlName="typeUtilisateur" [compareWith]="compareTypeUtilisateur">
+                  <mat-option
+                    *ngFor="let typeUtilisateur of listeTypeUtilisateur"
+                    [value]="typeUtilisateur"
+                  >
+                    {{ typeUtilisateur.roleUtilisateur }}
+                  </mat-option>
+                </mat-select>
+                <mat-error> Rôle obligatoire</mat-error>
+              </mat-form-field>
+
+              <div id="blocFichier">
+                <span style="color: #5e5e5e;">{{
+        fichierAjoutMultiple != null ? fichierAjoutMultiple.name : "Aucun fichier selectionné"
+      }}</span>
+      &nbsp;
+      <input
+        #fileSelector
+        type="file"
+        style="display: none"
+        (change)="onFileAdded($event)"
+
+      />
+      <button id="btnFichier" type="button" (click)="fileSelector.click()" >
+        <mat-icon>attach_file</mat-icon>
+      </button>
+      </div>
+
+      <br>
+
+              <div >
+                <button
+                  class="btn btn-lg btn-primary btn-block"
+                  id="btnLocForm"
+                  style="background-color: #ff8000; width: 200px"
+                  type="submit"
+                  routerLink="/ajoutEditionGestionnaire"
+                >
+                  Envoyer
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

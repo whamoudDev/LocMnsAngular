@@ -1,0 +1,26 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  height: auto;
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+
+
+mat-form-field {
+
+  border-radius: 40px;
+
+}
+
+#btnLocForm {
+  border: 0px;
+  border-radius: 3px;
+
+}
