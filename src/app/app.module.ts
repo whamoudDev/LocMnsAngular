@@ -11,11 +11,16 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AjoutEditionGestionnaireComponent } from './vues/ajoutEditionGestionnaire/ajouteditiongestionnaire.component';
 import { MatSelectModule } from '@angular/material/select';
 import { AjoutEditionSuperAdminComponent } from './vues/ajoutEditionSuperAdmin/ajouteditionsuperadmin.component';
 import { AccueilComponent } from './vues/accueil/accueil.component';
+import { JwtInterceptor } from './services/jwt.interceptor';
+import { IsGestionnairePipe } from './pipes/is-gestionnaire.pipe';
+import { Page403Component } from './vues/page403/page403/page403.component';
+import { IsUtilisateurPipe } from './pipes/is-utilisateur.pipe';
+import { Page404Component } from './vues/page404/page404/page404.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +28,10 @@ import { AccueilComponent } from './vues/accueil/accueil.component';
     AjoutEditionGestionnaireComponent,
     AjoutEditionSuperAdminComponent,
     AccueilComponent,
+    IsGestionnairePipe,
+    Page403Component,
+    IsUtilisateurPipe,
+    Page404Component,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +47,13 @@ import { AccueilComponent } from './vues/accueil/accueil.component';
     MatInputModule,
     MatSelectModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

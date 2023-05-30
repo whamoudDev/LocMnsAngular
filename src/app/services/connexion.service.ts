@@ -15,12 +15,14 @@ export class ConnexionService {
   public _utilisateurConnecte: BehaviorSubject<Utilisateur | null> =
     new BehaviorSubject<Utilisateur | null>(null);
 
+   //Poste les donnees saisie du formulaire connexion 
   connexion(utilisateur: Utilisateur): Observable<any> {
     return this.http.post('http://localhost:8082/connexion', utilisateur, {
       responseType: 'text',
     });
   }
 
+  //Supprime le token et renvoi sur la page de login
   deconnexion() {
     localStorage.removeItem('jwt');
 
@@ -29,6 +31,7 @@ export class ConnexionService {
     this.router.navigateByUrl('/connexion');
   }
 
+  //Verifie l'existence d'un token jwt et si oui bind les données dans un objet Utilisateur avant de le stoker dans le service
   majUtilisateurConnecte() {
     const jwt = localStorage.getItem('jwt');
 
@@ -36,7 +39,9 @@ export class ConnexionService {
       const data = jwt.split('.')[1];
       const json = window.atob(data);
       const donneesUtilisateur = JSON.parse(json);
-      console.log("donneeUtilisateur : ", donneesUtilisateur);
+
+      //console.log("Donnee Utilisateur reçu du serveur en Json : ", donneesUtilisateur);
+
       const utilisateur: Utilisateur = {
         idUtilisateur: donneesUtilisateur.idUtilisateur,
         nomUtilisateur: donneesUtilisateur.nomUtilisateur,
@@ -44,11 +49,14 @@ export class ConnexionService {
         adresseUtilisateur: donneesUtilisateur.adresseUtilisateur,
         telephoneUtilisateur: donneesUtilisateur.telephoneUtilisateur,
         mailUtilisateur: donneesUtilisateur.sub,
-        motDePasseUtilisateur : donneesUtilisateur.motDePasseUtilisateur,
+        //Il vaut mieux eviter que le serveur spring nous retourne un mot de passe 
+        //sinon il sera tout le temps accessible dans le LocalStorage .
+        motDePasseUtilisateur: '',
         localisation: donneesUtilisateur.localisation,
-        typeUtilisateur: donneesUtilisateur.typeUtilisateur
+        typeUtilisateur: donneesUtilisateur.typeUtilisateur,
       };
-      console.log('Utilisateur : ', utilisateur);
+      //console.log('Utilisateur une fois données Json bindé : ', utilisateur);
+      
       this._utilisateurConnecte.next(utilisateur);
     } else {
       this._utilisateurConnecte.next(null);
