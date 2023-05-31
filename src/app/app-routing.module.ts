@@ -50,27 +50,27 @@ const routes: Routes = [
   {
     path: 'page-utilisateur',
     component: PageUtilisateurComponent,
-    canActivate: [GestionnaireGuard],
+    canActivate: [UtilisateurGuard],
   },
   {
     path: 'reservation',
     component: ReservationComponent,
-    canActivate: [GestionnaireGuard],
+    canActivate: [UtilisateurGuard],
   },
   {
     path: 'signalement',
     component: SignalementComponent,
-    canActivate: [GestionnaireGuard],
+    canActivate: [UtilisateurGuard],
   },
   {
     path: 'retour-prolongation',
     component: RetourProlongationComponent,
-    canActivate: [GestionnaireGuard],
+    canActivate: [UtilisateurGuard],
   },
   {
     path: 'categorie-location',
     component: CategorieLocationComponent,
-    canActivate: [GestionnaireGuard],
+    canActivate: [UtilisateurGuard],
   },
 ];
 
