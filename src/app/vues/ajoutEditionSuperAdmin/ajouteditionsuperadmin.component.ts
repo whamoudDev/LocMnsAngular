@@ -10,9 +10,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Gestionnaire } from 'src/app/modele/gestionnaire';
 import { Localisation } from 'src/app/modele/localisation';
 import { TypeUtilisateur } from 'src/app/modele/typeUtilisateur';
+import { Utilisateur } from 'src/app/modele/utilisateur';
 import { LocalisationService } from 'src/app/services/localisation.service';
 import { TypeUtilisateurService } from 'src/app/services/typeutilisateur.service';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
@@ -93,7 +93,7 @@ export class AjoutEditionSuperAdminComponent {
     //Si le formulaire est valide, on récupère les données du formulaire :
     if (this.formulaire.valid) {
       //D'abord l'ensemble des données
-      const gestionnaireSuper: Gestionnaire = this.formulaire.value;
+      const gestionnaireSuper: Utilisateur = this.formulaire.value;
 
       for (let typeUtilisateur of this.listeTypeUtilisateur) {
         if (typeUtilisateur.roleUtilisateur == 'ROLE_SUPERADMIN') {
