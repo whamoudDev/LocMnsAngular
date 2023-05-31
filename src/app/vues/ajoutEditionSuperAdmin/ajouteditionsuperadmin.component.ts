@@ -24,7 +24,7 @@ import { UtilisateurService } from 'src/app/services/utilisateur.service';
 })
 export class AjoutEditionSuperAdminComponent {
   //Variable permettant de verifier la correspondance des mdp
-  mdp1: string = '';
+  // mdp1: string = '';
 
   //Définition du formulaire et de ses règles de validation
   formulaire: FormGroup = this.formBuilder.group({
@@ -168,15 +168,26 @@ export class AjoutEditionSuperAdminComponent {
   verifMdp(
     control: AbstractControl
   ): { [nomValidator: string]: boolean } | null {
+
+    // Affichage console des mots de passe quand le champ mot de passe de confirmation change
+    // if (this.formulaire && this.formulaire.get("motDePasseUtilisateur")){
+    // console.log('Champ1 : ',this.formulaire && this.formulaire.get('motDePasseUtilisateur')?.value);
+    // console.log('Champ2 : ',control.value);
+    // }
+
     //Le context de cette fonction n'est pas la classe d'ou la necessité de l'appeler
     //dans une autre fonction dont le context est la classe, afin de pouvoir utiliser this
-    if (this.mdp1 !== control.value) {
+    if (
+      this.formulaire &&
+      this.formulaire.get('motDePasseUtilisateur') &&
+      this.formulaire.get('motDePasseUtilisateur')?.value !== control.value
+    ) {
       //Retourne true si c'est en erreur, le validateur empeche le post du formulaire
       return { mdpDifferent: true };
     }
 
     //Retourne null si il n'y a pas d'erreur, le validateur permet le post du formulaire
-    
+
     return null;
   }
 }
