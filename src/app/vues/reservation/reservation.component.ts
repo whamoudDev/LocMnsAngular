@@ -9,7 +9,6 @@ import {
   Validators,
   RequiredValidator,
 } from '@angular/forms';
-import { Gestionnaire } from 'src/app/modele/gestionnaire';
 import { Localisation } from 'src/app/modele/localisation';
 import { TypeUtilisateur } from 'src/app/modele/typeUtilisateur';
 import { LocalisationService } from 'src/app/services/localisation.service';
