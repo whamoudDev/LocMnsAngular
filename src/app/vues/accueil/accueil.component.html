@@ -1,7 +1,7 @@
 <body style="background-color: #2e3a6d">
 
 <div class="header">
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-lg ">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
           <img src="assets/logo.png" alt="Logo du site" width="300" height="100"/>
@@ -11,7 +11,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ms-auto">
-            <a class="nav-link" aria-current="page" routerLink="/Accueil" [routerLinkActive]="['active']">Accueil</a>
+            <a class="nav-link" aria-current="page" routerLink="/a
+            ccueil" [routerLinkActive]="['active']">Accueil</a>
             <a class="nav-link" routerLink="/page-gestionnaire']" [routerLinkActive]="['active']">Tableau de bord</a>
           </div>
         </div>
@@ -21,33 +22,34 @@
       </div>
     </nav> 
 </div>
-
-    <h1>Notre matériel en location</h1>
+    <h1 style="margin-top: -90px;">Catégories de location</h1>
 
 <div class="container">
     <div class="row">
       <div class="col-sm-3">
         <div class="image-container text-center">
-          <img src="assets/ordinateur.jpg" alt="ordinateur" class="img-fluid d-block">
-          <figcaption  >PC portable</figcaption>
+          <img src="assets/ordinateur.jpg" alt="ordinateur" class="img-fluid d-block" width="100" height="50">
+            <a href="" routerLink="/categorie-location">PC portable</a>
         </div>
       </div>
       <div class="col-sm-3">
         <div class="image-container text-center">
-          <img src="assets/salle.jpg" alt="salle" class="img-fluid d-block">
-          <figcaption>Salles</figcaption>
+          <img src="assets/salle1.jpg" alt="salle" class="img-fluid d-block" width="100" height="50" >
+          <a href="#">Salles</a>
+
         </div>
       </div>
       <div class="col-sm-3">
         <div class="image-container text-center">
-          <img src="assets/projecteur.jpg" alt="Video projecteur" class="img-fluid d-block">
-          <figcaption>Vidéos Projecteurs</figcaption>
+          <img src="assets/projecteur.jpg" alt="Video projecteur" class="img-fluid d-block" width="100" height="50" >
+          <a href="#">Vidéos Projecteurs</a>
         </div>
       </div>
       <div class="col-sm-3">
         <div class="image-container text-center">
-          <img src="assets/Casque VR.jpg" alt="casque VR" class="img-fluid d-block">
-          <figcaption>Casque VR</figcaption>
+          <img src="assets/Casque VR.jpg" alt="casque VR" class="img-fluid d-block" >
+           <a href="#"  >Casque VR</a>
+
         </div>
       </div>
     </div>

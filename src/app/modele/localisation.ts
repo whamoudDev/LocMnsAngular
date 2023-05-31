@@ -1,5 +1,6 @@
 
 export interface Localisation {
-   idLocalisation: number;
-   libelleLocalisation: string;
+  idLocalisation: number;
+  libelleLocalisation: string;
 }
+

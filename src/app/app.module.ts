@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +18,13 @@ import { AjoutEditionGestionnaireComponent } from './vues/ajoutEditionGestionnai
 import { MatSelectModule } from '@angular/material/select';
 import { AjoutEditionSuperAdminComponent } from './vues/ajoutEditionSuperAdmin/ajouteditionsuperadmin.component';
 import { AccueilComponent } from './vues/accueil/accueil.component';
+import { PageUtilisateurComponent } from './vues/page-utilisateur/page-utilisateur.component';
+import { ReservationComponent } from './vues/reservation/reservation.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { RetourProlongationComponent } from './vues/retour-prolongation/retour-prolongation.component';
+import { SignalementComponent } from './vues/signalement/signalement.component';
+import { CategorieLocationComponent } from './vues/categorie-location/categorie-location.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +32,11 @@ import { AccueilComponent } from './vues/accueil/accueil.component';
     AjoutEditionGestionnaireComponent,
     AjoutEditionSuperAdminComponent,
     AccueilComponent,
+    PageUtilisateurComponent,
+    ReservationComponent,
+    SignalementComponent,
+    RetourProlongationComponent,
+    CategorieLocationComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +51,9 @@ import { AccueilComponent } from './vues/accueil/accueil.component';
     MatIconModule,
     MatInputModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
