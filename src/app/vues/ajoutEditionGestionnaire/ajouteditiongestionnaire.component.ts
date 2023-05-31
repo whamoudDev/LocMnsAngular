@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Gestionnaire } from 'src/app/modele/gestionnaire';
 import { Localisation } from 'src/app/modele/localisation';
 import { TypeUtilisateur } from 'src/app/modele/typeUtilisateur';
 import { Utilisateur } from 'src/app/modele/utilisateur';
@@ -111,16 +110,10 @@ export class AjoutEditionGestionnaireComponent {
     //Si le formulaire est valide, on récupère les données du formulaire :
 
     if (this.formulaire.valid) {
-      let utilisateur: Gestionnaire | Utilisateur | null = null;
+      let utilisateur: Utilisateur | null = null;
 
-      if (
-        this.formulaire.get('typeUtilisateur')?.value.roleUtilisateur ==
-        'ROLE_GESTIONNAIRE'
-      ) {
-        utilisateur = this.formulaire.value as Gestionnaire;
-      } else {
-        utilisateur = this.formulaire.value as Utilisateur;
-      }
+      utilisateur = this.formulaire.value;
+      
 
       //Les donnees sont formaté en Json sont ajouté à un blob et le blob à un formData
       const donneesFormulaire = new FormData();

@@ -8,6 +8,7 @@ import { Page403Component } from './vues/page403/page403/page403.component';
 import { GestionnaireGuard } from './guards/gestionnaire.guard';
 import { UtilisateurGuard } from './guards/utilisateur.guard';
 import { Page404Component } from './vues/page404/page404/page404.component';
+import { DashboardGestionnaireComponent } from './vues/dashboard-gestionnaire/dashboard-gestionnaire.component';
 const routes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
 
@@ -32,6 +33,11 @@ const routes: Routes = [
     path: 'accueil',
     component: AccueilComponent,
     canActivate: [UtilisateurGuard],
+  },
+  {
+    path: 'dashboardgestionnaire',
+    component: DashboardGestionnaireComponent,
+    canActivate: [GestionnaireGuard],
   },
   { path: '', redirectTo: 'accueil', pathMatch: 'full' },
   { path: 'page403', component: Page403Component },
