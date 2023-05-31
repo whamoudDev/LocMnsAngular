@@ -47,11 +47,31 @@ const routes: Routes = [
   { path: '', redirectTo: 'accueil', pathMatch: 'full' },
   { path: 'page403', component: Page403Component },
   { path: '**', component: Page404Component },
-  { path: 'page-utilisateur', component: PageUtilisateurComponent },
-  { path: 'reservation', component: ReservationComponent },
-  { path: 'signalement', component: SignalementComponent },
-  { path: 'retour-prolongation', component: RetourProlongationComponent },
-  { path: 'categorie-location', component : CategorieLocationComponent },
+  {
+    path: 'page-utilisateur',
+    component: PageUtilisateurComponent,
+    canActivate: [GestionnaireGuard],
+  },
+  {
+    path: 'reservation',
+    component: ReservationComponent,
+    canActivate: [GestionnaireGuard],
+  },
+  {
+    path: 'signalement',
+    component: SignalementComponent,
+    canActivate: [GestionnaireGuard],
+  },
+  {
+    path: 'retour-prolongation',
+    component: RetourProlongationComponent,
+    canActivate: [GestionnaireGuard],
+  },
+  {
+    path: 'categorie-location',
+    component: CategorieLocationComponent,
+    canActivate: [GestionnaireGuard],
+  },
 ];
 
 @NgModule({
