@@ -1,0 +1,79 @@
+<div class="container py-5 h-100">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <div>
+        <div class="card-body p-5 text-center d-flex justify-content-center">
+          <form class="d-flex flex-column" [formGroup]="formulaire">
+            <h1 class="fw-bold mb-2 mb-5" style="color: #fff">Réservation</h1>
+            <br />
+
+            <mat-form-field appearance="fill">
+              <mat-label>N° de série: </mat-label>
+              <input
+                formControlName="numeroSerie"
+                placeholder="Numéro de série"
+                required
+                autofocus
+                matInput
+              />
+              <mat-error>Le numéro de série est obligatoire</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Nom de la location: </mat-label>
+              <input
+                formControlName="nomLocation"
+                placeholder="Nom de la location"
+                required
+                matInput
+              />
+              <mat-error
+                >Le nom de la location est obligatoire (minimum 3
+                lettres)</mat-error
+              >
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Cadre d'utilisation : </mat-label>
+              <mat-select formControlName="cadreUtilisation">
+                <mat-option *ngFor="let cadre of listecadreUtilisation" [value]="cadre"> </mat-option>
+              </mat-select>
+              <mat-error>Le cadre d'utilisation est obligatoire</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>date début de la location</mat-label>
+              <input matInput [matDatepicker]="picker" />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>date de fin de la location</mat-label>
+              <input matInput [matDatepicker]="picker" />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <div>
+              <button
+                class="btn btn-lg btn-primary btn-block"
+                id="btnLocForm"
+                style="background-color: #ff8000; width: 200px"
+                type="submit"  
+              >
+                Demande de Réservation
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

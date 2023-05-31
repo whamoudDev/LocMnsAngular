@@ -1,0 +1,75 @@
+<header class="navbar navbar-expand-lg">
+  <a class="navbar-brand" href="#">Accueil</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <button
+          type="button"
+          class="btn seDeconnecter btn-warning"
+          style="margin-right: 70px"
+          [routerLink]="['connexion']"
+        >
+          Deconnexion
+        </button>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<div class="pageUtilisateur">
+  <div class="container">
+
+   
+  <h2 class="text-center mb-5 titreDemandeLocation">PC portable</h2>
+
+<table class="table table-light">
+  <thead>
+    <tr>
+      <th scope="col" style="width: 10%">N° Série</th>
+      <th scope="col" style="width: 20%">Nom</th>
+      <th scope="col" style="width:20%">Etat</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let location of listeLocation"  >
+    <tr >
+      <th>{{ location.numSerieLocation }}</th>
+      <td>{{ location.nomLocation }}</td>
+      <td>{{ location.etatLocation }}</td>
+      <td></td>
+      <td>
+        <a
+          type="submit"
+          class="btn btn-lg btn-primary  boutonsGestion"
+          id="btnLocForm"
+          style="background-color: #ff8000; width: 200px"
+          href="#"
+          role="button"
+          >Fiche produit</a
+        >
+        <a
+          type="submit"
+           routerLink="/reservation"
+          class="btn btn-lg btn-primary  boutonsGestion"
+          id="btnLocForm"
+          style="background-color: #ff8000; width: 200px"
+          href="./vues/reservation"
+          role="button"
+          >Réserver</a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>
