@@ -44,9 +44,6 @@ const routes: Routes = [
     component: DashboardGestionnaireComponent,
     canActivate: [GestionnaireGuard],
   },
-  { path: '', redirectTo: 'accueil', pathMatch: 'full' },
-  { path: 'page403', component: Page403Component },
-  { path: '**', component: Page404Component },
   {
     path: 'page-utilisateur',
     component: PageUtilisateurComponent,
@@ -72,6 +69,9 @@ const routes: Routes = [
     component: CategorieLocationComponent,
     canActivate: [UtilisateurGuard],
   },
+  { path: '', redirectTo: 'accueil', pathMatch: 'full' },
+  { path: 'page403', component: Page403Component },
+  { path: '**', component: Page404Component },
 ];
 
 @NgModule({
