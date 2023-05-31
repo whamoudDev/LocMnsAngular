@@ -1,0 +1,59 @@
+
+ <header class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">Accueil</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <button  type="button" class="btn seDeconnecter btn-warning" style="margin-right: 70px; ;" [routerLink]="['connexion']">Deconnexion</button>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+
+
+<div class="pageUtilisateur">
+  <div class="container">
+    <h2 class="text-center mb-5 titreMaterielLocation">Mes locations en cours</h2>
+
+    <div class="row text-center">
+
+      <div class="col-12 pt-1 d-flex justify-content-center">
+        <div class="card text-center p-5">
+          <div class="card-body">
+            <ng-container >
+            
+
+            </ng-container>
+        
+            <a class="btn btn-primary boutonsGestion" >Signaler</a>
+            <a class="btn btn-primary boutonsGestion" >Retour/prolonger</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <h2 class="text-center mb-5 titreDemandeLocation">Mes demandes en cours</h2>
+ 
+<table class="table table-light">
+            <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Statut</th>
+                    <th scope="col">Date de traitement</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr >
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
