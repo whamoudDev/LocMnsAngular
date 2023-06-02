@@ -1,21 +1,24 @@
+<div id="blcMain">
 <div class="header">
     <nav class="navbar navbar-expand-lg ">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <!-- <a class="navbar-brand" href="#"> -->
           <img src="assets/logo.png" alt="Logo du site" width="300" height="100"/>
-        </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav ms-auto">
+        <!-- </a> -->
+        <div id="blcHeaderRight">
+            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"> -->
+          <!-- <span class="navbar-toggler-icon"></span> -->
+        <!-- </button> -->
+        <!-- <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto"> -->
             <a class="nav-link" aria-current="page" routerLink="/a
             ccueil" [routerLinkActive]="['active']">Accueil</a>
             <a class="nav-link" routerLink="/page-gestionnaire']" [routerLinkActive]="['active']">Tableau de bord</a>
-          </div>
+          <!-- </div>
         </div>
-        <div class="d-flex justify-content-end">
-          <button  type="button" class="btn seDeconnecter btn-warning" [routerLink]="['connexion']">Deconnexion</button>
+        <div class="d-flex justify-content-end"> -->
+          <button  type="button" id="btnDeco" class="btn seDeconnecter btn-warning" (click)="onDeconnexion()">Deconnexion</button>
+        <!-- </div> -->
         </div>
       </div>
     </nav> 
@@ -55,7 +58,7 @@
 <!--Footer-->
 
   <footer >        
-     <div class="row d-flex justify-content-around">
+     <!-- <div class="row d-flex justify-content-around"> -->
            
       <div class="col-3">
       </div>
@@ -83,5 +86,6 @@
                     </p>
                 </div>
         
-     </div>
+     <!-- </div> -->
     </footer>
+</div>

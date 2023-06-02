@@ -1,17 +1,24 @@
+ :host{
+  margin: 0px;
+  padding: 0px;
+      overflow: hidden;
+    
+}
 
+#blcMain{
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: auto;
-  background-color: #2e3a6d;
-  scroll-behavior: smooth;
-
-}
 
 .nav-link {
   color: white;
@@ -52,6 +59,7 @@ justify-content: space-between;
 }
 
 footer {
+  display: flex;
   padding-top: 30px;
   justify-content: center;
   padding: 100px 0;
@@ -76,5 +84,24 @@ margin-top: 20px;
 margin-left: 10px;
 margin-right: 10px;
 
+
+}
+
+#btnDeco{
+  border-radius: 3px;
+}
+
+container-fluid{
+  display: flex;
+  justify-content: space-between;
+ 
+}
+#blcHeaderRight{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  a{
+    margin-right: 70px;
+  }
 
 }

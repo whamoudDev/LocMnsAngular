@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ConnexionService } from 'src/app/services/connexion.service';
 
 @Component({
   selector: 'app-accueil',
@@ -6,8 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./accueil.component.scss'],
 })
 export class AccueilComponent {
-  constructor() {}
+  constructor(private serviceConnexion : ConnexionService) {}
 
   ngOnInit(): void {}
+
+  onDeconnexion(){
+
+    this.serviceConnexion.deconnexion();
+  }
 }
 
