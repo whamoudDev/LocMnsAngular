@@ -1,3 +1,8 @@
+:host {
+  width: 100%;
+  height: auto;
+}
+
 #blcMain{
   display: flex;
   width: 100%;
@@ -5,33 +10,98 @@
   padding: 20px;
 }
 
+// SideMenu--------------------------------------------
+
 #sideMenu {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 400px;
   height: 100%;
   border-right: solid 1px #2a3665;
   color: #ffffff;
  
 }
+.linkSideMenu {
+  display: flex;
+  align-items: center;
+  font-size: 26px;
+  text-decoration: none;
+  color: #ffffff;
+  margin-bottom: 40px;
+
+  img {
+    width: 30px;
+    fill: white;
+  }
+  
+}
+
+
+#blcLink{
+  height: 60%;
+}
+
+// Dashboard------------------------------------------------
 
 #dashboard {
   display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
-
+ 
 }
 
-.linkSideMenu{
+#titreDashboard{
+color: #ffffff;
+font-size: 40px;
+padding-left: 50px;
+}
+
+#zoneCard{
   display: flex;
-  align-items: center;
-font-size: 26px;
-text-decoration: none;
-color:  #ffffff;
-margin-bottom: 40px;
-
-img{
-  width :30px;
- fill: white;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 70%;
+  height: auto;
+  margin-top: 100px;
+  align-self: center;
 }
+
+.card{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 200px;
+  background-color: whitesmoke;
+  border: none;
+  border-radius: 5px;
+  box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7), -1px 2px 20px rgba(255, 255, 255, 0.6) inset;
+  margin: 20px;
+  text-decoration: none;
+
+  h4{
+    
+    color: #2a3665;
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: 18px;
+  }
+}
+
+.secondBlcCard{
+  width: 100%;
+  height: 120px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
+  img {
+    width: 40px;
+  }
+  p{
+    padding-top: 20px;
+    font-size: 30px;
+  }
+  
 }
