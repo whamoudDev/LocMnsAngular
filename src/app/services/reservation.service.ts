@@ -8,16 +8,35 @@ import { Reservation } from '../modele/reservation';
 })
 export class ReservationService {
   constructor(private http: HttpClient) {}
-
-  public getListeLocation(idReservation: number): Observable<Reservation[]> {
-    return this.http.get<Reservation[]>(
-      'http://localhost:8082/utilisateur/reservations/{idReservation}'
-    );
-  }
-
   public getListeCadreUtilisation(): Observable<Reservation[]> {
     return this.http.get<Reservation[]>(
-      'http://localhost:8082/liste-cadres-utilisation"'
+      'http://localhost:8082/liste-cadres-utilisation'
     );
   }
+
+  public demandeReservation( donneesFormulaire: FormData): Observable<any> {
+    return this.http.post(
+      'http://localhost:8082/utilisateur/demandeReservation',
+      donneesFormulaire,
+      {
+        responseType: 'text',
+      }
+      
+    );
+  }
+
+  
+
+  //  public ajoutLocation(idReservation: number, donneesFormulaire: FormData): Observable<Reservation[]> {
+  //    return this.http.post<Reservation[]>(
+  //  'http://localhost:8082/utilisateur/reservations/{idReservation}',
+
+  //  donneesFormulaire,
+  //   {
+  //    responseType: 'text',
+  //    });
 }
+
+  
+
+

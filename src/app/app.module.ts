@@ -31,6 +31,7 @@ import { Page403Component } from './vues/page403/page403/page403.component';
 import { IsUtilisateurPipe } from './pipes/is-utilisateur.pipe';
 import { Page404Component } from './vues/page404/page404/page404.component';
 import { DashboardGestionnaireComponent } from './vues/dashboard-gestionnaire/dashboard-gestionnaire.component';
+import { FicheProduitComponent } from './vues/fiche-produit/fiche-produit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,7 @@ import { DashboardGestionnaireComponent } from './vues/dashboard-gestionnaire/da
     IsUtilisateurPipe,
     Page404Component,
     DashboardGestionnaireComponent,
+    FicheProduitComponent,
   ],
   imports: [
     BrowserModule,

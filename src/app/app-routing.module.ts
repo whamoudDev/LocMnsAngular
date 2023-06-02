@@ -14,6 +14,7 @@ import { GestionnaireGuard } from './guards/gestionnaire.guard';
 import { UtilisateurGuard } from './guards/utilisateur.guard';
 import { Page404Component } from './vues/page404/page404/page404.component';
 import { DashboardGestionnaireComponent } from './vues/dashboard-gestionnaire/dashboard-gestionnaire.component';
+import { FicheProduitComponent } from './vues/fiche-produit/fiche-produit.component';
 const routes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
 
@@ -64,11 +65,18 @@ const routes: Routes = [
     component: RetourProlongationComponent,
     canActivate: [UtilisateurGuard],
   },
+
   {
     path: 'categorie-location',
     component: CategorieLocationComponent,
     canActivate: [UtilisateurGuard],
   },
+  {
+    path: 'fiche-produit',
+    component: FicheProduitComponent,
+    canActivate: [UtilisateurGuard],
+  },
+
   { path: '', redirectTo: 'accueil', pathMatch: 'full' },
   { path: 'page403', component: Page403Component },
   { path: '**', component: Page404Component },

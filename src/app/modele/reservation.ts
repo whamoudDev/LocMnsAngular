@@ -5,5 +5,5 @@ export interface Reservation {
   dateFinPrevu: Date;
   cadreUtilisation: String;
   dateRetourReel:Date;
-  Location:Location
+  location:Location
 }
