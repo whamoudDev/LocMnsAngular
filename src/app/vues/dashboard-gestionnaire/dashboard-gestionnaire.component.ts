@@ -8,21 +8,36 @@ import { ConnexionService } from 'src/app/services/connexion.service';
   styleUrls: ['./dashboard-gestionnaire.component.scss'],
 })
 export class DashboardGestionnaireComponent {
+  //Variables
+  gestionnaireConnecte: Utilisateur | null = null;
 
+  nbDemandeReservation: number = 0;
+  nbDemandeRetour: number = 0;
+  nbDemandeProlongation: number = 0;
+  nbAlerte: number = 0;
+  nbReparation: number = 0;
+  nbLocationNonRestitue: number = 0;
+  nbLocationEnCours: number = 0;
+  nbStock: number = 0;
+  nbHistorique: number = 0;
 
   constructor(private serviceConnexion: ConnexionService) {}
 
-  gestionnaireConnecte: Utilisateur | null = null;
-
   ngOnInit() {
+    if (this.serviceConnexion._utilisateurConnecte != null) {
+      this.gestionnaireConnecte =
+        this.serviceConnexion._utilisateurConnecte.value;
 
-    if (this.serviceConnexion._utilisateurConnecte != null){
-
-          this.gestionnaireConnecte = this.serviceConnexion._utilisateurConnecte.value;
-
-          console.log("utilisateur du  service : ",this.serviceConnexion._utilisateurConnecte.value);
-          console.log("utilisateur local",this.gestionnaireConnecte);
+      console.log(
+        'utilisateur du  service : ',
+        this.serviceConnexion._utilisateurConnecte.value
+      );
+      console.log('utilisateur local', this.gestionnaireConnecte);
     }
-      
+  }
+
+  onDeconnexion(){
+
+    this.serviceConnexion.deconnexion();
   }
 }
