@@ -7,7 +7,7 @@ export interface Location {
   nomLocation: string;
   numSerieLocation: string;
   etatLocation: string;
-  descriptionLocation: String;
+  descriptionLocation: string;
   localisation:Localisation;
   typeLocation:TypeLocation;
   photo:Photos;

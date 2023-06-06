@@ -10,7 +10,7 @@ import { TypeLocation } from 'src/app/modele/typeLocation';
   templateUrl: './categorie-location.component.html',
   styleUrls: ['./categorie-location.component.scss'],
 })
-export class CategorieLocationComponent  {
+export class CategorieLocationComponent {
   listeLocation: Location[] = [];
   constructor(
     private servicelocation: LocationService,
@@ -33,13 +33,13 @@ export class CategorieLocationComponent  {
         // );
         console.log(this.listeLocation);
       });
-
-
-      
   }
-  
 
-  
+  editReservation(idLocation: number) {
+    this.router.navigateByUrl('/reservation/' + idLocation);
+  }
+
+  coucou(){}
 }
 
 

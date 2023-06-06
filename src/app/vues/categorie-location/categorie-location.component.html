@@ -59,16 +59,12 @@
           role="button"
           >Fiche produit</a
         >
-        <a
-          type="submit"
-           routerLink="/reservation"
-          class="btn btn-lg btn-primary  boutonsGestion"
-          id="btnLocForm"
-          style="background-color: #ff8000; width: 200px"
-          href="./vues/reservation"
-          role="button"
-          >Réserver</a
-        >
+      <button
+type="button"
+class="btn btn-lg btn-primary boutonsGestion"
+id="btnLocForm"
+style="background-color: #ff8000; width: 200px"
+(click)="editReservation(location.idLocation)">Réserver</button>
       </td>
     </tr>
   </tbody>

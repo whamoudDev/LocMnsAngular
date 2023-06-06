@@ -55,6 +55,12 @@ const routes: Routes = [
     component: ReservationComponent,
     canActivate: [UtilisateurGuard],
   },
+
+  {
+    path: 'reservation/:id',
+    component: ReservationComponent,
+    canActivate: [UtilisateurGuard],
+  },
   {
     path: 'signalement',
     component: SignalementComponent,

@@ -34,12 +34,15 @@ export class ReservationComponent {
   listecadreUtilisation: Reservation[] = [];
 
   //idLocation: number | undefined;
-  //idLocation?: number;
-   idReservation?: number ;
+  idLocation: number=0;
+  //idReservation?: number ;
+  reservation?: Reservation;
+  location: Location | null = null;
+
+  public donneesReservation!: any;
 
   codeRetour: number = 0;
   messageErreur: String = '';
-  reservation: Reservation | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -61,63 +64,47 @@ export class ReservationComponent {
 
     //Récupération des informations de la location
     this.route.params.subscribe((parametres) => {
-      this.idReservation = parametres['id'];
+      this.idLocation = parametres['id'];
+      console.log(this.idLocation);
 
-      if (this.idReservation != null) {
-
-        //this.servicelocation.getListeLocationById(this.idLocation).subscribe({
-        this.servicereservation.getReservation(this.idReservation).subscribe({
-          next: (reservation: Reservation) => {
-            this.reservation = reservation;
+      if (this.idLocation != null) {
+        this.servicelocation.getListeLocationById(this.idLocation).subscribe({
+          // this.servicere.getReservation(this.idReservation).subscribe({
+          next: (location: Location) => {
+            this.location = location;
             this.formulaire
               .get('numSerieLocation')
-              ?.setValue(reservation.location);
+              ?.setValue(location.numSerieLocation);
 
-            this.formulaire.get('nomLocation')?.setValue(reservation.location);
-
-            this.formulaire
-              .get('cadreUtilisation')
-              ?.setValue(reservation.cadreUtilisation);
-            this.formulaire
-              .get('dateDebutReservation')
-              ?.setValue(reservation.dateDebutReservation);
-            this.formulaire
-              .get('dateFinPrevu')
-              ?.setValue(reservation.dateFinPrevu);
+            this.formulaire.get('nomLocation')?.setValue(location.nomLocation);
           },
         });
       }
     });
   }
   onSubmit() {
-    
-
     if (this.formulaire.valid) {
-      const reservation: Reservation | null = this.formulaire.value;
+      let reservation: Reservation = this.formulaire.value;
 
-      //Les donnees sont formatées en JSON sont ajoutées à un blob et le blob à un formData
-      const donneesFormulaire = new FormData();
-      donneesFormulaire.append(
-        'reservation',
-        new Blob([JSON.stringify(reservation)], { type: 'application/json' })
-      );
+      this.servicelocation.getListeLocationById(this.idLocation).subscribe({
+        next: (location: Location) => {
+          reservation.location = location;
+const donneesFormulaire = new FormData();
+donneesFormulaire.append(
+  'reservation',
+  new Blob([JSON.stringify(this.reservation)], {
+    type: 'application/json',
+  })
+);
 
-      // Le formData est transmis au service qui Post les données et nous renvoi vers l'url
-      this.servicereservation.demandeReservation(donneesFormulaire).subscribe(() => {
-        this.router.navigateByUrl('page-utilisateur');
+this.servicereservation.demandeReservation(donneesFormulaire).subscribe(() => {
+  this.router.navigateByUrl('page-utilisateur');
+});
+
+        },
       });
-    
 
-//       if (this.formulaire.valid) {
-//     const reservation: Reservation = this.formulaire.value;
-//     this.servicereservation
-//       .demandeReservation(reservation)
-//       .subscribe((resultat) => this.router.navigateByUrl('page-utilisateur'));
-//   }
-// }
-
+      
     }
-  
-
-  }}
-   
+  }
+}
