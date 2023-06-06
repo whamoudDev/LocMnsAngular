@@ -1,9 +1,10 @@
-import { Location } from '@angular/common';
+import { Location } from "./location";
+
 export interface Reservation {
   idReservation: number;
   dateDebutReservation: Date;
   dateFinPrevu: Date;
-  cadreUtilisation: String;
+  cadreUtilisation: string;
   dateRetourReel:Date;
-  location:Location
+  location:Location;
 }

@@ -101,6 +101,9 @@ export class AjoutEditionSuperAdminComponent {
         }
       }
 
+
+      
+
       //Les donnees sont formaté en Json sont ajouté à un blob et le blob à un formData
       const donneesFormulaire = new FormData();
       donneesFormulaire.append(
