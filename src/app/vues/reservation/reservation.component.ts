@@ -31,15 +31,12 @@ export class ReservationComponent {
     dateFinPrevu: ['', Validators.required],
   });
 
-  listecadreUtilisation: Reservation[] = [];
+  listecadreUtilisation: string[] = ['Cours', 'Reunion', 'presentation'];
 
-  //idLocation: number | undefined;
-  idLocation: number=0;
-  //idReservation?: number ;
-  reservation?: Reservation;
-  location: Location | null = null;
+  idLocation: number = 0;
+  reservation: Reservation={};
+  location: Location={};
 
-  public donneesReservation!: any;
 
   codeRetour: number = 0;
   messageErreur: String = '';
@@ -51,17 +48,10 @@ export class ReservationComponent {
     private servicereservation: ReservationService,
     private servicelocation: LocationService,
     private serviceUtilisateur: UtilisateurService //private http: HttpClient,
-  ) {}
+  ) { }
+
 
   ngOnInit() {
-    // Récupération de la liste des CadreUtilisation
-    this.servicereservation.getListeCadreUtilisation().subscribe({
-      next: (listeCadreUtilisation) => {
-        this.listecadreUtilisation = listeCadreUtilisation;
-      },
-      error: (erreur) => console.log(erreur),
-    });
-
     //Récupération des informations de la location
     this.route.params.subscribe((parametres) => {
       this.idLocation = parametres['id'];
@@ -69,14 +59,10 @@ export class ReservationComponent {
 
       if (this.idLocation != null) {
         this.servicelocation.getListeLocationById(this.idLocation).subscribe({
-          // this.servicere.getReservation(this.idReservation).subscribe({
           next: (location: Location) => {
-            this.location = location;
-            this.formulaire
-              .get('numSerieLocation')
-              ?.setValue(location.numSerieLocation);
-
-            this.formulaire.get('nomLocation')?.setValue(location.nomLocation);
+            this.reservation.location=location;
+            this.formulaire.get('numSerieLocation')?.setValue(this.reservation.location.numSerieLocation);
+            this.formulaire.get('nomLocation')?.setValue(this.reservation.location.nomLocation);
           },
         });
       }
@@ -84,27 +70,39 @@ export class ReservationComponent {
   }
   onSubmit() {
     if (this.formulaire.valid) {
-      let reservation: Reservation = this.formulaire.value;
+      // let reservation: Reservation = this.formulaire.value;
 
-      this.servicelocation.getListeLocationById(this.idLocation).subscribe({
-        next: (location: Location) => {
-          reservation.location = location;
-const donneesFormulaire = new FormData();
-donneesFormulaire.append(
-  'reservation',
-  new Blob([JSON.stringify(this.reservation)], {
-    type: 'application/json',
-  })
-);
+      this.reservation.cadreUtilisation =
+        this.formulaire.get('cadreUtilisation')?.value;
+      // this.reservation.dateDebutReservation = this.formulaire.get(
+      //   'dateDebutReservation'
+      // )?.value;
+      // this.reservation.dateFinPrevu =
+      //   this.formulaire.get('dateFinPrevu')?.value;
 
-this.servicereservation.demandeReservation(donneesFormulaire).subscribe(() => {
-  this.router.navigateByUrl('page-utilisateur');
-});
+      //POUR UN REQUEST BODY
+      //-----------------------
+      // this.servicereservation
+      //   .demandeReservation(this.reservation)
+      //   .subscribe(() => {
+      //     this.router.navigateByUrl('page-utilisateur');
+      //   });
 
-        },
-      });
-
-      
+      //POUR UN REQUEST PART
+      //-----------------------
+      //Les donnees sont formaté en Json sont ajouté à un blob et le blob à un formData
+      const donneesFormulaire = new FormData();
+      donneesFormulaire.append(
+        'reservation',
+        new Blob([JSON.stringify(this.reservation)], {
+          type: 'application/json',
+        })
+      );
+      //Le formData est transmis au service utilisateur qui Post les données et nous redirige vers une autre page
+      this.servicereservation
+        .demandeReservation(donneesFormulaire)
+        .subscribe((resultat) => this.router.navigateByUrl('page-utilisateur'));
     }
-  }
-}
+      }
+    }
+  

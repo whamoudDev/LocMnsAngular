@@ -13,11 +13,11 @@
             <mat-form-field appearance="fill">
               <mat-label>N° de série: </mat-label>
               <input
-                formControlName="numSerieLocation" 
+               formControlName="numSerieLocation"
                 placeholder="Numéro de série" 
                 required
                 autofocus
-                matInput [value]="reservation?.location" 
+                matInput 
               />
               <mat-error>Le numéro de série est obligatoire</mat-error>
             </mat-form-field>
@@ -28,7 +28,7 @@
                 formControlName="nomLocation"
                 placeholder="Nom de la location"
                 required
-                matInput    [value]="reservation?.location"
+                matInput  
 
               />
               <mat-error
@@ -40,7 +40,7 @@
             <mat-form-field appearance="fill">
               <mat-label>Cadre d'utilisation : </mat-label>
               <mat-select formControlName="cadreUtilisation">
-                <mat-option *ngFor="let cadre of listecadreUtilisation" [value]="cadre"> {{cadre.cadreUtilisation}} </mat-option>
+                <mat-option *ngFor="let cadre of listecadreUtilisation" [value]="cadre"> {{cadre}} </mat-option>
               </mat-select>
               <mat-error>Le cadre d'utilisation est obligatoire</mat-error>
             </mat-form-field>

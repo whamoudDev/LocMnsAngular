@@ -64,6 +64,7 @@ type="button"
 class="btn btn-lg btn-primary boutonsGestion"
 id="btnLocForm"
 style="background-color: #ff8000; width: 200px"
+*ngIf="location.idLocation !== undefined"
 (click)="editReservation(location.idLocation)">Réserver</button>
       </td>
     </tr>

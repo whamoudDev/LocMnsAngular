@@ -8,10 +8,11 @@ export class IsGestionnairePipe implements PipeTransform {
 
   transform(utilisateur : Utilisateur): boolean {
     
-    
-    return (
-      utilisateur.typeUtilisateur.roleUtilisateur === 'ROLE_SUPERADMIN' ||
-      utilisateur.typeUtilisateur.roleUtilisateur === 'ROLE_GESTIONNAIRE');
+  
+      return (
+        utilisateur.typeUtilisateur?.roleUtilisateur === 'ROLE_SUPERADMIN' ||
+        utilisateur.typeUtilisateur?.roleUtilisateur === 'ROLE_GESTIONNAIRE'
+      );
     
   }
 
