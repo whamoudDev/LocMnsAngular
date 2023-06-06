@@ -1,6 +1,5 @@
- 
- <header class="navbar navbar-expand-lg">
-      <a class="navbar-brand" href="categorie-location">Retour</a>
+<header class="navbar navbar-expand-lg">
+  <a class="navbar-brand" href="categorie-location">Retour</a>
 
   <a class="navbar-brand" href="#">Accueil</a>
   <button
@@ -28,40 +27,59 @@
       </li>
     </ul>
   </div>
-  <h1 style="margin-top: -90px; color: white;">Fiche produit</h1>
-
 </header>
 
+    <h2 class="text-center mb-5 titreDemandeLocation">Fiche produit</h2>
 
 
+<div class="row d-flex justify-content-around">
+  <div class="col-3">
+    <img
+      class="FicheImage"
+      src="assets/AccueilPhoto/lenovo.jpg"
+      width="320px"
+      height="300px"
+    />
 
-
- <div class="row d-flex justify-content-around">
-
-      <div class="col-3">
-
-
-<img>
-
-
+          <div class="photo-container">
+        <img class="small-photo" src="assets/AccueilPhoto/lenovo2.jpg" width="100px" height="100px" />
+        <img class="small-photo" src="assets/AccueilPhoto/lenovo3.jpg" width="100px" height="100px" />
+        <img class="small-photo" src="assets/AccueilPhoto/Lenovo4.jpg" width="100px" height="100px" />
       </div>
-          <div class="col-6">
-          <div class="d-flex justify-content-center  ">
-                        
-                    
-                </div>
-                <div class="col-3" ></div>
-        
+  </div>
 
-                 <div>
-                <button
-                  class="btn btn-lg btn-primary btn-block"
-                  id="btnLocForm"
-                  style="background-color: #ff8000; width: 100px"
-                  type="submit"
-                  routerLink="/reservation"
-                >
-                  Réserver
-                </button>
-              </div>
-     </div>
+  <div class="col-6" >
+    <div class="d-flex justify-content-center" >
+      <div >
+        <label class="area">Description:</label>
+
+        <mat-form-field appearance="fill" >
+          <textarea formControlName="descriptif" matInput style="width: 400px; height: 100px;"></textarea>
+        </mat-form-field>
+
+        <div>
+          <mat-label class="area">Documentation:</mat-label>
+
+          <mat-form-field appearance="fill" >
+            <textarea formControlName="Documentation" matInput style="width: 400px; height: 100px;"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+<div class="col-3">
+
+    </div>
+
+    <div>
+      <button
+        class="btn btn-lg btn-primary btn-block"
+        id="btnLocForm"
+        style="background-color: #ff8000; width: 200px; border-radius: 3px;"
+        type="submit"
+        routerLink="/reservation"
+      >
+     Réserver
+      </button>
+    </div>
+  </div>
+</div>

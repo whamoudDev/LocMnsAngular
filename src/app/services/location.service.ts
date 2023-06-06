@@ -13,16 +13,16 @@ export class LocationService {
 
   constructor(private http: HttpClient) {}
 
+  // public getListeLocationById(idLocation: number): Observable<any> {
+  //   return this.http.get('http://localhost:8082/liste-locations/' + idLocation);
+  // }
   public getListeLocationById(idLocation: number): Observable<any> {
-    return this.http.get('http://localhost:8082/liste-locations/' + idLocation);
+    return this.http.get<any>(
+      'http://localhost:8082/liste-locations/' + idLocation
+    );
   }
 
   public getListeLocation(): Observable<Location[]> {
     return this.http.get<Location[]>('http://localhost:8082/liste-locations');
   }
-
-
-
-
-  
 }

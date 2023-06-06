@@ -3,8 +3,7 @@
     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
       <div>
         <div class="card-body p-5 text-center d-flex justify-content-center">
-          <form *ngSwitchDefault
- class="d-flex flex-column" [formGroup]="formulaire"
+          <form *ngSwitchDefault class="d-flex flex-column" [formGroup]="formulaire"
               (ngSubmit)="onSubmit()"
               
               >
@@ -14,11 +13,11 @@
             <mat-form-field appearance="fill">
               <mat-label>N° de série: </mat-label>
               <input
-                formControlName="numSerieLocation"
-                placeholder="Numéro de série"
+                formControlName="numSerieLocation" 
+                placeholder="Numéro de série" 
                 required
                 autofocus
-                matInput
+                matInput [value]="reservation?.location" 
               />
               <mat-error>Le numéro de série est obligatoire</mat-error>
             </mat-form-field>
@@ -29,7 +28,8 @@
                 formControlName="nomLocation"
                 placeholder="Nom de la location"
                 required
-                matInput
+                matInput    [value]="reservation?.location"
+
               />
               <mat-error
                 >Le nom de la location est obligatoire (minimum 3
@@ -72,8 +72,7 @@
                 class="btn btn-lg btn-primary btn-block"
                 id="btnLocForm"
                 style="background-color: #ff8000; width: 200px"
-                type="submit"  
-                routerLink="/page-utilisateur"
+                type="submit" 
               >
                 Demande de Réservation
               </button>

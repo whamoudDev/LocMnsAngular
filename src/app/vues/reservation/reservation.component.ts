@@ -23,8 +23,6 @@ import { LocationService } from 'src/app/services/location.service';
   styleUrls: ['./reservation.component.scss'],
 })
 export class ReservationComponent {
-  
-
   formulaire: FormGroup = this.formBuilder.group({
     numSerieLocation: ['', Validators.required],
     nomLocation: ['', [Validators.required]],
@@ -36,10 +34,12 @@ export class ReservationComponent {
   listecadreUtilisation: Reservation[] = [];
 
   //idLocation: number | undefined;
-  idLocation?: number;
+  //idLocation?: number;
+   idReservation?: number ;
 
   codeRetour: number = 0;
   messageErreur: String = '';
+  reservation: Reservation | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -61,12 +61,14 @@ export class ReservationComponent {
 
     //Récupération des informations de la location
     this.route.params.subscribe((parametres) => {
-      this.idLocation = parametres['id'];
+      this.idReservation = parametres['id'];
 
-      if (this.idLocation != null) {
-        this.servicelocation.getListeLocationById(this.idLocation).subscribe({
+      if (this.idReservation != null) {
+
+        //this.servicelocation.getListeLocationById(this.idLocation).subscribe({
+        this.servicereservation.getReservation(this.idReservation).subscribe({
           next: (reservation: Reservation) => {
-           
+            this.reservation = reservation;
             this.formulaire
               .get('numSerieLocation')
               ?.setValue(reservation.location);
@@ -75,7 +77,7 @@ export class ReservationComponent {
 
             this.formulaire
               .get('cadreUtilisation')
-              ?.setValue(reservation.location);
+              ?.setValue(reservation.cadreUtilisation);
             this.formulaire
               .get('dateDebutReservation')
               ?.setValue(reservation.dateDebutReservation);
@@ -83,39 +85,39 @@ export class ReservationComponent {
               .get('dateFinPrevu')
               ?.setValue(reservation.dateFinPrevu);
           },
-          error: (erreurRequete: any) => {
-            if (erreurRequete.status === 404) {
-              this.codeRetour = 404;
-            } else {
-              this.codeRetour = 500;
-              this.messageErreur = erreurRequete.message;
-            }
-          },
         });
       }
     });
   }
   onSubmit() {
+    
+
     if (this.formulaire.valid) {
-      let reservation: Reservation | null = null;
+      const reservation: Reservation | null = this.formulaire.value;
 
-      reservation = this.formulaire.value;
-
-      //Les donnees sont formaté en Json sont ajouté à un blob et le blob à un formData
+      //Les donnees sont formatées en JSON sont ajoutées à un blob et le blob à un formData
       const donneesFormulaire = new FormData();
       donneesFormulaire.append(
         'reservation',
         new Blob([JSON.stringify(reservation)], { type: 'application/json' })
       );
 
-      //Le formData est transmis au service qui Post les données et nous renvoi vers l'url
-      this.servicereservation
-        .demandeReservation(donneesFormulaire)
-        .subscribe((resultat) =>
-          this.router.navigateByUrl('page-utilisateur')
-        );
-    }
-  }
-}
+      // Le formData est transmis au service qui Post les données et nous renvoi vers l'url
+      this.servicereservation.demandeReservation(donneesFormulaire).subscribe(() => {
+        this.router.navigateByUrl('page-utilisateur');
+      });
+    
 
+//       if (this.formulaire.valid) {
+//     const reservation: Reservation = this.formulaire.value;
+//     this.servicereservation
+//       .demandeReservation(reservation)
+//       .subscribe((resultat) => this.router.navigateByUrl('page-utilisateur'));
+//   }
+// }
+
+    }
+  
+
+  }}
    

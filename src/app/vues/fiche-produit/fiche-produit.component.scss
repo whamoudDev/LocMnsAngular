@@ -28,18 +28,40 @@ body {
     margin-left: 40px;
 }
 
-h1 {
+h2 {
     font-size: 35px;
     font-weight: bold;
     color: white;
-    margin-top: 150px;
+    margin-top: 90px;
+    justify-content: center;
 }
 
 
-
-
-
-table {
-    margin-bottom: 200px;
+.btnLocForm{
+    margin-top: 500px;
     justify-content: center;
+    border-radius: 3px;
+}
+
+
+.FicheImage {
+    margin-top:10px;
+
+}
+.area {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+        color: white;
+}
+.photo-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    margin-top: 20px;
+}
+
+.small-photo {
+    width: 100px;
+    height: 100px;
 }

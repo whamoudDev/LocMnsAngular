@@ -28,7 +28,7 @@ export class CategorieLocationComponent  {
         this.listeLocation = locations.filter(
           (loc) => loc.nomLocation === 'ordinateur portable'
         );
-        //   (location: Location) =>
+        //   (location: Location[]) =>
         //     location.typeLocation.libelleTypeLocation === 'ordinateur portable'
         // );
         console.log(this.listeLocation);
