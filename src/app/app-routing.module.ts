@@ -15,6 +15,7 @@ import { UtilisateurGuard } from './guards/utilisateur.guard';
 import { Page404Component } from './vues/page404/page404/page404.component';
 import { DashboardGestionnaireComponent } from './vues/dashboard-gestionnaire/dashboard-gestionnaire.component';
 import { FicheProduitComponent } from './vues/fiche-produit/fiche-produit.component';
+import { ListeLocationComponent } from './vues/liste-location/liste-location.component';
 const routes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
 
@@ -43,6 +44,11 @@ const routes: Routes = [
   {
     path: 'dashboardgestionnaire',
     component: DashboardGestionnaireComponent,
+    canActivate: [GestionnaireGuard],
+  },
+  {
+    path: 'listelocation',
+    component: ListeLocationComponent,
     canActivate: [GestionnaireGuard],
   },
   {
