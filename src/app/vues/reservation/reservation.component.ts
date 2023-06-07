@@ -83,28 +83,18 @@ export class ReservationComponent {
     });
   }
   onSubmit() {
-    if (this.formulaire.valid) {
-      let reservation: Reservation = this.formulaire.value;
+  if (this.formulaire.valid) {
+    let reservation: Reservation = this.formulaire.value;
 
-      this.servicelocation.getListeLocationById(this.idLocation).subscribe({
-        next: (location: Location) => {
-          reservation.location = location;
-const donneesFormulaire = new FormData();
-donneesFormulaire.append(
-  'reservation',
-  new Blob([JSON.stringify(this.reservation)], {
-    type: 'application/json',
-  })
-);
+    this.servicelocation.getListeLocationById(this.idLocation).subscribe({
+      next: (location: Location) => {
+        reservation.location = location;
 
-this.servicereservation.demandeReservation(donneesFormulaire).subscribe(() => {
-  this.router.navigateByUrl('page-utilisateur');
-});
-
-        },
-      });
-
-      
-    }
+        this.servicereservation.demandeReservation(reservation).subscribe(() => {
+          this.router.navigateByUrl('page-utilisateur');
+        });
+      },
+    });
   }
+}
 }

@@ -17,25 +17,26 @@ export class ReservationService {
     );
   }
 
-  public demandeReservation(donneesFormulaire: FormData): Observable<any> {
-    return this.http.post(
-      'http://localhost:8082/demandeReservation',
-      donneesFormulaire,
-      {
-        responseType: 'text',
-      }
-    );
-  }
-
-  // public demandeReservation(reservation: Reservation): Observable<any> {
+  // public demandeReservation(donneesFormulaire: FormData): Observable<any> {
   //   return this.http.post(
   //     'http://localhost:8082/demandeReservation',
-  //     reservation,
+  //     donneesFormulaire,
   //     {
   //       responseType: 'text',
   //     }
   //   );
   // }
+
+
+   public demandeReservation(reservation: Reservation): Observable<any> {
+   return this.http.post(
+      'http://localhost:8082/demandeReservation',
+      reservation,
+      {
+        responseType: 'text',
+      }
+    );
+  }
 
   getReservation(idReservation: number): Observable<any> {
     return this.http.get(
