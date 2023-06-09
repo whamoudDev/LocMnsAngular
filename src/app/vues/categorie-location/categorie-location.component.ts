@@ -25,9 +25,9 @@ export class CategorieLocationComponent {
     this.servicelocation
       .getListeLocation()
       .subscribe((locations: Location[]) => {
+        console.log(locations);
         this.listeLocation = locations.filter(
-          (loc) => loc.nomLocation === 'ordinateur portable'
-        );
+          (loc) => loc.typeLocation?.idTypeLocation== 1);
         //   (location: Location[]) =>
         //     location.typeLocation.libelleTypeLocation === 'ordinateur portable'
         // );

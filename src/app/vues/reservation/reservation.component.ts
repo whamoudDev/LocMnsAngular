@@ -65,7 +65,7 @@ export class ReservationComponent {
   idLocation: number = 0;
   reservation: Reservation = {};
   location: Location = {};
-  utilisateur: Utilisateur = {};
+ 
 
   codeRetour: number = 0;
   messageErreur: String = '';
@@ -103,11 +103,10 @@ export class ReservationComponent {
     });
     //Récupération des informations de l'utilisateur
 
-    this.utilisateur.mailUtilisateur =
-      this.connexionService._utilisateurConnecte.value?.mailUtilisateur;
-    if (this.utilisateur.mailUtilisateur != undefined) {
+    
+    if (this.connexionService._utilisateurConnecte.value?.idUtilisateur != undefined) {
       this.serviceUtilisateur
-        .getUtilisateurByEmail(this.utilisateur.mailUtilisateur)
+        .getUtilisateur(this.connexionService._utilisateurConnecte.value.idUtilisateur)
         .subscribe({
           next: (utilisateur: Utilisateur) => {
             this.reservation.utilisateur = utilisateur;

@@ -40,7 +40,7 @@ export class ConnexionService {
       const json = window.atob(data);
       const donneesUtilisateur = JSON.parse(json);
 
-      //console.log("Donnee Utilisateur reçu du serveur en Json : ", donneesUtilisateur);
+      console.log("Donnee Utilisateur reçu du serveur en Json : ", donneesUtilisateur);
 
       const utilisateur: Utilisateur = {
         idUtilisateur: donneesUtilisateur.idUtilisateur,
@@ -55,7 +55,7 @@ export class ConnexionService {
         localisation: donneesUtilisateur.localisation,
         typeUtilisateur: donneesUtilisateur.typeUtilisateur,
       };
-      //console.log('Utilisateur une fois données Json bindé : ', utilisateur);
+      console.log('Utilisateur une fois données Json bindé : ', utilisateur);
       
       this._utilisateurConnecte.next(utilisateur);
     } else {
