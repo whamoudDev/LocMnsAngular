@@ -57,6 +57,7 @@ export class ReservationService {
   }
 }
 
+
   //  public ajoutLocation(idReservation: number, donneesFormulaire: FormData): Observable<Reservation[]> {
   //    return this.http.post<Reservation[]>(
   //  'http://localhost:8082/utilisateur/reservations/{idReservation}',
