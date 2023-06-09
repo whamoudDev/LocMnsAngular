@@ -46,7 +46,14 @@ export class ReservationService {
       'http://localhost:8082/liste-reservations/' + idReservation
     );
   }
+
+
+
+
+
+
 }
+
 
   //  public ajoutLocation(idReservation: number, donneesFormulaire: FormData): Observable<Reservation[]> {
   //    return this.http.post<Reservation[]>(
