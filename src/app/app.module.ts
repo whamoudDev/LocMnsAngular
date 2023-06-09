@@ -33,6 +33,7 @@ import { Page404Component } from './vues/page404/page404/page404.component';
 import { DashboardGestionnaireComponent } from './vues/dashboard-gestionnaire/dashboard-gestionnaire.component';
 import { FicheProduitComponent } from './vues/fiche-produit/fiche-produit.component';
 import { ListeLocationComponent } from './vues/liste-location/liste-location.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,6 @@ import { ListeLocationComponent } from './vues/liste-location/liste-location.com
     DashboardGestionnaireComponent,
     FicheProduitComponent,
     ListeLocationComponent,
- 
   ],
   imports: [
     BrowserModule,
@@ -71,8 +71,10 @@ import { ListeLocationComponent } from './vues/liste-location/liste-location.com
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogModule,
+    DatePipe,
   ],
   providers: [
+    DatePipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,

@@ -9,7 +9,6 @@ import { Reservation } from '../modele/reservation';
 export class ReservationService {
   public _reservation: BehaviorSubject<Reservation | null> =
     new BehaviorSubject<Reservation | null>(null);
- 
 
   constructor(private http: HttpClient) {}
 
@@ -40,21 +39,20 @@ export class ReservationService {
     );
   }
 
-
-
-   public demandeReservation(reservation: Reservation): Observable<any> {
-   return this.http.post(
-      'http://localhost:8082/demandeReservation',
-      reservation,
-      {
-        responseType: 'text',
-      }
-    );
-  }
-
   getReservation(idReservation: number): Observable<any> {
     return this.http.get(
       'http://localhost:8082/liste-reservations/' + idReservation
+    );
+  }
+  // public getListeReservation(): Observable<Reservation[]> {
+  //   return this.http.get<Reservation[]>(
+  //     'http://localhost:8082/liste-reservations',
+  //   );
+  // }
+
+  getListeReservation(idUtilisateur: number): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(
+      `http://localhost:8082/liste-reservations?idUtilisateur=${idUtilisateur}`
     );
   }
 }

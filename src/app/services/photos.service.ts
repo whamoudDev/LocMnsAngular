@@ -13,13 +13,13 @@ export class PhotosService {
     console.log(location);
     if (location.photo != null) {
       this.http
-        .get('http://localhost:8082/photoLocation' + location, {
+        .get('http://localhost:8082/photoLocation' + location.idLocation, {
           responseType: 'blob',
         })
         .subscribe((donneeImage: any) => {
-          // location.photo.photoLocation = this.sanitizer.bypassSecurityTrustUrl(
-          //   URL.createObjectURL(donneeImage)
-          // );
+          location.photo = this.sanitizer.bypassSecurityTrustUrl(
+           URL.createObjectURL(donneeImage)
+          );
         });
     }
   }

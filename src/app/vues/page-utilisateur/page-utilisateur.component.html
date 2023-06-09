@@ -25,7 +25,7 @@
         <div class="card text-center p-5">
           <div class="card-body">
             <ng-container >
-            
+        <img class="small-photo" src="assets/AccueilPhoto/lenovo.jpg" width="300px" height="300px" />
 
             </ng-container>
         
@@ -49,11 +49,11 @@
                     <th scope="col">Date de traitement</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody  *ngFor="let reservation of listeReservation">
                 <tr >
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ reservation.dateDebutReservation }}</td>
+                    <td>{{ reservation.location?.descriptionLocation }}</td>
+                    <td>{{ reservation.location?.etatLocation }}</td>
                     <td></td>
                 </tr>
             </tbody>

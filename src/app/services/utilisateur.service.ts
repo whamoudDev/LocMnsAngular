@@ -22,10 +22,13 @@ export class UtilisateurService {
   getUtilisateur(idUtilisateur: number): Observable<any> {
     return this.http.get('http://localhost:8082/utilisateur/' + idUtilisateur);
   }
+  getUtilisateurByEmail(email: string): Observable<any> {
+    return this.http.get('http://localhost:8082/utilisateurByEmail/' + email);
+  }
 
   public deleteUtilisateur(idUtilisateur: number): Observable<any> {
     return this.http.delete(
-      'http://localhost:8080/utilisateur/' + idUtilisateur
+      'http://localhost:8082/utilisateur/' + idUtilisateur
     );
   }
 }
