@@ -17,9 +17,9 @@ export class PhotosService {
           responseType: 'blob',
         })
         .subscribe((donneeImage: any) => {
-          location.photo.photoLocation = this.sanitizer.bypassSecurityTrustUrl(
-            URL.createObjectURL(donneeImage)
-          );
+          // location.photo.photoLocation = this.sanitizer.bypassSecurityTrustUrl(
+          //   URL.createObjectURL(donneeImage)
+          // );
         });
     }
   }

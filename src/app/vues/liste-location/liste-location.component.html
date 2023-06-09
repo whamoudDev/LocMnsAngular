@@ -1,0 +1,40 @@
+<table class="table table-light">
+  <thead>
+    <tr>
+      <th scope="col" style="width: 10%">N° Série</th>
+      <th scope="col" style="width: 20%">Nom</th>
+      <th scope="col" style="width:20%">Etat</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let location of listeLocation"  >
+    <tr >
+      <th>{{ location.numSerieLocation }}</th>
+      <td>{{ location.nomLocation }}</td>
+      <td>{{ location.etatLocation }}</td>
+      <td></td>
+      <td>
+        <a
+          type="submit"
+          class="btn btn-lg btn-primary  boutonsGestion"
+          id="btnLocForm"
+          style="background-color: #ff8000; width: 200px"
+          href="./fiche-produit"
+          role="button"
+          >Fiche produit</a
+        >
+        <a
+          type="submit"
+           routerLink="/reservation"
+          class="btn btn-lg btn-primary  boutonsGestion"
+          id="btnLocForm"
+          style="background-color: #ff8000; width: 200px"
+          href="./vues/reservation"
+          role="button"
+          >Réserver</a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>

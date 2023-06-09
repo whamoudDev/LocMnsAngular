@@ -31,7 +31,7 @@ export class CategorieLocationComponent {
         //   (location: Location[]) =>
         //     location.typeLocation.libelleTypeLocation === 'ordinateur portable'
         // );
-        console.log(this.listeLocation);
+        //console.log(this.listeLocation);
       });
   }
 
@@ -39,7 +39,7 @@ export class CategorieLocationComponent {
     this.router.navigateByUrl('/reservation/' + idLocation);
   }
 
-  coucou(){}
+
 }
 
 

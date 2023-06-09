@@ -1,4 +1,4 @@
 export interface Photos {
-  idPhoto: number;
-  photoLocation?: any;
+  idPhoto?: number;
+  photoLocation?: string;
 }
