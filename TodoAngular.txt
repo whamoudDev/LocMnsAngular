@@ -1,0 +1,3 @@
+-Donner l'accès au formulaire superAdmin une seule et unique fois.
+-Indique dans le formulaire de connexion si l'email ou le mot de passe ne correspond pas.
+-Mettre un ngif sur l'accueil pour le btn dashboard pour diriger vers utilisateur ou gestionnaire

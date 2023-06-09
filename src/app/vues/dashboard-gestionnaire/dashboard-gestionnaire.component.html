@@ -1,112 +1,154 @@
 <div id="blcMain">
+  <!-- SIDEMENU -->
+  <div id="sideMenu">
+    <p>
+      <b
+        >Bonjour {{ gestionnaireConnecte?.nomUtilisateur }}
+        {{ gestionnaireConnecte?.prenomUtilisateur }}</b
+      >
+    </p>
 
+    <div id="blcLink">
+      <a class="linkSideMenu" href="accueil"
+        ><img
+          src="assets/sideMenuIcon/handshake.svg"
+          alt="handshakeIcon"
+        />&nbsp;&nbsp;<b>Accueil</b></a
+      >
+      <a class="linkSideMenu" href=""
+        ><img
+          src="assets/sideMenuIcon/bell-ring.svg"
+          alt="bellRingIcon"
+        />&nbsp;&nbsp;<b>Alerte</b></a
+      >
+      <a class="linkSideMenu" href="listelocation"
+        ><img
+          src="assets/sideMenuIcon/computer.svg"
+          alt="computerIcon"
+        />&nbsp;&nbsp;<b>Gestion du parc</b></a
+      >
 
-<!-- SIDEMENU -->
-<div id="sideMenu">
-<p><b>Bonjour {{gestionnaireConnecte?.nomUtilisateur}} {{gestionnaireConnecte?.prenomUtilisateur}}</b></p>
+      <a class="linkSideMenu" href="ajoutEditionGestionnaire"
+        ><img
+          src="assets/sideMenuIcon/user-large-solid.svg"
+          alt="userIcon"
+        />&nbsp;&nbsp;<b>Gestion Utilisateur</b></a
+      >
 
-<div id="blcLink">
-<a class="linkSideMenu" href=""><img src="assets/sideMenuIcon/computer.svg" alt="computerIcon"/>&nbsp;&nbsp;<b>Gestion du parc</b></a>
+      <a class="linkSideMenu" href=""
+        ><img
+          src="assets/sideMenuIcon/calendar.svg"
+          alt="userIcon"
+        />&nbsp;&nbsp;<b>Planning</b></a
+      >
 
-<a class="linkSideMenu" href=""><img src="assets/sideMenuIcon/bell-ring.svg" alt="bellRingIcon"/>&nbsp;&nbsp;<b>Alerte</b></a>
-
-<a class="linkSideMenu" href=><img src="assets/sideMenuIcon/handshake.svg" alt="handshakeIcon"/>&nbsp;&nbsp;<b>Louer</b></a>
-
-<a class="linkSideMenu" href="ajoutEditionGestionnaire"><img src="assets/sideMenuIcon/user-large-solid.svg" alt="userIcon"/>&nbsp;&nbsp;<b>Ajout Utilisateur</b></a>
-
-<a class="linkSideMenu" href=""><img src="assets/sideMenuIcon/calendar.svg" alt="userIcon"/>&nbsp;&nbsp;<b>Planning</b></a>
-
-<a class="linkSideMenu" href=""><img src="assets/sideMenuIcon/chart-histogram.svg" alt="userIcon"/>&nbsp;&nbsp;<b>Statistiques</b></a>
-</div>
-
-<a  class="linkSideMenu" id="btnDeco" type="submit" (click)="onDeconnexion()" ><img src="assets/sideMenuIcon/du-pouvoir.svg" alt="decoIcon"/>&nbsp;&nbsp;<b>Deconnexion</b></a>
-</div>
-
-
-
-
-
-
-<!-- DASHBOARD -->
-<div id="dashboard">
-  <h1 id="titreDashboard"><b>Dashboard</b></h1>
-
-  <div  id= "zoneCard">
-
-  <a href="" class="card">
-    <h4>Demande de reservation</h4>
-    <div class="secondBlcCard">
-      <img src="assets/cardDashboardIcon/panier-ajouter.svg" alt="panierAjouterIcon">
-      <p>{{nbDemandeReservation}}</p>
+      <a class="linkSideMenu" href=""
+        ><img
+          src="assets/sideMenuIcon/chart-histogram.svg"
+          alt="userIcon"
+        />&nbsp;&nbsp;<b>Statistiques</b></a
+      >
     </div>
-  </a>
 
-  <a href="" class="card">
-    <h4>Demande de retour</h4>
-    <div class="secondBlcCard">
-      <img src="assets/cardDashboardIcon/undo.svg" alt="flecheRetourIcon">
-      <p>{{nbDemandeRetour}}</p>
+    <a class="linkSideMenu" id="btnDeco" type="submit" (click)="onDeconnexion()"
+      ><img
+        src="assets/sideMenuIcon/du-pouvoir.svg"
+        alt="decoIcon"
+      />&nbsp;&nbsp;<b>Deconnexion</b></a
+    >
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard">
+    <h1 id="titreDashboard"><b>Dashboard</b></h1>
+
+    <div id="zoneCard">
+      <a href="" class="card">
+        <h4>Demande de reservation</h4>
+        <div class="secondBlcCard">
+          <img
+            src="assets/cardDashboardIcon/panier-ajouter.svg"
+            alt="panierAjouterIcon"
+          />
+          <p>{{ nbDemandeReservation }}</p>
+        </div>
+      </a>
+
+      <a href="" class="card">
+        <h4>Demande de retour</h4>
+        <div class="secondBlcCard">
+          <img src="assets/cardDashboardIcon/undo.svg" alt="flecheRetourIcon" />
+          <p>{{ nbDemandeRetour }}</p>
+        </div>
+      </a>
+
+      <a href="" class="card">
+        <h4>Demande de prolongation</h4>
+        <div class="secondBlcCard">
+          <img
+            src="assets/cardDashboardIcon/handshake.svg"
+            alt="prolongationIcon"
+          />
+          <p>{{ nbDemandeProlongation }}</p>
+        </div>
+      </a>
+
+      <a href="" class="card">
+        <h4>Alerte à traiter</h4>
+        <div class="secondBlcCard">
+          <img src="assets/cardDashboardIcon/ampoule.svg" alt="ampouleIcon" />
+          <p>{{ nbAlerteATraiter }}</p>
+        </div>
+      </a>
+
+      <a href="" class="card">
+        <h4>Réparation en cours</h4>
+        <div class="secondBlcCard">
+          <img
+            src="assets/cardDashboardIcon/ambulance.svg"
+            alt="ambulanceIcon"
+          />
+          <p>{{ nbReparation }}</p>
+        </div>
+      </a>
+
+      <a href="" class="card">
+        <h4>Location non restitué</h4>
+        <div class="secondBlcCard">
+          <img
+            src="assets/cardDashboardIcon/warning.svg"
+            alt="nonRestitueIcon"
+          />
+          <p>{{ nbLocationNonRestitue }}</p>
+        </div>
+      </a>
+
+      <a href="" class="card">
+        <h4>Location en cours</h4>
+        <div class="secondBlcCard">
+          <img src="assets/cardDashboardIcon/pulse.svg" alt="encoursIcon" />
+          <p>{{ nbReservationEnCours }}</p>
+        </div>
+      </a>
+
+      <a href="" class="card">
+        <h4>Stock disponible</h4>
+        <div class="secondBlcCard">
+          <img src="assets/cardDashboardIcon/boxes.svg" alt="stockIcon" />
+          <p>{{ nbStockDisponible }}</p>
+        </div>
+      </a>
+
+      <a href="" class="card">
+        <h4>Historique</h4>
+        <div class="secondBlcCard">
+          <img
+            src="assets/cardDashboardIcon/chart-line-up.svg"
+            alt="historiqueIcon"
+          />
+          <p>{{ nbHistorique }}</p>
+        </div>
+      </a>
     </div>
-  </a>
-
-  <a href="" class="card">
-    <h4>Demande de prolongation</h4>
-    <div class="secondBlcCard">
-      <img src="assets/cardDashboardIcon/handshake.svg" alt="prolongationIcon">
-      <p>{{nbDemandeProlongation}}</p>
-    </div>
-  </a>
-
-  <a href="" class="card">
-    <h4>Alerte à traiter</h4>
-    <div class="secondBlcCard">
-      <img src="assets/cardDashboardIcon/ampoule.svg" alt="ampouleIcon">
-      <p>{{nbAlerteATraiter}}</p>
-    </div>
-  </a>
-
-  <a href="" class="card">
-    <h4>Réparation en cours</h4>
-    <div class="secondBlcCard">
-      <img src="assets/cardDashboardIcon/ambulance.svg" alt="ambulanceIcon">
-      <p>{{nbReparation}}</p>
-    </div>
-  </a>
-
-  <a href="" class="card">
-    <h4>Location non restitué</h4>
-    <div class="secondBlcCard">
-      <img src="assets/cardDashboardIcon/warning.svg" alt="nonRestitueIcon">
-      <p>{{nbLocationNonRestitue}}</p>
-    </div>
-  </a>
-
-  <a href="" class="card">
-    <h4>Location en cours</h4>
-    <div class="secondBlcCard">
-      <img src="assets/cardDashboardIcon/pulse.svg" alt="encoursIcon">
-      <p>{{nbReservationEnCours}}</p>
-    </div>
-  </a>
-
-  <a href="" class="card">
-    <h4>Stock disponible</h4>
-    <div class="secondBlcCard">
-      <img src="assets/cardDashboardIcon/boxes.svg" alt="stockIcon">
-      <p>{{nbStockDisponible}}</p>
-    </div>
-  </a>
-
-  <a href="" class="card">
-    <h4>Historique</h4>
-    <div class="secondBlcCard">
-      <img src="assets/cardDashboardIcon/chart-line-up.svg" alt="historiqueIcon">
-      <p>{{nbHistorique}}</p>
-    </div>
-  </a>
-
-</div>
-
-
-
+  </div>
 </div>
