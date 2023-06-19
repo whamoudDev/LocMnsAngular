@@ -1,3 +1,4 @@
+import { UtilisateurService } from 'src/app/services/utilisateur.service';
 import { Component } from '@angular/core';
 import { LocationService } from 'src/app/services/location.service';
 import { Router } from '@angular/router';
@@ -14,24 +15,47 @@ import { Reservation } from 'src/app/modele/reservation';
 })
 export class PageUtilisateurComponent {
   listeReservation: Reservation[] = [];
+  listeLocation: Location[] = [];
+  idLocation: number = 0;
+  reservation: Reservation = {};
+  //location: Location = {};
+  location: Location[] = [];
+
+  idUtilisateur: number = 0;
+
   constructor(
-    private servicelocation: LocationService,
+    public servicelocation: LocationService,
     private servicetypelocation: TypelocationService,
     private servicereservation: ReservationService,
-    
+    private utilisateurService: UtilisateurService,
 
     private ConnexionService: ConnexionService,
 
     private router: Router
   ) {}
 
-  // ngOnInit() {
-  //   this.servicereservation
-  //     .getListeReservation(idUtilisateur)
-  //     .subscribe((reservations: Reservation[]) => {
-  //       this.listeReservation = reservations;
-  //       console.log(this.listeReservation);
-  //     });
+  ngOnInit() {
+    this.servicereservation
+      .getListeReservation(this.idUtilisateur)
+      .subscribe((reservations: Reservation[]) => {
+        this.listeReservation = reservations;
+        console.log(this.listeReservation);
 
-  // }
+        if (this.servicelocation._locations.value?.idLocation !== undefined) {
+          this.servicelocation
+            .getListeLocationById(
+              this.servicelocation._locations.value.idLocation
+            )
+            .subscribe((location: Location) => {
+              console.log(location);
+              this.reservation.location = {
+                //descriptionLocation: location.descriptionLocation,
+                etatLocation: location.etatLocation,
+                nomLocation: location.nomLocation,
+                numSerieLocation: location.numSerieLocation,
+              };
+            });
+        }
+      });
+  }
 }

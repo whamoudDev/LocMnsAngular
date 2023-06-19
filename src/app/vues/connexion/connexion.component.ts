@@ -27,6 +27,7 @@ export class ConnexionComponent {
     if (this.formulaire.valid) {
       this.serviceConnexion.connexion(this.formulaire.value).subscribe({
         next: (jwt) => {
+        
           localStorage.setItem('jwt', jwt);
           this.serviceConnexion.majUtilisateurConnecte();
           this.router.navigateByUrl(
@@ -35,7 +36,7 @@ export class ConnexionComponent {
         },
         error: (erreur) => {
           this.wrongLogin = true;
-          console.log("erreur Login");
+         console.log("erreur Login");
         },
       });
     }

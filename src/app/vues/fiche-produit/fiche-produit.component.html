@@ -33,44 +33,41 @@
 
 
 <div class="row d-flex justify-content-around">
-  <div class="col-3">
-    <img
+  <div class="col-lg-3 col-md-4 col-sm-6"  *ngFor="let documentation of listeDocumentation">
+    <div> {{ documentation.location?.descriptionLocation }} {{documentation.location?.numSerieLocation}}</div>
+    <img 
       class="FicheImage"
-      src="assets/AccueilPhoto/lenovo.jpg"
+      src="assets/AccueilPhoto/lenovo.jpg" 
       width="320px"
       height="300px"
     />
 
-          <div class="photo-container">
+          <div class="photo-container" >
         <img class="small-photo" src="assets/AccueilPhoto/lenovo2.jpg" width="100px" height="100px" />
         <img class="small-photo" src="assets/AccueilPhoto/lenovo3.jpg" width="100px" height="100px" />
         <img class="small-photo" src="assets/AccueilPhoto/Lenovo4.jpg" width="100px" height="100px" />
       </div>
   </div>
 
-  <div class="col-6" >
+  <div class="col-lg-6 col-md-8 col-sm-6"  *ngFor="let documentation of listeDocumentation">
     <div class="d-flex justify-content-center" >
       <div >
-        <label class="area">Description:</label>
-
-        <mat-form-field appearance="fill" >
-          <textarea formControlName="descriptif" matInput style="width: 400px; height: 100px;"></textarea>
-        </mat-form-field>
+        
 
         <div>
           <mat-label class="area">Documentation:</mat-label>
 
-          <mat-form-field appearance="fill" >
-            <textarea formControlName="Documentation" matInput style="width: 400px; height: 100px;"></textarea>
-          </mat-form-field>
+        <div style="color:white; width: 200px;">{{documentation.fichierDocumentation }}  </div> 
         </div>
       </div>
     </div>
-<div class="col-3">
+   
+<div class="col-lg-3 d-lg-block d-none">
 
     </div>
 
-    <div>
+
+    <div class="d-flex justify-content-center mt-3">
       <button
         class="btn btn-lg btn-primary btn-block"
         id="btnLocForm"

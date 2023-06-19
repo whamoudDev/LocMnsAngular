@@ -1,5 +1,11 @@
+
+-Indique dans le formulaire de connexion si l'email ou le mot de passe ne correspond pas.: OK
+-Mettre un ngif sur l'accueil pour le btn dashboard pour diriger vers utilisateur ou gestionnaire :OK 
+
+A faire:
 -Donner l'accès au formulaire superAdmin une seule et unique fois.
--Indique dans le formulaire de connexion si l'email ou le mot de passe ne correspond pas.
--Mettre un ngif sur l'accueil pour le btn dashboard pour diriger vers utilisateur ou gestionnaire
+-Gérer les photos du dashboard utilisateur
+-Des test unitaires coté angular
+
 -Mettre à jour mcd et diagramme de classe en retirant descriptionDocumentation
 -Dans le formulaire ajout utilisateur supprimer la zone fichier et maquette
