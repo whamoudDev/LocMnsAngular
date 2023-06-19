@@ -25,4 +25,23 @@ export class LocationService {
   public getListeLocation(): Observable<Location[]> {
     return this.http.get<Location[]>('http://localhost:8082/liste-locations');
   }
+
+  ajoutEditionLocation(donneesFormulaire: FormData): Observable<any> {
+    console.log("FORMDATA : ", donneesFormulaire);
+    return this.http.post(
+      'http://localhost:8082/gestionnaire/ajoutEditionLocation',
+      donneesFormulaire
+    );
+  }
+
+  deleteLocation(idLocation?: number){
+    return this.http.delete(
+      'http://localhost:8082/gestionnaire/location/' + idLocation,
+      {
+        responseType: 'text',
+      }
+    );
+  }
+
+  
 }

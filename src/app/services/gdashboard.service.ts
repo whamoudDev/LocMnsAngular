@@ -39,7 +39,7 @@ export class GdashboardService {
   }
 
   getLocationDisponible(): Observable<any> {
-    return this.http.get('http://localhost:8082/locationDisponible');
+    return this.http.get('http://localhost:8082/location-disponible');
   }
 
   getHistoriqueAlerte(): Observable<any> {

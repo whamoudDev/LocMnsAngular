@@ -7,14 +7,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LocalisationService {
-
   //listeLocalisation: Localisation[] = [];
   constructor(private http: HttpClient) {}
-
 
   public getListeLocalisationFromBdd(): Observable<Localisation[]> {
     return this.http.get<Localisation[]>(
       'http://localhost:8082/liste-localisations'
     );
   }
+
+  
 }

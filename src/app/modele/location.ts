@@ -1,6 +1,8 @@
-import { TypeLocation } from "./typeLocation";
-import { Localisation } from "./localisation";
-import { Photos } from "./photos";
+import { TypeLocation } from './typeLocation';
+import { Localisation } from './localisation';
+import { Photo } from './photo';
+import { Utilisateur } from './utilisateur';
+import { Documentation } from './documentation';
 
 export interface Location {
   idLocation?: number;
@@ -8,7 +10,10 @@ export interface Location {
   numSerieLocation?: string;
   etatLocation?: string;
   descriptionLocation?: string;
-  localisation?:Localisation;
-  typeLocation?:TypeLocation;
-  photo?:Photos;
+  statutLocation?: string;
+  localisation?: Localisation;
+  typeLocation?: TypeLocation;
+  utilisateur?: Utilisateur;
+  photos?: Photo[];
+  documents?: Documentation[];
 }

@@ -1,40 +1,233 @@
-<table class="table table-light">
-  <thead>
-    <tr>
-      <th scope="col" style="width: 10%">N° Série</th>
-      <th scope="col" style="width: 20%">Nom</th>
-      <th scope="col" style="width:20%">Etat</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody *ngFor="let location of listeLocation"  >
-    <tr >
-      <th>{{ location.numSerieLocation }}</th>
-      <td>{{ location.nomLocation }}</td>
-      <td>{{ location.etatLocation }}</td>
-      <td></td>
-      <td>
+<div id="mainListeLocation">
+  <header>
+    <div id="headerLeft">
+      <a href="accueil">Accueil</a>
+    </div>
+    <div id="headerRight">
+      <button
+        type="button"
+        class="btn seDeconnecter btn-warning"
+        [routerLink]="['connexion']"
+        (click)="onDeconnexion()"
+      >
+        Deconnexion
+      </button>
+    </div>
+  </header>
+  <h2>Notre parc de location</h2>
+
+  <form id="mainForm" [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+    <div id="blcCrud">
+      <div id="blcCrudTop">
+        <div id="blcCrudTopLeft">
+          <img  [src]="pathPhotoLocation"
+                alt=" Aucune location sélectionnée"/>
+
+          <div class="blcLabelInputLeft">
+            <label>N° Série : </label>
+            <input
+              type="text"
+              formControlName="numSerieLocation"
+              placeholder="Numéro de série"
+            />
+          </div>
+
+          <div class="blcLabelInputLeft">
+            <label>Nom : </label>
+            <input
+              type="text"
+              formControlName="nomLocation"
+              placeholder="Nom de la location"
+            />
+          </div>
+
+          <div class="blcLabelInputLeft">
+            <label>Etat : </label>
+            <input
+              type="text"
+              formControlName="etatLocation"
+              placeholder="Etat : Neuf, bon, moyen, mauvais..."
+            />
+          </div>
+          <div class="blcLabelInputLeft">
+            <label>Statut : </label>
+            <input
+              type="text"
+              formControlName="statutLocation"
+              placeholder="Statut : Disponible, reservé, en panne..."
+            />
+          </div>
+        </div>
+
+        <div id="blcCrudTopRight">
+          <div class="blcLabelInputRight">
+            <label>Description : </label>
+
+            <textarea type="text" formControlName="descriptionLocation">
+            </textarea>
+          </div>
+          <div class="blcLabelInputRight">
+            <label>Type de Location : </label>
+            <mat-form-field appearance="fill">
+                <mat-label>Type : </mat-label>
+                <mat-select formControlName="typeLocation" [compareWith]="compareTypeLocation">
+                  <mat-option
+                    *ngFor="let typeLocation of listeTypeLocation"
+                    [value]="typeLocation"
+                  >
+                    {{ typeLocation.libelleTypeLocation }}
+                  </mat-option>
+                </mat-select>
+                <mat-error> Lieu obligatoire</mat-error>
+              </mat-form-field>
+          </div>
+          <div class="blcLabelInputRight">
+            <label>Lieu : </label>
+            <mat-form-field appearance="fill">
+                <mat-label>Lieu : </mat-label>
+                <mat-select formControlName="localisation" [compareWith]="compareLocalisation">
+                  <mat-option
+                    *ngFor="let localisation of listeLocalisation"
+                    [value]="localisation"
+                  >
+                    {{ localisation.libelleLocalisation }}
+                  </mat-option>
+                </mat-select>
+                <mat-error> Lieu obligatoire</mat-error>
+              </mat-form-field>
+          </div>
+
+          <div class="blcLabelInputRight">
+            <label>Ajouter photo : </label>
+            <div class="inputWithBtn">
+              <input
+                readonly
+                [placeholder]="
+                  image != null ? image.name : 'Aucun fichier selectionné'
+                "
+              />
+              <input
+                #filePictureSelector
+                type="file"
+                style="display: none"
+                (change)="onImageSelectionne($event)"
+              />
+              <button type="button" (click)="filePictureSelector.click()">
+                <img
+                  src="assets/listeLocationIcon/circle-plus-solid.svg"
+                  alt="btnAdd"
+                />
+              </button>
+            </div>
+          </div>
+          <div class="blcLabelInputRight">
+            <label>Ajouter documentation : </label>
+            <div class="inputWithBtn">
+              <input
+                readonly
+                [placeholder]="
+                  fichier != null ? fichier.name : 'Aucun fichier selectionné'
+                "
+              />
+              <input
+                #fileDocSelector
+                type="file"
+                style="display: none"
+                (change)="onDocSelectionne($event)"
+              />
+              <button type="button" (click)="fileDocSelector.click()">
+                <img
+                  src="assets/listeLocationIcon/circle-plus-solid.svg"
+                  alt="btnAdd"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="blcCrudDown">
+        <a
+          id="btnLocForm"
+          class="btn btn-lg btn-primary boutonsGestion"
+          style="background-color: #ff8000; width: 200px"
+          type="submit"
+          role="button"
+          routerLink="/listelocation"
+          (click)="onSubmit()"
+          >Ajouter</a
+        >
+
         <a
           type="submit"
-          class="btn btn-lg btn-primary  boutonsGestion"
+          (click)="onSubmit()"
+          class="btn btn-lg btn-primary boutonsGestion"
           id="btnLocForm"
           style="background-color: #ff8000; width: 200px"
-          href="./fiche-produit"
           role="button"
-          >Fiche produit</a
+          routerLink="/listelocation"
+          >Modifier</a
         >
+
         <a
-          type="submit"
-           routerLink="/reservation"
-          class="btn btn-lg btn-primary  boutonsGestion"
+          type="button"
+          (click)="onDelete()"
+          class="btn btn-lg btn-primary boutonsGestion"
           id="btnLocForm"
           style="background-color: #ff8000; width: 200px"
-          href="./vues/reservation"
           role="button"
-          >Réserver</a
+          >Supprimer</a
         >
-      </td>
-    </tr>
-  </tbody>
-</table>
+      </div>
+    </div>
+  </form>
+
+  <table class="table table-light">
+    <thead>
+      <tr>
+        <th scope="col" style="width: 10%">N° Série</th>
+        <th scope="col" style="width: 15%">Nom</th>
+        <th scope="col" style="width: 15%">Etat</th>
+        <th scope="col" style="width: 15%">Statut</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let location of listeLocation">
+      <tr>
+        <th>{{ location.numSerieLocation }}</th>
+        <td>{{ location.nomLocation }}</td>
+        <td>{{ location.etatLocation }}</td>
+        <td>{{ location.statutLocation }}</td>
+        <td>
+          <a
+            type="submit"
+            class="btn btn-lg btn-primary boutonsGestion"
+            id="btnLocForm"
+            style="background-color: #ff8000; width: 200px"
+            href="./fiche-produit"
+            role="button"
+            >Fiche produit</a
+          >
+          <a
+            type="submit"
+            routerLink="/reservation"
+            class="btn btn-lg btn-primary boutonsGestion"
+            id="btnLocForm"
+            style="background-color: #ff8000; width: 200px"
+            href="./vues/reservation"
+            role="button"
+            >Réserver</a
+          >
+          <a
+            type="submit"
+            (click)="onSelect(location.idLocation)"
+            class="btn btn-lg btn-primary boutonsGestion"
+            id="btnLocForm"
+            style="background-color: #ff8000; width: 200px"
+            role="button"
+            >Selectionner</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

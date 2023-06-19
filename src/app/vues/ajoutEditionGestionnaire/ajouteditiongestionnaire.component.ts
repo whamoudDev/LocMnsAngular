@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Localisation } from 'src/app/modele/localisation';
 import { TypeUtilisateur } from 'src/app/modele/typeUtilisateur';
 import { Utilisateur } from 'src/app/modele/utilisateur';
+import { ConnexionService } from 'src/app/services/connexion.service';
 import { LocalisationService } from 'src/app/services/localisation.service';
 import { TypeUtilisateurService } from 'src/app/services/typeutilisateur.service';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
@@ -22,15 +23,17 @@ export class AjoutEditionGestionnaireComponent {
     adresseUtilisateur: ['', [Validators.required]],
     telephoneUtilisateur: ['', [Validators.required]],
     mailUtilisateur: ['', [Validators.required, Validators.email]],
-    localisation: ['', [Validators.required]],
-    typeUtilisateur: ['', [Validators.required]],
+    localisation: [null, [Validators.required]],
+    typeUtilisateur: [null, [Validators.required]],
   });
 
   //Les listes
+  listeUtilisateur: Utilisateur[] = [];
   listeLocalisation: Localisation[] = [];
   listeTypeUtilisateur: TypeUtilisateur[] = [];
   //Edition utilisateur existant
   idUtilisateur?: number;
+  utilisateurSelection: Utilisateur = {};
   //Fichier
   fichierAjoutMultiple: File | null = null;
   //Erreur
@@ -43,10 +46,19 @@ export class AjoutEditionGestionnaireComponent {
     private route: ActivatedRoute,
     private serviceUtilisateur: UtilisateurService,
     private serviceTypeUtilisateur: TypeUtilisateurService,
-    private serviceLocalisation: LocalisationService
+    private serviceLocalisation: LocalisationService,
+    private serviceConnexion: ConnexionService
   ) {}
 
   ngOnInit() {
+    //Récupération de la liste des utilisateur à l'initialisation
+    this.serviceUtilisateur.getAllUtilisateurs().subscribe({
+      next: (listeUtilisateur) => {
+        this.listeUtilisateur = listeUtilisateur;
+        console.log("LISTE UTILISATEUR : ",this.listeUtilisateur);
+      },
+      error: (erreur) => console.log(erreur),
+    });
     //Récupération de la liste des localisation à l'initialisation
     this.serviceLocalisation.getListeLocalisationFromBdd().subscribe({
       next: (listeLocalisation) => {
@@ -113,8 +125,8 @@ export class AjoutEditionGestionnaireComponent {
       let utilisateur: Utilisateur | null = null;
 
       utilisateur = this.formulaire.value;
-      
 
+      console.log('UTILISATEUR', utilisateur);
       //Les donnees sont formaté en Json sont ajouté à un blob et le blob à un formData
       const donneesFormulaire = new FormData();
       donneesFormulaire.append(
@@ -149,5 +161,33 @@ export class AjoutEditionGestionnaireComponent {
       typeUtilisateur != null &&
       typeUtilisateur.idTypeUtilisateur == typeOption.idTypeUtilisateur
     );
+  }
+
+  onDelete() {
+    if (this.idUtilisateur && this.idUtilisateur != 0) {
+      this.serviceUtilisateur.deleteUtilisateur(this.idUtilisateur).subscribe({
+        next: (resultat) => {
+          console.log('SUPPRESSION : ', resultat);
+          if (this.utilisateurSelection) {
+            this.idUtilisateur = 0;
+
+            //Mise à jour de la liste de toute les locations pour la table
+            this.serviceUtilisateur.getAllUtilisateurs().subscribe({
+              next: (listeUtilisateur) => {
+                this.listeUtilisateur = listeUtilisateur;
+                this.router.navigateByUrl('ajoutEditionGestionnaire');
+              },
+              error: (erreur) => console.log(erreur),
+            });
+          }
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
+    }
+  }
+  onDeconnexion() {
+    this.serviceConnexion.deconnexion();
   }
 }

@@ -1,18 +1,30 @@
 
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100 ;">
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div>
-          <div class="card-body p-5 text-center d-flex justify-content-center">
+  <div id="mainBlc">
+    <header>
+    <div id="headerLeft">
+      <a href="accueil">Accueil</a>
+    </div>
+    <div id="headerRight">
+      <button
+        type="button"
+        class="btn seDeconnecter btn-warning"
+        [routerLink]="['connexion']"
+        (click)="onDeconnexion()"
+      >
+        Deconnexion
+      </button>
+    </div>
+  </header>
+              <h2 class="fw-bold mb-2 mb-5" style="color: #fff">
+                Formulaire Utilisateur
+              </h2>
             <form
-              class="d-flex flex-column"
               id="mainForm"
               [formGroup]="formulaire"
               (ngSubmit)="onSubmit()"
             >
-              <h2 class="fw-bold mb-2 mb-5" style="color: #fff">
-                Formulaire Utilisateur
-              </h2>
+            <div id="blcTopForm">
+              <div class="blcLeftRightForm">
 
               <mat-form-field appearance="fill">
                 <mat-label>Nom: </mat-label>
@@ -67,7 +79,9 @@
                 />
                 <mat-error>Email absent ou mauvais format ...@...</mat-error>
               </mat-form-field>
+              </div>
 
+              <div class="blcLeftRightForm">
               <mat-form-field appearance="fill">
                 <mat-label>Lieu : </mat-label>
                 <mat-select formControlName="localisation" [compareWith]="compareLocalisation">
@@ -93,8 +107,9 @@
                 </mat-select>
                 <mat-error> Rôle obligatoire</mat-error>
               </mat-form-field>
-
-              <div id="blocFichier">
+            </div>
+            </div>
+              <!-- <div id="blocFichier">
                 <span style="color: #5e5e5e;">{{
         fichierAjoutMultiple != null ? fichierAjoutMultiple.name : "Aucun fichier selectionné"
       }}</span>
@@ -109,26 +124,77 @@
       <button id="btnFichier" type="button" (click)="fileSelector.click()" >
         <mat-icon>attach_file</mat-icon>
       </button>
-      </div>
+      </div> -->
 
-      <br>
+    
 
-              <div >
+              <div id="btnCrud">
                 <button
-                  class="btn btn-lg btn-primary btn-block"
-                  id="btnLocForm"
+                  class="btn btn-lg btn-primary btn-block btnLocForm"
                   style="background-color: #ff8000; width: 200px"
                   type="submit"
                   routerLink="/ajoutEditionGestionnaire"
                 >
-                  Envoyer
+                  Ajouter
+                </button>
+                <button
+                  class="btn btn-lg btn-primary btn-block btnLocForm"
+                  style="background-color: #ff8000; width: 200px"
+                  type="submit"
+                  routerLink="/ajoutEditionGestionnaire"
+                >
+                  Modifier
+                </button>
+                <button
+                  class="btn btn-lg btn-primary btn-block btnLocForm"
+                  style="background-color: #ff8000; width: 200px"
+                  type="button"
+                  (click)="onDelete()"
+                  routerLink="/ajoutEditionGestionnaire"
+                >
+                  Supprimer
                 </button>
               </div>
             </form>
-          </div>
-        </div>
+         
+   
 
-      </div>
-    </div>
-  </div>
 
+
+    <table class="table table-light">
+    <thead>
+      <tr>
+        <th scope="col" style="width: 10%">Nom</th>
+        <th scope="col" style="width: 10%">Prénom</th>
+        <th scope="col" style="width: 20%">Email</th>
+        <th scope="col" style="width: 20%">Adresse</th>
+       <th scope="col" style="width: 10%">Téléphone</th>
+       <th scope="col" style="width: 10%">Rôle</th>
+       <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let utilisateur of listeUtilisateur">
+      <tr>
+        <th>{{ utilisateur.nomUtilisateur }}</th>
+        <td>{{ utilisateur.prenomUtilisateur}}</td>
+        <td>{{ utilisateur.mailUtilisateur }}</td>
+        <td>{{ utilisateur.adresseUtilisateur }}</td>
+        <td>{{ utilisateur.telephoneUtilisateur }}</td>
+        <td *ngIf="utilisateur.typeUtilisateur">{{ utilisateur.typeUtilisateur.roleUtilisateur }}</td>
+        <td id="lastColumn">
+          
+          <a
+            type="submit"
+            href="ajoutEditionGestionnaire/{{utilisateur.idUtilisateur}}"
+            class="btn btn-lg btn-primary boutonsGestion"
+            id="btnLocForm"
+            style="background-color: #ff8000; width: 200px"
+            role="button"
+            >Selectionner</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+ </div>

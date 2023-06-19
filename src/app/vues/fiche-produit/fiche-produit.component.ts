@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocationService } from 'src/app/services/location.service';
-import { PhotosService } from 'src/app/services/photos.service';
+import { PhotoService } from 'src/app/services/photo.service';
 
 @Component({
   selector: 'app-fiche-produit',
@@ -10,24 +10,10 @@ import { PhotosService } from 'src/app/services/photos.service';
 })
 export class FicheProduitComponent {
   constructor(
-    
-private servicelocation: LocationService,
-    private servicephotos: PhotosService,
-    private router : Router
-    
-    
-    
-    ) {}
+    private servicelocation: LocationService,
+    private servicephotos: PhotoService,
+    private router: Router
+  ) {}
 
-  ngOnInit() {
-
-
-
-
-
-
-    
-  }
+  ngOnInit() {}
 }
-
-

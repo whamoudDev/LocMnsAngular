@@ -92,8 +92,11 @@ export class DashboardGestionnaireComponent {
         },
       });
 
+
+      
       this.serviceGdashboard.getLocationDisponible().subscribe({
         next: (listLocationDisponible: Location[]) => {
+          console.log("Location disponible : ",listLocationDisponible);
           this.nbStockDisponible = listLocationDisponible.length;
         },
       });

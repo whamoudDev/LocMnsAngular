@@ -19,6 +19,10 @@ export class UtilisateurService {
     );
   }
 
+  getAllUtilisateurs(): Observable<any> {
+    return this.http.get('http://localhost:8082/liste-utilisateurs');
+  }
+
   getUtilisateur(idUtilisateur: number): Observable<any> {
     return this.http.get('http://localhost:8082/utilisateur/' + idUtilisateur);
   }
