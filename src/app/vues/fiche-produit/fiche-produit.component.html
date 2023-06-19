@@ -34,7 +34,7 @@
 
 <div class="row d-flex justify-content-around">
   <div class="col-lg-3 col-md-4 col-sm-6"  *ngFor="let documentation of listeDocumentation">
-    <div> {{ documentation.location?.descriptionLocation }} {{documentation.location?.numSerieLocation}}</div>
+    <div style="color: white; font-weight: bold; font-size: 20px;"> {{ documentation.location?.descriptionLocation }} {{documentation.location?.numSerieLocation}}</div>
     <img 
       class="FicheImage"
       src="assets/AccueilPhoto/lenovo.jpg" 
@@ -57,7 +57,7 @@
         <div>
           <mat-label class="area">Documentation:</mat-label>
 
-        <div style="color:white; width: 200px;">{{documentation.fichierDocumentation }}  </div> 
+        <div style="color:white; width: 200px;">{{documentation.nomDocumentation }}  </div> 
         </div>
       </div>
     </div>

@@ -1,68 +1,70 @@
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
+*{
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
 
-html,
-body {
+    html,
+    body {
 
-    scroll-behavior: smooth;
+        scroll-behavior: smooth;
 
-}
+    }
 
-.navbar-brand {
-    color: white;
-    font-weight: bold;
-    margin-left: 70px;
-
-}
-
-
-.boutonsGestion {
-    background-color: #ff8000;
-    font-size: 20px;
-    border-radius: 5px;
-    border: none;
-    margin-bottom: 30px;
-    margin-left: 40px;
-}
-
-h2 {
-    font-size: 35px;
-    font-weight: bold;
-    color: white;
-    margin-top: 90px;
-    justify-content: center;
-}
-
-
-.btnLocForm{
-    display: flex;
-    margin-bottom: 100px;
-    justify-content: center;
-    border-radius: 3px;
-}
-
-
-.FicheImage {
-    margin-top:10px;
-
-}
-.area {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    .navbar-brand {
         color: white;
-}
-.photo-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
-    margin-top: 20px;
-}
+        font-weight: bold;
+        margin-left: 70px;
 
-.small-photo {
-    width: 100px;
-    height: 100px;
-}
+    }
+
+
+    .boutonsGestion {
+        background-color: #ff8000;
+        font-size: 20px;
+        border-radius: 5px;
+        border: none;
+        margin-bottom: 30px;
+        margin-left: 40px;
+    }
+
+    h2 {
+        font-size: 35px;
+        font-weight: bold;
+        color: white;
+        margin-top: 90px;
+        justify-content: center;
+    }
+
+
+    .btnLocForm {
+        display: flex;
+        margin-bottom: 100px;
+        justify-content: center;
+        border-radius: 3px;
+    }
+
+
+    .FicheImage {
+        margin-top: 10px;
+
+    }
+
+    .area {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .photo-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 10px;
+        margin-top: 20px;
+    }
+
+    .small-photo {
+        width: 100px;
+        height: 100px;
+    }

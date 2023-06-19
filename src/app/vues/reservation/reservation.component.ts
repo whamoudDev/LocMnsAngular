@@ -9,14 +9,12 @@ import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material/core';
 import { CustomDateAdapter } from 'src/app/modele/CustomDateAdapter';
 import { DateAdapter } from '@angular/material/core';
 
-
 import {
   FormBuilder,
   FormGroup,
   Validators,
   RequiredValidator,
 } from '@angular/forms';
-import { DatePipe } from '@angular/common';
 
 import { Localisation } from 'src/app/modele/localisation';
 import { TypeUtilisateur } from 'src/app/modele/typeUtilisateur';
@@ -37,10 +35,6 @@ const MY_DATE_FORMATS = {
     monthYearA11yLabel: { year: 'numeric', month: 'long' },
   },
 };
-
-
-
-
 
 @Component({
   selector: 'app-reservation',
@@ -65,13 +59,11 @@ export class ReservationComponent {
   idLocation: number = 0;
   reservation: Reservation = {};
   location: Location = {};
- 
 
   codeRetour: number = 0;
   messageErreur: String = '';
 
   constructor(
-    private datePipe: DatePipe,
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
@@ -103,10 +95,14 @@ export class ReservationComponent {
     });
     //Récupération des informations de l'utilisateur
 
-    
-    if (this.connexionService._utilisateurConnecte.value?.idUtilisateur != undefined) {
+    if (
+      this.connexionService._utilisateurConnecte.value?.idUtilisateur !=
+      undefined
+    ) {
       this.serviceUtilisateur
-        .getUtilisateur(this.connexionService._utilisateurConnecte.value.idUtilisateur)
+        .getUtilisateur(
+          this.connexionService._utilisateurConnecte.value.idUtilisateur
+        )
         .subscribe({
           next: (utilisateur: Utilisateur) => {
             this.reservation.utilisateur = utilisateur;
@@ -122,12 +118,11 @@ export class ReservationComponent {
       this.reservation.cadreUtilisation =
         this.formulaire.get('cadreUtilisation')?.value;
       this.reservation.dateDebutReservation = this.formulaire.get(
-        'dateDebutReservation' 
+        'dateDebutReservation'
       )?.value;
 
-      this.reservation.dateFinPrevu = this.formulaire.get(
-        'dateFinPrevu' 
-      )?.value;
+      this.reservation.dateFinPrevu =
+        this.formulaire.get('dateFinPrevu')?.value;
       console.log(this.reservation);
 
       //POUR UN REQUEST BODY
@@ -155,4 +150,3 @@ export class ReservationComponent {
     }
   }
 }
-  
