@@ -35,8 +35,15 @@ export class PageUtilisateurComponent {
   ) {}
 
   ngOnInit() {
+    if (
+      this.ConnexionService._utilisateurConnecte.value?.idUtilisateur != null
+    ) {
+      this.idUtilisateur =
+        this.ConnexionService._utilisateurConnecte.value?.idUtilisateur;
+    }
+
     this.servicereservation
-      .getListeReservation(this.idUtilisateur)
+      .getListeReservationUtilisateur(this.idUtilisateur)
       .subscribe((reservations: Reservation[]) => {
         this.listeReservation = reservations;
         console.log(this.listeReservation);
@@ -57,5 +64,9 @@ export class PageUtilisateurComponent {
             });
         }
       });
+  }
+
+  onDeconnexion() {
+    this.ConnexionService.deconnexion();
   }
 }

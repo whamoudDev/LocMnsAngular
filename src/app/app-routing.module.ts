@@ -52,6 +52,11 @@ const routes: Routes = [
     canActivate: [GestionnaireGuard],
   },
   {
+    path: 'listelocation/:id',
+    component: ListeLocationComponent,
+    canActivate: [GestionnaireGuard],
+  },
+  {
     path: 'page-utilisateur',
     component: PageUtilisateurComponent,
     canActivate: [UtilisateurGuard],
@@ -84,7 +89,17 @@ const routes: Routes = [
     canActivate: [UtilisateurGuard],
   },
   {
+    path: 'categorie-location/:id',
+    component: CategorieLocationComponent,
+    canActivate: [UtilisateurGuard],
+  },
+  {
     path: 'fiche-produit',
+    component: FicheProduitComponent,
+    canActivate: [UtilisateurGuard],
+  },
+  {
+    path: 'fiche-produit/:id',
     component: FicheProduitComponent,
     canActivate: [UtilisateurGuard],
   },

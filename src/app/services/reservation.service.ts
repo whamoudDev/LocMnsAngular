@@ -41,19 +41,16 @@ export class ReservationService {
 
   getReservation(idReservation: number): Observable<any> {
     return this.http.get(
-      'http://localhost:8082/liste-reservations/' + idReservation
+      'http://localhost:8082/reservation/' + idReservation
     );
   }
-  // public getListeReservation(): Observable<Reservation[]> {
-  //   return this.http.get<Reservation[]>(
-  //     'http://localhost:8082/liste-reservations',
-  //   );
-  // }
+  public getListeReservation(): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>('http://localhost:8082/reservations');
+  }
 
-  getListeReservation(idReservation: number): Observable<Reservation[]> {
+  getListeReservationUtilisateur(idUtilisateur: number): Observable<Reservation[]> {
     return this.http.get<Reservation[]>(
-      `http://localhost:8082/liste-reservations?idUtilisateur=${idReservation}`
-    );
+      'http://localhost:8082/reservationUtilisateur/'+idUtilisateur);
   }
 }
 

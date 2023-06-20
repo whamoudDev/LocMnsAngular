@@ -129,31 +129,36 @@
     
 
               <div id="btnCrud">
-                <button
+                <a
                   class="btn btn-lg btn-primary btn-block btnLocForm"
                   style="background-color: #ff8000; width: 200px"
                   type="submit"
+                  role="button"
                   routerLink="/ajoutEditionGestionnaire"
+                  (click)="onSubmit()"
                 >
                   Ajouter
-                </button>
-                <button
+              </a>
+                <a
                   class="btn btn-lg btn-primary btn-block btnLocForm"
                   style="background-color: #ff8000; width: 200px"
                   type="submit"
+                  role="button"
                   routerLink="/ajoutEditionGestionnaire"
+                  (click)="onSubmit()"
                 >
                   Modifier
-                </button>
-                <button
+            </a>
+                <a
                   class="btn btn-lg btn-primary btn-block btnLocForm"
                   style="background-color: #ff8000; width: 200px"
                   type="button"
+                  role="button"
                   (click)="onDelete()"
                   routerLink="/ajoutEditionGestionnaire"
                 >
                   Supprimer
-                </button>
+          </a>
               </div>
             </form>
          

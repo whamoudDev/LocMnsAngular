@@ -1,6 +1,6 @@
 
 
 export interface TypeLocation {
-  idTypeLocation: number;
-  libelleTypeLocation:string;
+  idTypeLocation?: number;
+  libelleTypeLocation?:string;
 }

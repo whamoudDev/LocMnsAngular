@@ -5,10 +5,11 @@
         <div class="card-body p-5 text-center d-flex justify-content-center">
           <form *ngSwitchDefault class="d-flex flex-column" [formGroup]="formulaire"
               (ngSubmit)="onSubmit()"
-
+              
               >
             <h1 class="fw-bold mb-2 mb-5" style="color: #fff">Réservation</h1>
             <br />
+
             <mat-form-field appearance="fill">
               <mat-label>N° de série: </mat-label>
               <input
@@ -27,7 +28,7 @@
                 formControlName="nomLocation"
                 placeholder="Nom de la location"
                 required
-                matInput
+                matInput  
 
               />
               <mat-error
@@ -47,20 +48,21 @@
             <mat-form-field>
             <mat-label>Date début réservation : </mat-label>
 
-            <input matInput   [matDatepicker]="datepicker1"  formControlName="dateDebutReservation"  type="date"  required>
+  <input matInput   [matDatepicker]="datepicker1"  formControlName="dateDebutReservation"  type="date"  required>
   <mat-datepicker-toggle matSuffix [for]="datepicker1"></mat-datepicker-toggle>
   <mat-datepicker #datepicker1></mat-datepicker>
-  <mat-error  ngIf="formulaire.get('dateDebutReservation')?.hasError('required')" > 
+  <mat-error  *ngIf="formulaire.get('dateDebutReservation')?.hasError('required')" > 
                   La date de début est <strong>obligatoire</strong>
                 </mat-error>
 </mat-form-field>
 
 <mat-form-field>
 <mat-label>Date fin réservation : </mat-label>
- <input matInput [matDatepicker]="datepicker2" formControlName="dateFinPrevu"  type="date" required >
+
+  <input matInput [matDatepicker]="datepicker2" formControlName="dateFinPrevu"  type="date" required >
   <mat-datepicker-toggle matSuffix [for]="datepicker2"></mat-datepicker-toggle>
   <mat-datepicker #datepicker2></mat-datepicker>
-  <mat-error ngIf="formulaire.get('dateFinPrevu')?.hasError('required')"> 
+  <mat-error *ngIf="formulaire.get('dateFinPrevu')?.hasError('required')"> 
                   La date de fin est <strong>obligatoire</strong>
                 </mat-error >
 </mat-form-field>

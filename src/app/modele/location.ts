@@ -14,6 +14,6 @@ export interface Location {
   localisation?: Localisation;
   typeLocation?: TypeLocation;
   utilisateur?: Utilisateur;
-  photos?: Photo[];
-  documents?: Documentation[];
+  listePhotos?: Photo[];
+  listeDocumentations?: Documentation[];
 }

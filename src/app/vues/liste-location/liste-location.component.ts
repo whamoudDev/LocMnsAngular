@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Localisation } from 'src/app/modele/localisation';
 import { Location } from 'src/app/modele/location';
 import { Photo} from 'src/app/modele/photo';
@@ -38,7 +38,7 @@ export class ListeLocationComponent {
   fichier: File | null = null;
   image: File | null = null;
   locationSelection: Location = {};
-  pathPhotoLocation: string="";
+  pathPhotoLocation: string = '';
   
 
   constructor(
@@ -48,7 +48,8 @@ export class ListeLocationComponent {
     private servicePhoto: PhotoService,
     private serviceConnexion: ConnexionService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -75,51 +76,59 @@ export class ListeLocationComponent {
       },
       error: (erreur) => console.log(erreur),
     });
+
+    ///////////////////////////////////////////////////
+    //Récupération des informations d'une location existante pour son edition
+    this.route.params.subscribe((parametres) => {
+      this.locationSelection.idLocation = parametres['id'];
+      if (this.locationSelection.idLocation) {
+        this.serviceLocation
+          .getListeLocationById(this.locationSelection.idLocation)
+          .subscribe({
+            next: (location: Location) => {
+              this.locationSelection = location;
+              console.log(' LOCATION SELECTIONNE : ', this.locationSelection);
+              this.formulaire
+                .get('numSerieLocation')
+                ?.setValue(this.locationSelection.numSerieLocation);
+              this.formulaire
+                .get('nomLocation')
+                ?.setValue(this.locationSelection.nomLocation);
+              this.formulaire
+                .get('etatLocation')
+                ?.setValue(this.locationSelection.etatLocation);
+              this.formulaire
+                .get('statutLocation')
+                ?.setValue(this.locationSelection.statutLocation);
+              this.formulaire
+                .get('descriptionLocation')
+                ?.setValue(this.locationSelection.descriptionLocation);
+              this.formulaire
+                .get('typeLocation')
+                ?.setValue(this.locationSelection.typeLocation);
+              this.formulaire
+                .get('localisation')
+                ?.setValue(this.locationSelection.localisation);
+            },
+            error: (erreur) => console.log(erreur),
+          });
+
+        this.servicePhoto
+          .getPhotosLocation(this.locationSelection.idLocation)
+          .subscribe({
+            next: (listePhoto: Photo[]) => {
+              this.locationSelection.listePhotos = listePhoto;
+              if (this.locationSelection.listePhotos.length > 0) {
+                this.pathPhotoLocation =
+                  'assets/images/' +
+                  this.locationSelection.listePhotos[0].nomPhoto;
+              }
+            },
+          });
+      }
+    });
   }
 
-  onSelect(idLocation?: number) {
-    if (idLocation) {
-      this.serviceLocation.getListeLocationById(idLocation).subscribe({
-        next: (location: Location) => {
-          this.locationSelection = location;
-
-          this.formulaire
-            .get('numSerieLocation')
-            ?.setValue(this.locationSelection.numSerieLocation);
-          this.formulaire
-            .get('nomLocation')
-            ?.setValue(this.locationSelection.nomLocation);
-          this.formulaire
-            .get('etatLocation')
-            ?.setValue(this.locationSelection.etatLocation);
-            this.formulaire
-              .get('statutLocation')
-              ?.setValue(this.locationSelection.statutLocation);
-          this.formulaire
-            .get('descriptionLocation')
-            ?.setValue(this.locationSelection.descriptionLocation);
-          this.formulaire
-            .get('typeLocation')
-            ?.setValue(this.locationSelection.typeLocation);
-          this.formulaire
-            .get('localisation')
-            ?.setValue(this.locationSelection.localisation);
-        },
-        error: (erreur) => console.log(erreur),
-      });
-
-      this.servicePhoto.getPhotosLocation(idLocation).subscribe({
-        next: (listePhoto: Photo[]) => {
-          this.locationSelection.photos = listePhoto;
-          if(this.locationSelection.photos.length>0){
-            
-            this.pathPhotoLocation="assets/images/"+this.locationSelection.photos[0].nomPhoto
-          }
-          
-        },
-      });
-    }
-  }
   onImageSelectionne(event: any) {
     this.image = event.target.files[0];
   }
@@ -146,17 +155,14 @@ export class ListeLocationComponent {
 
   onSubmit() {
     if (this.formulaire.valid) {
-      let location: Location;
+      let location: Location = this.locationSelection;
       const donnees = new FormData();
 
-      if (this.locationSelection != null) {
-        location = this.locationSelection;
-      }
-
-     
       location = this.formulaire.value;
-     
-
+      if (this.locationSelection.idLocation != null) {
+        location.idLocation = this.locationSelection.idLocation;
+      }
+      console.log('LOCATION AVANT update : ', location);
       if (this.image) {
         donnees.append('image', this.image);
       }
@@ -175,8 +181,6 @@ export class ListeLocationComponent {
       this.serviceLocation
         .ajoutEditionLocation(donnees)
         .subscribe((resultat) => {
-
-
           //Mise à jour de la liste de toute les locations pour la table
           this.serviceLocation.getListeLocation().subscribe({
             next: (listeLocation) => {
@@ -198,7 +202,7 @@ export class ListeLocationComponent {
             console.log('SUPPRESSION : ', resultat);
             if (this.locationSelection) {
               this.locationSelection = {};
-              this.pathPhotoLocation="";
+              this.pathPhotoLocation = '';
               this.formulaire.get('numSerieLocation')?.setValue('');
               this.formulaire.get('nomLocation')?.setValue('');
               this.formulaire.get('etatLocation')?.setValue('');
@@ -221,10 +225,6 @@ export class ListeLocationComponent {
             console.log(error);
           },
         });
-
-      
-
-
     }
   }
 

@@ -165,6 +165,7 @@
           style="background-color: #ff8000; width: 200px"
           role="button"
           routerLink="/listelocation"
+          (click)="onSubmit()"
           >Modifier</a
         >
 
@@ -219,7 +220,7 @@
           >
           <a
             type="submit"
-            (click)="onSelect(location.idLocation)"
+            href="listelocation/{{location.idLocation}}"
             class="btn btn-lg btn-primary boutonsGestion"
             id="btnLocForm"
             style="background-color: #ff8000; width: 200px"

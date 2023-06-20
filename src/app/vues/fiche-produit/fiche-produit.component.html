@@ -32,41 +32,35 @@
     <h2 class="text-center mb-5 titreDemandeLocation">Fiche produit</h2>
 
 
-<div class="row d-flex justify-content-around">
-  <div class="col-lg-3 col-md-4 col-sm-6"  *ngFor="let documentation of listeDocumentation">
-    <div style="color: white; font-weight: bold; font-size: 20px;"> {{ documentation.location?.descriptionLocation }} {{documentation.location?.numSerieLocation}}</div>
+<div class="row d-flex justify-content-center">
+  <div class="col-lg-3 col-md-4 col-sm-6">
+    <div style="color: white; font-weight: bold; font-size: 20px;">{{ locationSelectionne.nomLocation}} {{locationSelectionne.numSerieLocation}} {{locationSelectionne.etatLocation}}</div>
     <img 
       class="FicheImage"
       src="assets/AccueilPhoto/lenovo.jpg" 
-      width="320px"
-      height="300px"
     />
 
           <div class="photo-container" >
-        <img class="small-photo" src="assets/AccueilPhoto/lenovo2.jpg" width="100px" height="100px" />
-        <img class="small-photo" src="assets/AccueilPhoto/lenovo3.jpg" width="100px" height="100px" />
-        <img class="small-photo" src="assets/AccueilPhoto/Lenovo4.jpg" width="100px" height="100px" />
+        <img class="small-photo" src="assets/AccueilPhoto/lenovo2.jpg" />
+        <img class="small-photo" src="assets/AccueilPhoto/lenovo3.jpg" />
+        <img class="small-photo" src="assets/AccueilPhoto/Lenovo4.jpg" />
       </div>
   </div>
 
-  <div class="col-lg-6 col-md-8 col-sm-6"  *ngFor="let documentation of listeDocumentation">
-    <div class="d-flex justify-content-center" >
-      <div >
-        
-
-        <div>
-          <mat-label class="area">Documentation:</mat-label>
-
-        <div style="color:white; width: 200px;">{{documentation.nomDocumentation }}  </div> 
-        </div>
-      </div>
+  <div id="blcRight">
+  <div >
+    <label style="color :white; font-weight: bold;  ">Description :</label>
+    <div id="blcDescription">{{locationSelectionne.descriptionLocation}}</div>
+  </div>
+  <div>
+  <label style="color :white; font-weight: bold;  ">Documentation :</label>
+  <div id="blcDoc" *ngFor="let documentation of locationSelectionne.listeDocumentations">
+        {{documentation.nomDocumentation }}  
     </div>
+    </div>
+</div>
    
-<div class="col-lg-3 d-lg-block d-none">
-
-    </div>
-
-
+</div>
     <div class="d-flex justify-content-center mt-3">
       <button
         class="btn btn-lg btn-primary btn-block"
@@ -78,5 +72,4 @@
      Réserver
       </button>
     </div>
-  </div>
-</div>
+ 

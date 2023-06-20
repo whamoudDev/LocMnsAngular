@@ -8,7 +8,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class DocumentationService {
-  public _documentation: BehaviorSubject<any> = new BehaviorSubject<any>([]);
+ 
 
   constructor(private http: HttpClient) {}
   public getListeDocumentation(): Observable<Documentation[]> {

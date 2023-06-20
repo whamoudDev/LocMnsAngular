@@ -55,7 +55,7 @@ export class AjoutEditionGestionnaireComponent {
     this.serviceUtilisateur.getAllUtilisateurs().subscribe({
       next: (listeUtilisateur) => {
         this.listeUtilisateur = listeUtilisateur;
-        console.log("LISTE UTILISATEUR : ",this.listeUtilisateur);
+        
       },
       error: (erreur) => console.log(erreur),
     });
@@ -83,6 +83,8 @@ export class AjoutEditionGestionnaireComponent {
       if (this.idUtilisateur != null) {
         this.serviceUtilisateur.getUtilisateur(this.idUtilisateur).subscribe({
           next: (utilisateur: Utilisateur) => {
+
+            this.utilisateurSelection = utilisateur;
             this.formulaire
               .get('nomUtilisateur')
               ?.setValue(utilisateur.nomUtilisateur);
@@ -122,10 +124,12 @@ export class AjoutEditionGestionnaireComponent {
     //Si le formulaire est valide, on récupère les données du formulaire :
 
     if (this.formulaire.valid) {
-      let utilisateur: Utilisateur | null = null;
+      let utilisateur: Utilisateur = this.utilisateurSelection;
 
       utilisateur = this.formulaire.value;
-
+      if (this.utilisateurSelection.idUtilisateur != null) {
+        utilisateur.idUtilisateur = this.utilisateurSelection.idUtilisateur;
+      }
       console.log('UTILISATEUR', utilisateur);
       //Les donnees sont formaté en Json sont ajouté à un blob et le blob à un formData
       const donneesFormulaire = new FormData();
@@ -137,9 +141,16 @@ export class AjoutEditionGestionnaireComponent {
       //Le formData est transmis au service qui Post les données et nous renvoi vers l'url
       this.serviceUtilisateur
         .ajoutEditionUtilisateur(donneesFormulaire)
-        .subscribe((resultat) =>
-          this.router.navigateByUrl('ajoutEditionGestionnaire')
-        );
+        .subscribe((resultat) => {
+          //Mise à jour de la liste de toute les utilisateurs pour la table
+          this.serviceUtilisateur.getAllUtilisateurs().subscribe({
+            next: (listeUtilisateur) => {
+              this.listeUtilisateur = listeUtilisateur;
+              this.router.navigateByUrl('ajoutEditionGestionnaire');
+            },
+            error: (erreur) => console.log(erreur),
+          });
+        });
     }
   }
 

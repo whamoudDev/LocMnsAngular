@@ -15,4 +15,8 @@ export class TypelocationService {
       'http://localhost:8082/liste-typeLocations'
     );
   }
+
+  public getTypeLocation(id : number): Observable<any> {
+    return this.http.get<any>('http://localhost:8082/typeLocation/'+ id);
+  }
 }

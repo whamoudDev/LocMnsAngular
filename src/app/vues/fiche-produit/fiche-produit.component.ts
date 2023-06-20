@@ -1,6 +1,6 @@
 import { DocumentationService } from './../../services/documentation.service';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Documentation } from 'src/app/modele/documentation';
 import { LocationService } from 'src/app/services/location.service';
 import { PhotoService } from 'src/app/services/photo.service';
@@ -18,13 +18,15 @@ export class FicheProduitComponent {
   listeLocation: Location[] = [];
   idLocation: number = 0;
   location: Location[] = [];
+  locationSelectionne: Location = {};
 
   constructor(
     private formBuilder: FormBuilder,
     private servicelocation: LocationService,
     private servicephoto: PhotoService,
     private servicedocumentation: DocumentationService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit() {
@@ -37,16 +39,20 @@ export class FicheProduitComponent {
           (doc) => doc.idDocumentation == 1
         );
       });
-    if (this.servicelocation._locations.value?.idLocation !== undefined) {
+
+      //Récupération des informations d'un utilisateur existant pour son edition
+    this.route.params.subscribe((parametres) => {
+      this.idLocation = parametres['id'];
+    if (this.idLocation !== 0) {
       this.servicelocation
-        .getListeLocationById(this.servicelocation._locations.value.idLocation)
+        .getListeLocationById(this.idLocation)
         .subscribe((location: Location) => {
           console.log(location);
-          this.documentation.location = {
-            descriptionLocation: location.descriptionLocation,
-            numSerieLocation: location.numSerieLocation,
-          };
-        });
-    }
+          this.locationSelectionne = location;
+          console.log("LOC : ",this.locationSelectionne);
+          });
+        }
+      });
+    
   }
 }
