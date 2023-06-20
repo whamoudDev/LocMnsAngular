@@ -199,4 +199,9 @@ table {
     margin-inline: 10px;
     border: 0px;
   }
+
+  #colonneBtnTable{
+    display: flex;
+    justify-content: baseline;
+  }
 }
