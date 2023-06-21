@@ -3,6 +3,7 @@ import { Localisation } from '../modele/localisation';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TypeUtilisateur } from '../modele/typeUtilisateur';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class TypeUtilisateurService {
 
   public getListeTypeUtilisateurFromBdd(): Observable<TypeUtilisateur[]> {
     return this.http.get<TypeUtilisateur[]>(
-      environment.serverUrl + 'type-utilisateurs'
+      environment.serverUrl + '/type-utilisateurs'
     );
   }
 }

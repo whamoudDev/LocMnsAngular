@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -9,42 +10,44 @@ export class GdashboardService {
   constructor(private http: HttpClient) {}
 
   getDemandeReservationNonTraite(): Observable<any> {
-    return this.http.get(environment.serverUrl + 'alertesReservationNonTraite');
+    return this.http.get(
+      environment.serverUrl + '/alertesReservationNonTraite'
+    );
   }
 
   getDemandeRetourNonTraite(): Observable<any> {
     return this.http.get(
-      environment.serverUrl + 'alertesDemandeRetourNonTraite'
+      environment.serverUrl + '/alertesDemandeRetourNonTraite'
     );
   }
 
   getDemandeProlongationNonTraite(): Observable<any> {
     return this.http.get(
-      environment.serverUrl + 'alertesDemandeProlongationNonTraite'
+      environment.serverUrl + '/alertesDemandeProlongationNonTraite'
     );
   }
 
   getAlerteNonTraite(): Observable<any> {
-    return this.http.get(environment.serverUrl + 'alertesNonTraite');
+    return this.http.get(environment.serverUrl + '/alertesNonTraite');
   }
 
   getReparationEnCours(): Observable<any> {
-    return this.http.get(environment.serverUrl + 'reparationEnCours');
+    return this.http.get(environment.serverUrl + '/reparationEnCours');
   }
 
   getReservationNonRendu(): Observable<any> {
-    return this.http.get(environment.serverUrl + 'reservationNonRendu');
+    return this.http.get(environment.serverUrl + '/reservationNonRendu');
   }
 
   getReservationEnCours(): Observable<any> {
-    return this.http.get(environment.serverUrl + 'reservationEnCours');
+    return this.http.get(environment.serverUrl + '/reservationEnCours');
   }
 
   getLocationDisponible(): Observable<any> {
-    return this.http.get(environment.serverUrl + 'location-disponible');
+    return this.http.get(environment.serverUrl + '/location-disponible');
   }
 
   getHistoriqueAlerte(): Observable<any> {
-    return this.http.get(environment.serverUrl + 'alertes');
+    return this.http.get(environment.serverUrl + '/alertes');
   }
 }

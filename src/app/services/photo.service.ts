@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Location } from '../modele/location';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class PhotoService {
   //   console.log(location);
   //   if (location.photo != null) {
   //     this.http
-  //       .get(environment.serverUrl + 'photoLocation' + location.idLocation, {
+  //       .get(environment.serverUrl + '/photoLocation' + location.idLocation, {
   //         responseType: 'blob',
   //       })
   //       .subscribe((donneeImage: any) => {
@@ -27,7 +28,7 @@ export class PhotoService {
 
   getPhotosLocation(idLocation?: number): Observable<any> {
     return this.http.get(
-      environment.serverUrl + 'listePhotosLocation/' + idLocation
+      environment.serverUrl + '/listePhotosLocation/' + idLocation
     );
   }
 }

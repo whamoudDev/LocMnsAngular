@@ -5,7 +5,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Utilisateur } from '../modele/utilisateur';
 import { environment } from 'src/environments/environment';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -19,7 +18,7 @@ export class ConnexionService {
 
   //Poste les donnees saisie du formulaire connexion
   connexion(utilisateur: Utilisateur): Observable<any> {
-    return this.http.post(environment.serverUrl + 'connexion', utilisateur, {
+    return this.http.post(environment.serverUrl + '/connexion', utilisateur, {
       responseType: 'text',
     });
   }
