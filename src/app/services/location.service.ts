@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Location } from '../modele/location';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -15,36 +14,36 @@ export class LocationService {
 
   // public getListeLocationById(idLocation: number): Observable<any> {
   //   return this.http.get<any>(
-  //     'http://localhost:8082/liste-locations/' + idLocation
+  //     'http://51.178.26.87:8080/liste-locations/' + idLocation
   //   );
   // }
 
   public getListeLocationById(idLocation: number): Observable<Location> {
     return this.http.get<Location>(
-      'http://localhost:8082/liste-locations/' + idLocation
+      'http://51.178.26.87:8080/liste-locations/' + idLocation
     );
   }
 
   public getListeLocation(): Observable<Location[]> {
-    return this.http.get<Location[]>('http://localhost:8082/liste-locations');
+    return this.http.get<Location[]>(
+      'http://51.178.26.87:8080/liste-locations'
+    );
   }
 
   ajoutEditionLocation(donneesFormulaire: FormData): Observable<any> {
-    console.log("FORMDATA : ", donneesFormulaire);
+    console.log('FORMDATA : ', donneesFormulaire);
     return this.http.post(
-      'http://localhost:8082/gestionnaire/ajoutEditionLocation',
+      'http://51.178.26.87:8080/gestionnaire/ajoutEditionLocation',
       donneesFormulaire
     );
   }
 
-  deleteLocation(idLocation?: number){
+  deleteLocation(idLocation?: number) {
     return this.http.delete(
-      'http://localhost:8082/gestionnaire/location/' + idLocation,
+      'http://51.178.26.87:8080/gestionnaire/location/' + idLocation,
       {
         responseType: 'text',
       }
     );
   }
-
-  
 }

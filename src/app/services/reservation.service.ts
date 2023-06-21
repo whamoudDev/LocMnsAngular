@@ -14,7 +14,7 @@ export class ReservationService {
 
   // public getListeCadreUtilisation(): Observable<Reservation[]> {
   //   return this.http.get<Reservation[]>(
-  //     'http://localhost:8082/liste-cadres-utilisation'
+  //     'http://51.178.26.87:8080/liste-cadres-utilisation'
   //   );
   // }
 
@@ -22,7 +22,7 @@ export class ReservationService {
     //POUR UN REQUEST BODY
     //-----------------------
     // console.log(donneesFormulaire);
-    // const url = 'http://localhost:8082/demandeReservation';
+    // const url = 'http://51.178.26.87:8080/demandeReservation';
     // const headers = new HttpHeaders().set('Content-Type', 'application/json');
     // const jsonBody = JSON.stringify(donneesFormulaire);
     // return this.http.post(url, jsonBody, { headers });
@@ -31,7 +31,7 @@ export class ReservationService {
     //-----------------------
     console.log(donneesFormulaire);
     return this.http.post(
-      'http://localhost:8082/demandeReservation',
+      'http://51.178.26.87:8080/demandeReservation',
       donneesFormulaire,
       {
         responseType: 'text',
@@ -41,30 +41,29 @@ export class ReservationService {
 
   getReservation(idReservation: number): Observable<any> {
     return this.http.get(
-      'http://localhost:8082/reservation/' + idReservation
+      'http://51.178.26.87:8080/reservation/' + idReservation
     );
   }
   public getListeReservation(): Observable<Reservation[]> {
-    return this.http.get<Reservation[]>('http://localhost:8082/reservations');
+    return this.http.get<Reservation[]>(
+      'http://51.178.26.87:8080/reservations'
+    );
   }
 
-  getListeReservationUtilisateur(idUtilisateur: number): Observable<Reservation[]> {
+  getListeReservationUtilisateur(
+    idUtilisateur: number
+  ): Observable<Reservation[]> {
     return this.http.get<Reservation[]>(
-      'http://localhost:8082/reservationUtilisateur/'+idUtilisateur);
+      'http://51.178.26.87:8080/reservationUtilisateur/' + idUtilisateur
+    );
   }
 }
 
+//  public ajoutLocation(idReservation: number, donneesFormulaire: FormData): Observable<Reservation[]> {
+//    return this.http.post<Reservation[]>(
+//  'http://51.178.26.87:8080/utilisateur/reservations/{idReservation}',
 
-  //  public ajoutLocation(idReservation: number, donneesFormulaire: FormData): Observable<Reservation[]> {
-  //    return this.http.post<Reservation[]>(
-  //  'http://localhost:8082/utilisateur/reservations/{idReservation}',
-
-  //  donneesFormulaire,
-  //   {
-  //    responseType: 'text',
-  //    });
-
-
-  
-
-
+//  donneesFormulaire,
+//   {
+//    responseType: 'text',
+//    });

@@ -8,11 +8,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class DocumentationService {
- 
-
   constructor(private http: HttpClient) {}
   public getListeDocumentation(): Observable<Documentation[]> {
-    return this.http.get<Documentation[]>('http://localhost:8082/liste-documentation');
+    return this.http.get<Documentation[]>(
+      'http://51.178.26.87:8080/liste-documentation'
+    );
   }
 }
-

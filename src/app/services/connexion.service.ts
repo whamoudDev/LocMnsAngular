@@ -15,9 +15,9 @@ export class ConnexionService {
   public _utilisateurConnecte: BehaviorSubject<Utilisateur | null> =
     new BehaviorSubject<Utilisateur | null>(null);
 
-   //Poste les donnees saisie du formulaire connexion 
+  //Poste les donnees saisie du formulaire connexion
   connexion(utilisateur: Utilisateur): Observable<any> {
-    return this.http.post('http://localhost:8082/connexion', utilisateur, {
+    return this.http.post('http://51.178.26.87:8080/connexion', utilisateur, {
       responseType: 'text',
     });
   }
@@ -40,7 +40,10 @@ export class ConnexionService {
       const json = window.atob(data);
       const donneesUtilisateur = JSON.parse(json);
 
-      console.log("Donnee Utilisateur reçu du serveur en Json : ", donneesUtilisateur);
+      console.log(
+        'Donnee Utilisateur reçu du serveur en Json : ',
+        donneesUtilisateur
+      );
 
       const utilisateur: Utilisateur = {
         idUtilisateur: donneesUtilisateur.idUtilisateur,
@@ -49,14 +52,14 @@ export class ConnexionService {
         adresseUtilisateur: donneesUtilisateur.adresseUtilisateur,
         telephoneUtilisateur: donneesUtilisateur.telephoneUtilisateur,
         mailUtilisateur: donneesUtilisateur.sub,
-        //Il vaut mieux eviter que le serveur spring nous retourne un mot de passe 
+        //Il vaut mieux eviter que le serveur spring nous retourne un mot de passe
         //sinon il sera tout le temps accessible dans le LocalStorage .
         motDePasseUtilisateur: '',
         localisation: donneesUtilisateur.localisation,
         typeUtilisateur: donneesUtilisateur.typeUtilisateur,
       };
       console.log('Utilisateur une fois données Json bindé : ', utilisateur);
-      
+
       this._utilisateurConnecte.next(utilisateur);
     } else {
       this._utilisateurConnecte.next(null);

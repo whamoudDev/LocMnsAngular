@@ -8,14 +8,13 @@ import { TypeUtilisateur } from '../modele/typeUtilisateur';
   providedIn: 'root',
 })
 export class TypeUtilisateurService {
-  
   //private listeTypeUtilisateur: TypeUtilisateur[] = [];
 
   constructor(private http: HttpClient) {}
 
   public getListeTypeUtilisateurFromBdd(): Observable<TypeUtilisateur[]> {
     return this.http.get<TypeUtilisateur[]>(
-      'http://localhost:8082/type-utilisateurs'
+      'http://51.178.26.87:8080/type-utilisateurs'
     );
   }
 }
