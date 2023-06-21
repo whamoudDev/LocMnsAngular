@@ -9,44 +9,42 @@ export class GdashboardService {
   constructor(private http: HttpClient) {}
 
   getDemandeReservationNonTraite(): Observable<any> {
-    return this.http.get(
-      'http://51.178.26.87:8080/alertesReservationNonTraite'
-    );
+    return this.http.get(environment.serverUrl + 'alertesReservationNonTraite');
   }
 
   getDemandeRetourNonTraite(): Observable<any> {
     return this.http.get(
-      'http://51.178.26.87:8080/alertesDemandeRetourNonTraite'
+      environment.serverUrl + 'alertesDemandeRetourNonTraite'
     );
   }
 
   getDemandeProlongationNonTraite(): Observable<any> {
     return this.http.get(
-      'http://51.178.26.87:8080/alertesDemandeProlongationNonTraite'
+      environment.serverUrl + 'alertesDemandeProlongationNonTraite'
     );
   }
 
   getAlerteNonTraite(): Observable<any> {
-    return this.http.get('http://51.178.26.87:8080/alertesNonTraite');
+    return this.http.get(environment.serverUrl + 'alertesNonTraite');
   }
 
   getReparationEnCours(): Observable<any> {
-    return this.http.get('http://51.178.26.87:8080/reparationEnCours');
+    return this.http.get(environment.serverUrl + 'reparationEnCours');
   }
 
   getReservationNonRendu(): Observable<any> {
-    return this.http.get('http://51.178.26.87:8080/reservationNonRendu');
+    return this.http.get(environment.serverUrl + 'reservationNonRendu');
   }
 
   getReservationEnCours(): Observable<any> {
-    return this.http.get('http://51.178.26.87:8080/reservationEnCours');
+    return this.http.get(environment.serverUrl + 'reservationEnCours');
   }
 
   getLocationDisponible(): Observable<any> {
-    return this.http.get('http://51.178.26.87:8080/location-disponible');
+    return this.http.get(environment.serverUrl + 'location-disponible');
   }
 
   getHistoriqueAlerte(): Observable<any> {
-    return this.http.get('http://51.178.26.87:8080/alertes');
+    return this.http.get(environment.serverUrl + 'alertes');
   }
 }

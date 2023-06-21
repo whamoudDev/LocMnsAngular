@@ -11,7 +11,7 @@ export class DocumentationService {
   constructor(private http: HttpClient) {}
   public getListeDocumentation(): Observable<Documentation[]> {
     return this.http.get<Documentation[]>(
-      'http://51.178.26.87:8080/liste-documentation'
+      environment.serverUrl + 'liste-documentation'
     );
   }
 }

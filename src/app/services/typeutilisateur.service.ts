@@ -14,7 +14,7 @@ export class TypeUtilisateurService {
 
   public getListeTypeUtilisateurFromBdd(): Observable<TypeUtilisateur[]> {
     return this.http.get<TypeUtilisateur[]>(
-      'http://51.178.26.87:8080/type-utilisateurs'
+      environment.serverUrl + 'type-utilisateurs'
     );
   }
 }

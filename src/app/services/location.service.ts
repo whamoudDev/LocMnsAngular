@@ -14,33 +14,31 @@ export class LocationService {
 
   // public getListeLocationById(idLocation: number): Observable<any> {
   //   return this.http.get<any>(
-  //     'http://51.178.26.87:8080/liste-locations/' + idLocation
+  //     environment.serverUrl + 'liste-locations/' + idLocation
   //   );
   // }
 
   public getListeLocationById(idLocation: number): Observable<Location> {
     return this.http.get<Location>(
-      'http://51.178.26.87:8080/liste-locations/' + idLocation
+      environment.serverUrl + 'liste-locations/' + idLocation
     );
   }
 
   public getListeLocation(): Observable<Location[]> {
-    return this.http.get<Location[]>(
-      'http://51.178.26.87:8080/liste-locations'
-    );
+    return this.http.get<Location[]>(environment.serverUrl + 'liste-locations');
   }
 
   ajoutEditionLocation(donneesFormulaire: FormData): Observable<any> {
     console.log('FORMDATA : ', donneesFormulaire);
     return this.http.post(
-      'http://51.178.26.87:8080/gestionnaire/ajoutEditionLocation',
+      environment.serverUrl + 'gestionnaire/ajoutEditionLocation',
       donneesFormulaire
     );
   }
 
   deleteLocation(idLocation?: number) {
     return this.http.delete(
-      'http://51.178.26.87:8080/gestionnaire/location/' + idLocation,
+      environment.serverUrl + 'gestionnaire/location/' + idLocation,
       {
         responseType: 'text',
       }

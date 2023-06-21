@@ -11,11 +11,11 @@ export class TypelocationService {
 
   public getListeTypeLocation(): Observable<TypeLocation[]> {
     return this.http.get<TypeLocation[]>(
-      'http://51.178.26.87:8080/liste-typeLocations'
+      environment.serverUrl + 'liste-typeLocations'
     );
   }
 
   public getTypeLocation(id: number): Observable<any> {
-    return this.http.get<any>('http://51.178.26.87:8080/typeLocation/' + id);
+    return this.http.get<any>(environment.serverUrl + 'typeLocation/' + id);
   }
 }

@@ -12,7 +12,7 @@ export class LocalisationService {
 
   public getListeLocalisationFromBdd(): Observable<Localisation[]> {
     return this.http.get<Localisation[]>(
-      'http://51.178.26.87:8080/liste-localisations'
+      environment.serverUrl + 'liste-localisations'
     );
   }
 }

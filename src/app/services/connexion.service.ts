@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Utilisateur } from '../modele/utilisateur';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +19,7 @@ export class ConnexionService {
 
   //Poste les donnees saisie du formulaire connexion
   connexion(utilisateur: Utilisateur): Observable<any> {
-    return this.http.post('http://51.178.26.87:8080/connexion', utilisateur, {
+    return this.http.post(environment.serverUrl + 'connexion', utilisateur, {
       responseType: 'text',
     });
   }

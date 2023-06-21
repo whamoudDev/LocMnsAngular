@@ -11,7 +11,7 @@ export class UtilisateurService {
 
   ajoutEditionUtilisateur(donneesFormulaire: FormData): Observable<any> {
     return this.http.post(
-      'http://51.178.26.87:8080/ajoutEditionUtilisateur',
+      environment.serverUrl + 'ajoutEditionUtilisateur',
       donneesFormulaire,
       {
         responseType: 'text',
@@ -20,23 +20,21 @@ export class UtilisateurService {
   }
 
   getAllUtilisateurs(): Observable<any> {
-    return this.http.get('http://51.178.26.87:8080/liste-utilisateurs');
+    return this.http.get(environment.serverUrl + 'liste-utilisateurs');
   }
 
   getUtilisateur(idUtilisateur: number): Observable<any> {
     return this.http.get(
-      'http://51.178.26.87:8080/utilisateur/' + idUtilisateur
+      environment.serverUrl + 'utilisateur/' + idUtilisateur
     );
   }
   getUtilisateurByEmail(email: string): Observable<any> {
-    return this.http.get(
-      'http://51.178.26.87:8080/utilisateurByEmail/' + email
-    );
+    return this.http.get(environment.serverUrl + 'utilisateurByEmail/' + email);
   }
 
   public deleteUtilisateur(idUtilisateur: number): Observable<any> {
     return this.http.delete(
-      'http://51.178.26.87:8080/utilisateur/' + idUtilisateur
+      environment.serverUrl + 'utilisateur/' + idUtilisateur
     );
   }
 }

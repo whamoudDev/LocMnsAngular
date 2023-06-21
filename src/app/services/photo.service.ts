@@ -14,7 +14,7 @@ export class PhotoService {
   //   console.log(location);
   //   if (location.photo != null) {
   //     this.http
-  //       .get('http://51.178.26.87:8080/photoLocation' + location.idLocation, {
+  //       .get(environment.serverUrl + 'photoLocation' + location.idLocation, {
   //         responseType: 'blob',
   //       })
   //       .subscribe((donneeImage: any) => {
@@ -27,7 +27,7 @@ export class PhotoService {
 
   getPhotosLocation(idLocation?: number): Observable<any> {
     return this.http.get(
-      'http://51.178.26.87:8080/listePhotosLocation/' + idLocation
+      environment.serverUrl + 'listePhotosLocation/' + idLocation
     );
   }
 }

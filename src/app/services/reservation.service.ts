@@ -14,7 +14,7 @@ export class ReservationService {
 
   // public getListeCadreUtilisation(): Observable<Reservation[]> {
   //   return this.http.get<Reservation[]>(
-  //     'http://51.178.26.87:8080/liste-cadres-utilisation'
+  //     environment.serverUrl + 'liste-cadres-utilisation'
   //   );
   // }
 
@@ -22,7 +22,7 @@ export class ReservationService {
     //POUR UN REQUEST BODY
     //-----------------------
     // console.log(donneesFormulaire);
-    // const url = 'http://51.178.26.87:8080/demandeReservation';
+    // const url = environment.serverUrl + 'demandeReservation';
     // const headers = new HttpHeaders().set('Content-Type', 'application/json');
     // const jsonBody = JSON.stringify(donneesFormulaire);
     // return this.http.post(url, jsonBody, { headers });
@@ -31,7 +31,7 @@ export class ReservationService {
     //-----------------------
     console.log(donneesFormulaire);
     return this.http.post(
-      'http://51.178.26.87:8080/demandeReservation',
+      environment.serverUrl + 'demandeReservation',
       donneesFormulaire,
       {
         responseType: 'text',
@@ -41,27 +41,25 @@ export class ReservationService {
 
   getReservation(idReservation: number): Observable<any> {
     return this.http.get(
-      'http://51.178.26.87:8080/reservation/' + idReservation
+      environment.serverUrl + 'reservation/' + idReservation
     );
   }
   public getListeReservation(): Observable<Reservation[]> {
-    return this.http.get<Reservation[]>(
-      'http://51.178.26.87:8080/reservations'
-    );
+    return this.http.get<Reservation[]>(environment.serverUrl + 'reservations');
   }
 
   getListeReservationUtilisateur(
     idUtilisateur: number
   ): Observable<Reservation[]> {
     return this.http.get<Reservation[]>(
-      'http://51.178.26.87:8080/reservationUtilisateur/' + idUtilisateur
+      environment.serverUrl + 'reservationUtilisateur/' + idUtilisateur
     );
   }
 }
 
 //  public ajoutLocation(idReservation: number, donneesFormulaire: FormData): Observable<Reservation[]> {
 //    return this.http.post<Reservation[]>(
-//  'http://51.178.26.87:8080/utilisateur/reservations/{idReservation}',
+//  environment.serverUrl + 'utilisateur/reservations/{idReservation}',
 
 //  donneesFormulaire,
 //   {
