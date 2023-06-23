@@ -2,28 +2,29 @@
   <div class="header">
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <!-- <a class="navbar-brand" href="#"> -->
         <img
           src="assets/logo.png"
           alt="Logo du site"
           width="300"
           height="100"
         />
-        <!-- </a> -->
-        <div id="blcHeaderRight">
-          <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"> -->
-          <!-- <span class="navbar-toggler-icon"></span> -->
-          <!-- </button> -->
-          <!-- <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav ms-auto"> -->
-           
-            <a class="nav-link" routerLink="/dashboardgestionnaire" [routerLinkActive]="['active']" *ngIf="lienTableauBord">Tableau de bord</a>
-            <a class="nav-link" routerLink="/page-utilisateur" [routerLinkActive]="['active']" *ngIf="!lienTableauBord">Tableau de bord</a>
 
-            <!-- </div>
-          <!-- </div>
-        </div>
-        <div class="d-flex justify-content-end"> -->
+        <div id="blcHeaderRight">
+          <a
+            class="nav-link"
+            routerLink="/dashboardgestionnaire"
+            [routerLinkActive]="['active']"
+            *ngIf="lienTableauBord"
+            >Tableau de bord</a
+          >
+          <a
+            class="nav-link"
+            routerLink="/page-utilisateur"
+            [routerLinkActive]="['active']"
+            *ngIf="!lienTableauBord"
+            >Tableau de bord</a
+          >
+
           <button
             type="button"
             id="btnDeco"
@@ -32,7 +33,6 @@
           >
             Deconnexion
           </button>
-          <!-- </div> -->
         </div>
       </div>
     </nav>
@@ -43,48 +43,56 @@
     <div class="row">
       <div class="col-sm-3">
         <div class="image-container text-center">
-          
-          <a href="" routerLink="/categorie-location/1"><img
-            src="assets/AccueilPhoto/ordinateur.jpg"
-            alt="ordinateur"
-            class="img-fluid d-block"
-            width="100"
-            height="50"
-          /> PC portable</a>
+          <a href="" routerLink="/categorie-location/1"
+            ><img
+              src="assets/AccueilPhoto/ordinateur.jpg"
+              alt="ordinateur"
+              class="img-fluid d-block"
+              width="100"
+              height="50"
+            />
+            PC portable</a
+          >
         </div>
       </div>
       <div class="col-sm-3">
         <div class="image-container text-center">
-          
-          <a href="" routerLink="/categorie-location/4"><img
-            src="assets/AccueilPhoto/salle1.jpg"
-            alt="salle"
-            class="img-fluid d-block"
-            width="100"
-            height="50"
-          /> Salles</a>
+          <a href="" routerLink="/categorie-location/4"
+            ><img
+              src="assets/AccueilPhoto/salle1.jpg"
+              alt="salle"
+              class="img-fluid d-block"
+              width="100"
+              height="50"
+            />
+            Salles</a
+          >
         </div>
       </div>
       <div class="col-sm-3">
         <div class="image-container text-center">
-          
-          <a href="" routerLink="/categorie-location/2"><img
-            src="assets/AccueilPhoto/projecteur.jpg"
-            alt="Video projecteur"
-            class="img-fluid d-block"
-            width="100"
-            height="50"
-          /> Vidéos Projecteurs</a>
+          <a href="" routerLink="/categorie-location/2"
+            ><img
+              src="assets/AccueilPhoto/projecteur.jpg"
+              alt="Video projecteur"
+              class="img-fluid d-block"
+              width="100"
+              height="50"
+            />
+            Vidéos Projecteurs</a
+          >
         </div>
       </div>
       <div class="col-sm-3">
         <div class="image-container text-center">
-          
-          <a href="" routerLink="/categorie-location/3"><img
-            src="assets/AccueilPhoto/Casque VR.jpg"
-            alt="casque VR"
-            class="img-fluid d-block"
-          /> Casque VR</a>
+          <a href="" routerLink="/categorie-location/3"
+            ><img
+              src="assets/AccueilPhoto/Casque VR.jpg"
+              alt="casque VR"
+              class="img-fluid d-block"
+            />
+            Casque VR</a
+          >
         </div>
       </div>
     </div>
@@ -92,8 +100,6 @@
   <!--Footer-->
 
   <footer>
-    <!-- <div class="row d-flex justify-content-around"> -->
-
     <div class="col-3"></div>
     <div class="col-6">
       <div class="d-flex justify-content-center">
@@ -148,7 +154,5 @@
         <br />
       </p>
     </div>
-
-    <!-- </div> -->
   </footer>
 </div>

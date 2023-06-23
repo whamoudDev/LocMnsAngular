@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Localisation } from 'src/app/modele/localisation';
 import { Location } from 'src/app/modele/location';
-import { Photo} from 'src/app/modele/photo';
+import { Photo } from 'src/app/modele/photo';
 import { TypeLocation } from 'src/app/modele/typeLocation';
 import { ConnexionService } from 'src/app/services/connexion.service';
 import { LocalisationService } from 'src/app/services/localisation.service';
@@ -39,7 +39,6 @@ export class ListeLocationComponent {
   image: File | null = null;
   locationSelection: Location = {};
   pathPhotoLocation: string = '';
-  
 
   constructor(
     private serviceLocation: LocationService,

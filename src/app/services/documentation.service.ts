@@ -12,7 +12,7 @@ export class DocumentationService {
   constructor(private http: HttpClient) {}
   public getListeDocumentation(): Observable<Documentation[]> {
     return this.http.get<Documentation[]>(
-      environment.serverUrl + '/liste-documentation'
+      environment.serverUrl + '/users/liste-documentation'
     );
   }
 }

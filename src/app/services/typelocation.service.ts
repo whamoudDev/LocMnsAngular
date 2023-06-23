@@ -12,11 +12,13 @@ export class TypelocationService {
 
   public getListeTypeLocation(): Observable<TypeLocation[]> {
     return this.http.get<TypeLocation[]>(
-      environment.serverUrl + '/liste-typeLocations'
+      environment.serverUrl + '/users/liste-typeLocations'
     );
   }
 
   public getTypeLocation(id: number): Observable<any> {
-    return this.http.get<any>(environment.serverUrl + '/typeLocation/' + id);
+    return this.http.get<any>(
+      environment.serverUrl + '/users/typeLocation/' + id
+    );
   }
 }

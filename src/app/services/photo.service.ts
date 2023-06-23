@@ -28,7 +28,7 @@ export class PhotoService {
 
   getPhotosLocation(idLocation?: number): Observable<any> {
     return this.http.get(
-      environment.serverUrl + '/listePhotosLocation/' + idLocation
+      environment.serverUrl + '/users/listePhotosLocation/' + idLocation
     );
   }
 }

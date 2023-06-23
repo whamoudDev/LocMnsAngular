@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  Router,
+  RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
 import { Observable } from 'rxjs';
 import { ConnexionService } from '../services/connexion.service';
 import { IsGestionnairePipe } from '../pipes/is-gestionnaire.pipe';
@@ -20,11 +26,15 @@ export class GestionnaireGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-   
-   if(this.serviceConnexion._utilisateurConnecte.value != null && new IsGestionnairePipe().transform(this.serviceConnexion._utilisateurConnecte.value)) {
+    if (
+      this.serviceConnexion._utilisateurConnecte.value != null &&
+      new IsGestionnairePipe().transform(
+        this.serviceConnexion._utilisateurConnecte.value
+      )
+    ) {
       return true;
     }
 
     return this.router.parseUrl('page403');
-    }
+  }
 }

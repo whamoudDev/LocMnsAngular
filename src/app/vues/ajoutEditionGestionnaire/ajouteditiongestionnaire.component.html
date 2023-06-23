@@ -1,6 +1,5 @@
-
-  <div id="mainBlc">
-    <header>
+<div id="mainBlc">
+  <header>
     <div id="headerLeft">
       <a href="accueil">Accueil</a>
     </div>
@@ -15,101 +14,99 @@
       </button>
     </div>
   </header>
-              <h2 class="fw-bold mb-2 mb-5" style="color: #fff">
-                Formulaire Utilisateur
-              </h2>
-            <form
-              id="mainForm"
-              [formGroup]="formulaire"
-              (ngSubmit)="onSubmit()"
+  <h2 class="fw-bold mb-2 mb-5" style="color: #fff">Formulaire Utilisateur</h2>
+  <form id="mainForm" [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+    <div id="blcTopForm">
+      <div class="blcLeftRightForm">
+        <mat-form-field appearance="fill">
+          <mat-label>Nom: </mat-label>
+          <input
+            formControlName="nomUtilisateur"
+            placeholder="Nom"
+            required
+            autofocus
+            matInput
+          />
+          <mat-error> Nom obligatoire minimum 3 lettres </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Prénom: </mat-label>
+          <input
+            formControlName="prenomUtilisateur"
+            placeholder="Prénom"
+            required
+            matInput
+          />
+          <mat-error> Prénom obligatoire minimum 3 lettres </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Adresse: </mat-label>
+          <input
+            formControlName="adresseUtilisateur"
+            placeholder="Adresse"
+            required
+            matInput
+          />
+          <mat-error> Adresse obligatoire</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Telephone: </mat-label>
+          <input
+            formControlName="telephoneUtilisateur"
+            placeholder="Numéro de téléphone"
+            required
+            matInput
+          />
+          <mat-error> Telephone obligatoire</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Email: </mat-label>
+          <input
+            formControlName="mailUtilisateur"
+            placeholder="Adresse mail"
+            required
+            matInput
+          />
+          <mat-error>Email absent ou mauvais format ...@...</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="blcLeftRightForm">
+        <mat-form-field appearance="fill">
+          <mat-label>Lieu : </mat-label>
+          <mat-select
+            formControlName="localisation"
+            [compareWith]="compareLocalisation"
+          >
+            <mat-option
+              *ngFor="let localisation of listeLocalisation"
+              [value]="localisation"
             >
-            <div id="blcTopForm">
-              <div class="blcLeftRightForm">
+              {{ localisation.libelleLocalisation }}
+            </mat-option>
+          </mat-select>
+          <mat-error> Lieu obligatoire</mat-error>
+        </mat-form-field>
 
-              <mat-form-field appearance="fill">
-                <mat-label>Nom: </mat-label>
-                <input
-
-                  formControlName="nomUtilisateur"
-                  placeholder="Nom"
-                  required
-                  autofocus
-                  matInput
-                />
-                <mat-error> Nom obligatoire minimum 3 lettres </mat-error>
-              </mat-form-field>
-
-              <mat-form-field appearance="fill">
-                <mat-label>Prénom: </mat-label>
-                <input
-                  formControlName="prenomUtilisateur"
-                  placeholder="Prénom"
-                  required
-                  matInput
-                />
-                <mat-error> Prénom obligatoire minimum 3 lettres </mat-error>
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>Adresse: </mat-label>
-                <input
-                  formControlName="adresseUtilisateur"
-                  placeholder="Adresse"
-                  required
-                  matInput
-                />
-                <mat-error> Adresse obligatoire</mat-error>
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>Telephone: </mat-label>
-                <input
-                  formControlName="telephoneUtilisateur"
-                  placeholder="Numéro de téléphone"
-                  required
-                  matInput
-                />
-                <mat-error> Telephone obligatoire</mat-error>
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>Email: </mat-label>
-                <input
-                  formControlName="mailUtilisateur"
-                  placeholder="Adresse mail"
-                  required
-                  matInput
-                />
-                <mat-error>Email absent ou mauvais format ...@...</mat-error>
-              </mat-form-field>
-              </div>
-
-              <div class="blcLeftRightForm">
-              <mat-form-field appearance="fill">
-                <mat-label>Lieu : </mat-label>
-                <mat-select formControlName="localisation" [compareWith]="compareLocalisation">
-                  <mat-option
-                    *ngFor="let localisation of listeLocalisation"
-                    [value]="localisation"
-                  >
-                    {{ localisation.libelleLocalisation }}
-                  </mat-option>
-                </mat-select>
-                <mat-error> Lieu obligatoire</mat-error>
-              </mat-form-field>
-
-              <mat-form-field appearance="fill">
-                <mat-label>Rôle : </mat-label>
-                <mat-select formControlName="typeUtilisateur" [compareWith]="compareTypeUtilisateur">
-                  <mat-option
-                    *ngFor="let typeUtilisateur of listeTypeUtilisateur"
-                    [value]="typeUtilisateur"
-                  >
-                    {{ typeUtilisateur.roleUtilisateur }}
-                  </mat-option>
-                </mat-select>
-                <mat-error> Rôle obligatoire</mat-error>
-              </mat-form-field>
-            </div>
-            </div>
-              <!-- <div id="blocFichier">
+        <mat-form-field appearance="fill">
+          <mat-label>Rôle : </mat-label>
+          <mat-select
+            formControlName="typeUtilisateur"
+            [compareWith]="compareTypeUtilisateur"
+          >
+            <mat-option
+              *ngFor="let typeUtilisateur of listeTypeUtilisateur"
+              [value]="typeUtilisateur"
+            >
+              {{ typeUtilisateur.roleUtilisateur }}
+            </mat-option>
+          </mat-select>
+          <mat-error> Rôle obligatoire</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <!-- <div id="blocFichier">
                 <span style="color: #5e5e5e;">{{
         fichierAjoutMultiple != null ? fichierAjoutMultiple.name : "Aucun fichier selectionné"
       }}</span>
@@ -126,71 +123,66 @@
       </button>
       </div> -->
 
-    
+    <div id="btnCrud">
+      <a
+        class="btn btn-lg btn-primary btn-block btnLocForm"
+        style="background-color: #ff8000; width: 200px"
+        type="submit"
+        role="button"
+        routerLink="/ajoutEditionGestionnaire"
+        (click)="onSubmit()"
+      >
+        Ajouter
+      </a>
+      <a
+        class="btn btn-lg btn-primary btn-block btnLocForm"
+        style="background-color: #ff8000; width: 200px"
+        type="submit"
+        role="button"
+        routerLink="/ajoutEditionGestionnaire"
+        (click)="onSubmit()"
+      >
+        Modifier
+      </a>
+      <a
+        class="btn btn-lg btn-primary btn-block btnLocForm"
+        style="background-color: #ff8000; width: 200px"
+        type="button"
+        role="button"
+        (click)="onDelete()"
+        routerLink="/ajoutEditionGestionnaire"
+      >
+        Supprimer
+      </a>
+    </div>
+  </form>
 
-              <div id="btnCrud">
-                <a
-                  class="btn btn-lg btn-primary btn-block btnLocForm"
-                  style="background-color: #ff8000; width: 200px"
-                  type="submit"
-                  role="button"
-                  routerLink="/ajoutEditionGestionnaire"
-                  (click)="onSubmit()"
-                >
-                  Ajouter
-              </a>
-                <a
-                  class="btn btn-lg btn-primary btn-block btnLocForm"
-                  style="background-color: #ff8000; width: 200px"
-                  type="submit"
-                  role="button"
-                  routerLink="/ajoutEditionGestionnaire"
-                  (click)="onSubmit()"
-                >
-                  Modifier
-            </a>
-                <a
-                  class="btn btn-lg btn-primary btn-block btnLocForm"
-                  style="background-color: #ff8000; width: 200px"
-                  type="button"
-                  role="button"
-                  (click)="onDelete()"
-                  routerLink="/ajoutEditionGestionnaire"
-                >
-                  Supprimer
-          </a>
-              </div>
-            </form>
-         
-   
-
-
-
-    <table class="table table-light">
+  <table class="table table-light">
     <thead>
       <tr>
         <th scope="col" style="width: 10%">Nom</th>
         <th scope="col" style="width: 10%">Prénom</th>
         <th scope="col" style="width: 20%">Email</th>
         <th scope="col" style="width: 20%">Adresse</th>
-       <th scope="col" style="width: 10%">Téléphone</th>
-       <th scope="col" style="width: 10%">Rôle</th>
-       <th scope="col"></th>
+        <th scope="col" style="width: 10%">Téléphone</th>
+        <th scope="col" style="width: 10%">Rôle</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody *ngFor="let utilisateur of listeUtilisateur">
       <tr>
         <th>{{ utilisateur.nomUtilisateur }}</th>
-        <td>{{ utilisateur.prenomUtilisateur}}</td>
+        <td>{{ utilisateur.prenomUtilisateur }}</td>
         <td>{{ utilisateur.mailUtilisateur }}</td>
         <td>{{ utilisateur.adresseUtilisateur }}</td>
         <td>{{ utilisateur.telephoneUtilisateur }}</td>
-        <td *ngIf="utilisateur.typeUtilisateur">{{ utilisateur.typeUtilisateur.roleUtilisateur }}</td>
+        <td *ngIf="utilisateur.typeUtilisateur">
+          {{ utilisateur.typeUtilisateur.roleUtilisateur }}
+        </td>
         <td id="lastColumn">
-          
           <a
             type="submit"
-            href="ajoutEditionGestionnaire/{{utilisateur.idUtilisateur}}"
+            href="ajoutEditionGestionnaire/{{ utilisateur.idUtilisateur }}"
             class="btn btn-lg btn-primary boutonsGestion"
             id="btnLocForm"
             style="background-color: #ff8000; width: 200px"
@@ -201,5 +193,4 @@
       </tr>
     </tbody>
   </table>
-
- </div>
+</div>

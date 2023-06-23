@@ -25,18 +25,21 @@ export class DashboardGestionnaireComponent {
   nbStockDisponible: number = 0;
   nbHistorique: number = 0;
 
-  constructor(private serviceConnexion: ConnexionService, private serviceGdashboard : GdashboardService) {}
+  constructor(
+    private serviceConnexion: ConnexionService,
+    private serviceGdashboard: GdashboardService
+  ) {}
 
   ngOnInit() {
     if (this.serviceConnexion._utilisateurConnecte != null) {
-      this.gestionnaireConnecte = this.serviceConnexion._utilisateurConnecte.value;
+      this.gestionnaireConnecte =
+        this.serviceConnexion._utilisateurConnecte.value;
       console.log('utilisateur local', this.gestionnaireConnecte);
     }
 
     this.serviceGdashboard.getHistoriqueAlerte().subscribe({
-      next: (listeAlerte : Alerte[])=>{
+      next: (listeAlerte: Alerte[]) => {
         this.nbHistorique = listeAlerte.length;
-        
       },
       error: (erreur) => console.log(erreur),
     });
@@ -44,8 +47,8 @@ export class DashboardGestionnaireComponent {
     this.serviceGdashboard.getAlerteNonTraite().subscribe({
       next: (listAlerteNonTraite: Alerte[]) => {
         this.nbAlerteATraiter = listAlerteNonTraite.length;
-        console.log("AlerteATraiter", listAlerteNonTraite);
-        console.log("NBAlerteATraiter :", this.nbAlerteATraiter)
+        console.log('AlerteATraiter', listAlerteNonTraite);
+        console.log('NBAlerteATraiter :', this.nbAlerteATraiter);
       },
       error: (erreur) => console.log(erreur),
     });
@@ -59,51 +62,48 @@ export class DashboardGestionnaireComponent {
       error: (erreur) => console.log(erreur),
     });
 
-      this.serviceGdashboard.getDemandeRetourNonTraite().subscribe({
-        next: (listAlerteDemandeRetourNonTraite: Alerte[]) => {
-          this.nbDemandeRetour = listAlerteDemandeRetourNonTraite.length;
-        },
-        error: (erreur) => console.log(erreur),
-      });
+    this.serviceGdashboard.getDemandeRetourNonTraite().subscribe({
+      next: (listAlerteDemandeRetourNonTraite: Alerte[]) => {
+        this.nbDemandeRetour = listAlerteDemandeRetourNonTraite.length;
+      },
+      error: (erreur) => console.log(erreur),
+    });
 
-      this.serviceGdashboard.getDemandeProlongationNonTraite().subscribe({
-        next: (listAlerteDemandeProlongationNonTraite: Alerte[]) => {
-          this.nbDemandeProlongation = listAlerteDemandeProlongationNonTraite.length;
-      
-        },
-        error: (erreur) => console.log(erreur),
-      });
+    this.serviceGdashboard.getDemandeProlongationNonTraite().subscribe({
+      next: (listAlerteDemandeProlongationNonTraite: Alerte[]) => {
+        this.nbDemandeProlongation =
+          listAlerteDemandeProlongationNonTraite.length;
+      },
+      error: (erreur) => console.log(erreur),
+    });
 
-      this.serviceGdashboard.getReparationEnCours().subscribe({
-        next: (listReparationEnCours: Reparation[]) => {
-          this.nbReparation =listReparationEnCours.length;
-        },
-        error: (erreur) => console.log(erreur),
-      });
+    this.serviceGdashboard.getReparationEnCours().subscribe({
+      next: (listReparationEnCours: Reparation[]) => {
+        this.nbReparation = listReparationEnCours.length;
+      },
+      error: (erreur) => console.log(erreur),
+    });
 
-      this.serviceGdashboard.getReservationNonRendu().subscribe({
-        next: (listReservationNonRendu: Reservation[]) => {
-          this.nbLocationNonRestitue=listReservationNonRendu.length;
-        }
-      })
-      this.serviceGdashboard.getReservationEnCours().subscribe({
-        next: (listReservationEnCours: Reservation[]) => {
-          this.nbReservationEnCours = listReservationEnCours.length;
-        },
-      });
+    this.serviceGdashboard.getReservationNonRendu().subscribe({
+      next: (listReservationNonRendu: Reservation[]) => {
+        this.nbLocationNonRestitue = listReservationNonRendu.length;
+      },
+    });
+    this.serviceGdashboard.getReservationEnCours().subscribe({
+      next: (listReservationEnCours: Reservation[]) => {
+        this.nbReservationEnCours = listReservationEnCours.length;
+      },
+    });
 
-
-      
-      this.serviceGdashboard.getLocationDisponible().subscribe({
-        next: (listLocationDisponible: Location[]) => {
-          console.log("Location disponible : ",listLocationDisponible);
-          this.nbStockDisponible = listLocationDisponible.length;
-        },
-      });
+    this.serviceGdashboard.getLocationDisponible().subscribe({
+      next: (listLocationDisponible: Location[]) => {
+        console.log('Location disponible : ', listLocationDisponible);
+        this.nbStockDisponible = listLocationDisponible.length;
+      },
+    });
   }
 
-  onDeconnexion(){
-
+  onDeconnexion() {
     this.serviceConnexion.deconnexion();
   }
 }

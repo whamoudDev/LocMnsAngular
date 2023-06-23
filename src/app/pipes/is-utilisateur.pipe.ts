@@ -7,9 +7,9 @@ import { Utilisateur } from '../modele/utilisateur';
 export class IsUtilisateurPipe implements PipeTransform {
   transform(utilisateur: Utilisateur): boolean {
     return (
-      utilisateur.typeUtilisateur?.roleUtilisateur === 'ROLE_SUPERADMIN' 
-      || utilisateur.typeUtilisateur?.roleUtilisateur === 'ROLE_GESTIONNAIRE' 
-      || utilisateur.typeUtilisateur?.roleUtilisateur === 'ROLE_UTILISATEUR'
+      utilisateur.typeUtilisateur?.roleUtilisateur === 'ROLE_SUPERADMIN' ||
+      utilisateur.typeUtilisateur?.roleUtilisateur === 'ROLE_GESTIONNAIRE' ||
+      utilisateur.typeUtilisateur?.roleUtilisateur === 'ROLE_UTILISATEUR'
     );
   }
 }

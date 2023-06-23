@@ -13,21 +13,15 @@ export class LocationService {
 
   constructor(private http: HttpClient) {}
 
-  // public getListeLocationById(idLocation: number): Observable<any> {
-  //   return this.http.get<any>(
-  //     environment.serverUrl + '/liste-locations/' + idLocation
-  //   );
-  // }
-
   public getListeLocationById(idLocation: number): Observable<Location> {
     return this.http.get<Location>(
-      environment.serverUrl + '/liste-locations/' + idLocation
+      environment.serverUrl + '/users/liste-locations/' + idLocation
     );
   }
 
   public getListeLocation(): Observable<Location[]> {
     return this.http.get<Location[]>(
-      environment.serverUrl + '/liste-locations'
+      environment.serverUrl + '/users/liste-locations'
     );
   }
 

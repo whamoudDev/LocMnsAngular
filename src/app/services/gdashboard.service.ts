@@ -11,43 +11,52 @@ export class GdashboardService {
 
   getDemandeReservationNonTraite(): Observable<any> {
     return this.http.get(
-      environment.serverUrl + '/alertesReservationNonTraite'
+      environment.serverUrl + '/gestionnaire/alertesReservationNonTraite'
     );
   }
 
   getDemandeRetourNonTraite(): Observable<any> {
     return this.http.get(
-      environment.serverUrl + '/alertesDemandeRetourNonTraite'
+      environment.serverUrl + '/gestionnaire/alertesDemandeRetourNonTraite'
     );
   }
 
   getDemandeProlongationNonTraite(): Observable<any> {
     return this.http.get(
-      environment.serverUrl + '/alertesDemandeProlongationNonTraite'
+      environment.serverUrl +
+        '/gestionnaire/alertesDemandeProlongationNonTraite'
     );
   }
 
   getAlerteNonTraite(): Observable<any> {
-    return this.http.get(environment.serverUrl + '/alertesNonTraite');
+    return this.http.get(
+      environment.serverUrl + '/gestionnaire/alertesNonTraite'
+    );
   }
 
   getReparationEnCours(): Observable<any> {
-    return this.http.get(environment.serverUrl + '/reparationEnCours');
+    return this.http.get(
+      environment.serverUrl + '/gestionnaire/reparationEnCours'
+    );
   }
 
   getReservationNonRendu(): Observable<any> {
-    return this.http.get(environment.serverUrl + '/reservationNonRendu');
+    return this.http.get(
+      environment.serverUrl + '/gestionnaire/reservationNonRendu'
+    );
   }
 
   getReservationEnCours(): Observable<any> {
-    return this.http.get(environment.serverUrl + '/reservationEnCours');
+    return this.http.get(
+      environment.serverUrl + '/gestionnaire/reservationEnCours'
+    );
   }
 
   getLocationDisponible(): Observable<any> {
-    return this.http.get(environment.serverUrl + '/location-disponible');
+    return this.http.get(environment.serverUrl + '/users/location-disponible');
   }
 
   getHistoriqueAlerte(): Observable<any> {
-    return this.http.get(environment.serverUrl + '/alertes');
+    return this.http.get(environment.serverUrl + '/gestionnaire/alertes');
   }
 }

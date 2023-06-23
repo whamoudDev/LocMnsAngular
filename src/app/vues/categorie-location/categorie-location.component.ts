@@ -14,8 +14,7 @@ export class CategorieLocationComponent {
   idTypeLocation?: number;
   listeLocation: Location[] = [];
   titreCategorie: string = '';
-  typeLocation: TypeLocation={};
-
+  typeLocation: TypeLocation = {};
 
   constructor(
     private servicelocation: LocationService,
@@ -38,16 +37,12 @@ export class CategorieLocationComponent {
             this.listeLocation = locations.filter(
               (loc) => loc.typeLocation?.idTypeLocation == this.idTypeLocation
             );
-            //   (location: Location[]) =>
-            //     location.typeLocation.libelleTypeLocation === 'ordinateur portable'
-            // );
-            //console.log(this.listeLocation);
           });
       }
     });
 
     //Récupération de la liste des types de location à l'initialisation
-    if (this.idTypeLocation != null){
+    if (this.idTypeLocation != null) {
       this.servicetypelocation.getTypeLocation(this.idTypeLocation).subscribe({
         next: (typeLocation: TypeLocation) => {
           this.typeLocation = typeLocation;

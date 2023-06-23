@@ -1,16 +1,15 @@
 export interface Reparation {
-    idReparation : number;
+  idReparation: number;
 
-    nomReparation : string;
+  nomReparation: string;
 
-    descriptionPanne: string;
+  descriptionPanne: string;
 
-    dateReception: Date;
-    
-    dateReparation: Date;
-   
-    dateRetourPrevisionnel: Date;
-    
-    dateRetour: Date;
+  dateReception: Date;
 
+  dateReparation: Date;
+
+  dateRetourPrevisionnel: Date;
+
+  dateRetour: Date;
 }

@@ -20,8 +20,7 @@
     <div id="blcCrud">
       <div id="blcCrudTop">
         <div id="blcCrudTopLeft">
-          <img  [src]="pathPhotoLocation"
-                alt=" Aucune location sélectionnée"/>
+          <img [src]="pathPhotoLocation" alt=" Aucune location sélectionnée" />
 
           <div class="blcLabelInputLeft">
             <label>N° Série : </label>
@@ -69,32 +68,38 @@
           <div class="blcLabelInputRight">
             <label>Type de Location : </label>
             <mat-form-field appearance="fill">
-                <mat-label>Type : </mat-label>
-                <mat-select formControlName="typeLocation" [compareWith]="compareTypeLocation">
-                  <mat-option
-                    *ngFor="let typeLocation of listeTypeLocation"
-                    [value]="typeLocation"
-                  >
-                    {{ typeLocation.libelleTypeLocation }}
-                  </mat-option>
-                </mat-select>
-                <mat-error> Lieu obligatoire</mat-error>
-              </mat-form-field>
+              <mat-label>Type : </mat-label>
+              <mat-select
+                formControlName="typeLocation"
+                [compareWith]="compareTypeLocation"
+              >
+                <mat-option
+                  *ngFor="let typeLocation of listeTypeLocation"
+                  [value]="typeLocation"
+                >
+                  {{ typeLocation.libelleTypeLocation }}
+                </mat-option>
+              </mat-select>
+              <mat-error> Lieu obligatoire</mat-error>
+            </mat-form-field>
           </div>
           <div class="blcLabelInputRight">
             <label>Lieu : </label>
             <mat-form-field appearance="fill">
-                <mat-label>Lieu : </mat-label>
-                <mat-select formControlName="localisation" [compareWith]="compareLocalisation">
-                  <mat-option
-                    *ngFor="let localisation of listeLocalisation"
-                    [value]="localisation"
-                  >
-                    {{ localisation.libelleLocalisation }}
-                  </mat-option>
-                </mat-select>
-                <mat-error> Lieu obligatoire</mat-error>
-              </mat-form-field>
+              <mat-label>Lieu : </mat-label>
+              <mat-select
+                formControlName="localisation"
+                [compareWith]="compareLocalisation"
+              >
+                <mat-option
+                  *ngFor="let localisation of listeLocalisation"
+                  [value]="localisation"
+                >
+                  {{ localisation.libelleLocalisation }}
+                </mat-option>
+              </mat-select>
+              <mat-error> Lieu obligatoire</mat-error>
+            </mat-form-field>
           </div>
 
           <div class="blcLabelInputRight">
@@ -204,7 +209,7 @@
             class="btn btn-lg btn-primary boutonsGestion"
             id="btnLocForm"
             style="background-color: #ff8000; width: 200px"
-            href="./fiche-produit"
+            href="/fiche-produit/{{ location.idLocation }}"
             role="button"
             >Fiche produit</a
           >
@@ -214,13 +219,13 @@
             class="btn btn-lg btn-primary boutonsGestion"
             id="btnLocForm"
             style="background-color: #ff8000; width: 200px"
-            href="./vues/reservation"
+            href="/reservation/{{ location.idLocation }}"
             role="button"
             >Réserver</a
           >
           <a
             type="submit"
-            href="listelocation/{{location.idLocation}}"
+            href="listelocation/{{ location.idLocation }}"
             class="btn btn-lg btn-primary boutonsGestion"
             id="btnLocForm"
             style="background-color: #ff8000; width: 200px"

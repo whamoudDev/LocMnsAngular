@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
 import { ConnexionService } from 'src/app/services/connexion.service';
 import { TypeUtilisateurService } from 'src/app/services/typeutilisateur.service';
 
-
 @Component({
   selector: 'app-accueil',
   templateUrl: './accueil.component.html',
@@ -20,36 +19,23 @@ export class AccueilComponent {
     private serviceutilisateur: UtilisateurService,
     private servicetypeutilisateur: TypeUtilisateurService
   ) {
-
-this.serviceConnexion._utilisateurConnecte.subscribe((utilisateur) => {
-  console.log(utilisateur);
-  if (
-    utilisateur &&
-    utilisateur.typeUtilisateur &&
-    utilisateur.typeUtilisateur.roleUtilisateur === 'ROLE_GESTIONNAIRE'
-  ) {
-    this.lienTableauBord = true;
-  } else {
-    this.lienTableauBord = false;
-  }
-});
-
-
-
+    this.serviceConnexion._utilisateurConnecte.subscribe((utilisateur) => {
+      console.log(utilisateur);
+      if (
+        utilisateur &&
+        utilisateur.typeUtilisateur &&
+        utilisateur.typeUtilisateur.roleUtilisateur === 'ROLE_GESTIONNAIRE'
+      ) {
+        this.lienTableauBord = true;
+      } else {
+        this.lienTableauBord = false;
+      }
+    });
   }
 
-  ngOnInit(): void {
-
-
-
-}
-
-  // raffraichir(): void {
-  //   this.serviceutilisateur.getUtilisateur();
-  // }
+  ngOnInit(): void {}
 
   onDeconnexion() {
     this.serviceConnexion.deconnexion();
   }
 }
-

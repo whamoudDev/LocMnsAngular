@@ -1,233 +1,227 @@
+<div class="container py-5 h-100">
+  <div class="row d-flex justify-content-center align-items-center h-100 ;">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <div>
+        <div class="card-body p-5 text-center d-flex justify-content-center">
+          <form
+            class="d-flex flex-column"
+            [formGroup]="formulaire"
+            (ngSubmit)="onSubmit()"
+          >
+            <h1 class="fw-bold mb-2 mb-5" style="color: #fff">
+              Bienvenue dans LocMns
+            </h1>
+            <br />
 
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100 ;">
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div>
-          <div class="card-body p-5 text-center d-flex justify-content-center">
-            <form
-              class="d-flex flex-column"
-              [formGroup]="formulaire"
-              (ngSubmit)="onSubmit()"
-            >
-              <h1 class="fw-bold mb-2 mb-5" style="color: #fff">
-                Bienvenue dans LocMns
-              </h1>
-              <br />
+            <h3 class="fw-bold mb-2 mb-5" style="color: #fff">
+              Procédons à la création de l'administrateur principal
+            </h3>
 
-              <h3 class="fw-bold mb-2 mb-5" style="color: #fff">
-                Procédons à la création de l'administrateur principal
-              </h3>
+            <mat-form-field appearance="fill">
+              <mat-label>Nom: </mat-label>
+              <input
+                formControlName="nomUtilisateur"
+                placeholder="Nom"
+                required
+                autofocus
+                matInput
+              />
+              <mat-error> Nom obligatoire minimum 3 lettres </mat-error>
+            </mat-form-field>
 
-              <mat-form-field appearance="fill">
-                <mat-label>Nom: </mat-label>
-                <input
-                  formControlName="nomUtilisateur"
-                  placeholder="Nom"
-                  required
-                  autofocus
-                  matInput
-                />
-                <mat-error> Nom obligatoire minimum 3 lettres </mat-error>
-              </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Prénom: </mat-label>
+              <input
+                formControlName="prenomUtilisateur"
+                placeholder="Prénom"
+                required
+                matInput
+              />
+              <mat-error> Prénom obligatoire minimum 3 lettres </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Adresse: </mat-label>
+              <input
+                formControlName="adresseUtilisateur"
+                placeholder="Adresse"
+                required
+                matInput
+              />
+              <mat-error> Adresse obligatoire</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Telephone: </mat-label>
+              <input
+                formControlName="telephoneUtilisateur"
+                placeholder="Numéro de téléphone"
+                required
+                matInput
+              />
+              <mat-error> Telephone obligatoire</mat-error>
+            </mat-form-field>
 
-              <mat-form-field appearance="fill">
-                <mat-label>Prénom: </mat-label>
-                <input
-                  formControlName="prenomUtilisateur"
-                  placeholder="Prénom"
-                  required
-                  matInput
-                />
-                <mat-error> Prénom obligatoire minimum 3 lettres </mat-error>
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>Adresse: </mat-label>
-                <input
-                  formControlName="adresseUtilisateur"
-                  placeholder="Adresse"
-                  required
-                  matInput
-                />
-                <mat-error> Adresse obligatoire</mat-error>
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>Telephone: </mat-label>
-                <input
-                  formControlName="telephoneUtilisateur"
-                  placeholder="Numéro de téléphone"
-                  required
-                  matInput
-                />
-                <mat-error> Telephone obligatoire</mat-error>
-              </mat-form-field>
-
-              <mat-form-field appearance="fill">
-                <mat-label>Lieu : </mat-label>
-                <mat-select formControlName="localisation">
-                  <mat-option
-                    *ngFor="let localisation of listeLocalisation"
-                    [value]="localisation"
-                  >
-                    {{ localisation.libelleLocalisation }}
-                  </mat-option>
-                </mat-select>
-                <mat-error>Lieu obligatoire</mat-error>
-              </mat-form-field>
-
-              <mat-form-field appearance="fill">
-                <mat-label>Email: </mat-label>
-                <input
-                  formControlName="mailUtilisateur"
-                  placeholder="Adresse mail"
-                  required
-                  matInput
-                />
-                <mat-error>Email absent ou mauvais format ...@...</mat-error>
-              </mat-form-field>
-
-              <mat-form-field appearance="fill">
-                <mat-label>Mot de passe: </mat-label>
-                <input
-                  formControlName="motDePasseUtilisateur"
-                  placeholder="Password"
-                  required
-                  type="password"
-                  matInput
-                  
-                />
-
-                <mat-error
-                  *ngIf="formulaire.get('motDePasseUtilisateur')?.invalid"
+            <mat-form-field appearance="fill">
+              <mat-label>Lieu : </mat-label>
+              <mat-select formControlName="localisation">
+                <mat-option
+                  *ngFor="let localisation of listeLocalisation"
+                  [value]="localisation"
                 >
-                  <ng-container
-                    *ngIf="
-                      formulaire
-                        .get('motDePasseUtilisateur')
-                        ?.hasError('required')
-                    "
-                  >
-                    Mot de passe requis
-                  </ng-container>
-                  <ng-container
-                    *ngIf="
-                      formulaire
-                        .get('motDePasseUtilisateur')
-                        ?.hasError('minlength')
-                    "
-                  >
-                    8 caractères minimum.
-                  </ng-container>
-                  <ng-container
-                    *ngIf="
-                      formulaire
-                        .get('motDePasseUtilisateur')
-                        ?.hasError('pasDeMajuscule')
-                    "
-                  >
-                    Une lettre majuscule minimum.
-                  </ng-container>
-                  <ng-container
-                    *ngIf="
-                      formulaire
-                        .get('motDePasseUtilisateur')
-                        ?.hasError('pasDeCaractereSpecial')
-                    "
-                  >
-                    Un caractère spécial (-!?$%) minimum.
-                  </ng-container>
-                  <ng-container
-                    *ngIf="
-                      formulaire
-                        .get('motDePasseUtilisateur')
-                        ?.hasError('pasDeChiffre')
-                    "
-                  >
-                    Un chiffre minimum.
-                  </ng-container></mat-error
+                  {{ localisation.libelleLocalisation }}
+                </mat-option>
+              </mat-select>
+              <mat-error>Lieu obligatoire</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Email: </mat-label>
+              <input
+                formControlName="mailUtilisateur"
+                placeholder="Adresse mail"
+                required
+                matInput
+              />
+              <mat-error>Email absent ou mauvais format ...@...</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Mot de passe: </mat-label>
+              <input
+                formControlName="motDePasseUtilisateur"
+                placeholder="Password"
+                required
+                type="password"
+                matInput
+              />
+
+              <mat-error
+                *ngIf="formulaire.get('motDePasseUtilisateur')?.invalid"
+              >
+                <ng-container
+                  *ngIf="
+                    formulaire
+                      .get('motDePasseUtilisateur')
+                      ?.hasError('required')
+                  "
                 >
-              </mat-form-field>
-
-              <br />
-              <mat-form-field appearance="fill">
-                <mat-label>Confirmation mot de passe: </mat-label>
-                <input
-                  formControlName="motDePasseVerif"
-                  placeholder="Password"
-                  required
-                  type="password"
-                  matInput
-                />
-
-                <mat-error *ngIf="formulaire.get('motDePasseVerif')?.invalid">
-                  <ng-container
-                    *ngIf="
-                      formulaire.get('motDePasseVerif')?.hasError('required')
-                    "
-                  >
-                    Mot de passe requis
-                  </ng-container>
-                  <ng-container
-                    *ngIf="
-                      formulaire.get('motDePasseVerif')?.hasError('minlength')
-                    "
-                  >
-                    8 caractères minimum.
-                  </ng-container>
-                  <ng-container
-                    *ngIf="
-                      formulaire
-                        .get('motDePasseVerif')
-                        ?.hasError('pasDeMajuscule')
-                    "
-                  >
-                    Une lettre majuscule minimum.
-                  </ng-container>
-                  <ng-container
-                    *ngIf="
-                      formulaire
-                        .get('motDePasseVerif')
-                        ?.hasError('pasDeCaractereSpecial')
-                    "
-                  >
-                    Un caractère spécial (-!?$%) minimum.
-                  </ng-container>
-                  <ng-container
-                    *ngIf="
-                      formulaire
-                        .get('motDePasseVerif')
-                        ?.hasError('pasDeChiffre')
-                    "
-                  >
-                    Un chiffre minimum.
-                  </ng-container>
-                  <ng-container
-                    *ngIf="
-                      formulaire
-                        .get('motDePasseVerif')
-                        ?.hasError('mdpDifferent')
-                    "
-                  >
-                    Les deux mot de passe ne correspondent pas.
-                  </ng-container></mat-error
+                  Mot de passe requis
+                </ng-container>
+                <ng-container
+                  *ngIf="
+                    formulaire
+                      .get('motDePasseUtilisateur')
+                      ?.hasError('minlength')
+                  "
                 >
-              </mat-form-field>
-
-              <br /><br /><br />
-
-              <div>
-                <button
-                  class="btn btn-lg btn-primary btn-block"
-                  id="btnLocForm"
-                  style="background-color: #ff8000; width: 100px"
-                  type="submit"
-                  routerLink="/ajoutEditionSuperAdmin"
+                  8 caractères minimum.
+                </ng-container>
+                <ng-container
+                  *ngIf="
+                    formulaire
+                      .get('motDePasseUtilisateur')
+                      ?.hasError('pasDeMajuscule')
+                  "
                 >
-                  Envoyer
-                </button>
-              </div>
-            </form>
-          </div>
+                  Une lettre majuscule minimum.
+                </ng-container>
+                <ng-container
+                  *ngIf="
+                    formulaire
+                      .get('motDePasseUtilisateur')
+                      ?.hasError('pasDeCaractereSpecial')
+                  "
+                >
+                  Un caractère spécial (-!?$%) minimum.
+                </ng-container>
+                <ng-container
+                  *ngIf="
+                    formulaire
+                      .get('motDePasseUtilisateur')
+                      ?.hasError('pasDeChiffre')
+                  "
+                >
+                  Un chiffre minimum.
+                </ng-container></mat-error
+              >
+            </mat-form-field>
+
+            <br />
+            <mat-form-field appearance="fill">
+              <mat-label>Confirmation mot de passe: </mat-label>
+              <input
+                formControlName="motDePasseVerif"
+                placeholder="Password"
+                required
+                type="password"
+                matInput
+              />
+
+              <mat-error *ngIf="formulaire.get('motDePasseVerif')?.invalid">
+                <ng-container
+                  *ngIf="
+                    formulaire.get('motDePasseVerif')?.hasError('required')
+                  "
+                >
+                  Mot de passe requis
+                </ng-container>
+                <ng-container
+                  *ngIf="
+                    formulaire.get('motDePasseVerif')?.hasError('minlength')
+                  "
+                >
+                  8 caractères minimum.
+                </ng-container>
+                <ng-container
+                  *ngIf="
+                    formulaire
+                      .get('motDePasseVerif')
+                      ?.hasError('pasDeMajuscule')
+                  "
+                >
+                  Une lettre majuscule minimum.
+                </ng-container>
+                <ng-container
+                  *ngIf="
+                    formulaire
+                      .get('motDePasseVerif')
+                      ?.hasError('pasDeCaractereSpecial')
+                  "
+                >
+                  Un caractère spécial (-!?$%) minimum.
+                </ng-container>
+                <ng-container
+                  *ngIf="
+                    formulaire.get('motDePasseVerif')?.hasError('pasDeChiffre')
+                  "
+                >
+                  Un chiffre minimum.
+                </ng-container>
+                <ng-container
+                  *ngIf="
+                    formulaire.get('motDePasseVerif')?.hasError('mdpDifferent')
+                  "
+                >
+                  Les deux mot de passe ne correspondent pas.
+                </ng-container></mat-error
+              >
+            </mat-form-field>
+
+            <br /><br /><br />
+
+            <div>
+              <button
+                class="btn btn-lg btn-primary btn-block"
+                id="btnLocForm"
+                style="background-color: #ff8000; width: 100px"
+                type="submit"
+                routerLink="/ajoutEditionSuperAdmin"
+              >
+                Envoyer
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
+</div>

@@ -13,12 +13,6 @@ export class ReservationService {
 
   constructor(private http: HttpClient) {}
 
-  // public getListeCadreUtilisation(): Observable<Reservation[]> {
-  //   return this.http.get<Reservation[]>(
-  //     environment.serverUrl + '/liste-cadres-utilisation'
-  //   );
-  // }
-
   public demandeReservation(donneesFormulaire: FormData): Observable<any> {
     //POUR UN REQUEST BODY
     //-----------------------
@@ -32,7 +26,7 @@ export class ReservationService {
     //-----------------------
     console.log(donneesFormulaire);
     return this.http.post(
-      environment.serverUrl + '/demandeReservation',
+      environment.serverUrl + '/users/demandeReservation',
       donneesFormulaire,
       {
         responseType: 'text',
@@ -42,12 +36,12 @@ export class ReservationService {
 
   getReservation(idReservation: number): Observable<any> {
     return this.http.get(
-      environment.serverUrl + '/reservation/' + idReservation
+      environment.serverUrl + '/users/reservation/' + idReservation
     );
   }
   public getListeReservation(): Observable<Reservation[]> {
     return this.http.get<Reservation[]>(
-      environment.serverUrl + '/reservations'
+      environment.serverUrl + '/users/reservations'
     );
   }
 
@@ -55,16 +49,7 @@ export class ReservationService {
     idUtilisateur: number
   ): Observable<Reservation[]> {
     return this.http.get<Reservation[]>(
-      environment.serverUrl + '/reservationUtilisateur/' + idUtilisateur
+      environment.serverUrl + '/users/reservationUtilisateur/' + idUtilisateur
     );
   }
 }
-
-//  public ajoutLocation(idReservation: number, donneesFormulaire: FormData): Observable<Reservation[]> {
-//    return this.http.post<Reservation[]>(
-//  environment.serverUrl + '/utilisateur/reservations/{idReservation}',
-
-//  donneesFormulaire,
-//   {
-//    responseType: 'text',
-//    });

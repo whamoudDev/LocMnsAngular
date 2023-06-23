@@ -29,47 +29,50 @@
   </div>
 </header>
 
-    <h2 class="text-center mb-5 titreDemandeLocation">Fiche produit</h2>
-
+<h2 class="text-center mb-5 titreDemandeLocation">Fiche produit</h2>
 
 <div class="row d-flex justify-content-center">
   <div class="col-lg-3 col-md-4 col-sm-6">
-    <div style="color: white; font-weight: bold; font-size: 20px;">{{ locationSelectionne.nomLocation}} {{locationSelectionne.numSerieLocation}} {{locationSelectionne.etatLocation}}</div>
-    <img 
-      class="FicheImage"
-      src="assets/AccueilPhoto/lenovo.jpg" 
-    />
+    <div style="color: white; font-weight: bold; font-size: 20px">
+      {{ locationSelectionne.nomLocation }}
+      {{ locationSelectionne.numSerieLocation }}
+      {{ locationSelectionne.etatLocation }}
+    </div>
+    <img class="FicheImage" src="assets/AccueilPhoto/lenovo.jpg" />
 
-          <div class="photo-container" >
-        <img class="small-photo" src="assets/AccueilPhoto/lenovo2.jpg" />
-        <img class="small-photo" src="assets/AccueilPhoto/lenovo3.jpg" />
-        <img class="small-photo" src="assets/AccueilPhoto/Lenovo4.jpg" />
-      </div>
+    <div class="photo-container">
+      <img class="small-photo" src="assets/AccueilPhoto/lenovo2.jpg" />
+      <img class="small-photo" src="assets/AccueilPhoto/lenovo3.jpg" />
+      <img class="small-photo" src="assets/AccueilPhoto/Lenovo4.jpg" />
+    </div>
   </div>
 
   <div id="blcRight">
-  <div >
-    <label style="color :white; font-weight: bold;  ">Description :</label>
-    <div id="blcDescription">{{locationSelectionne.descriptionLocation}}</div>
-  </div>
-  <div>
-  <label style="color :white; font-weight: bold;  ">Documentation :</label>
-  <div id="blcDoc" *ngFor="let documentation of locationSelectionne.listeDocumentations">
-        {{documentation.nomDocumentation }}  
+    <div>
+      <label style="color: white; font-weight: bold">Description :</label>
+      <div id="blcDescription">
+        {{ locationSelectionne.descriptionLocation }}
+      </div>
     </div>
-    </div>
-</div>
-   
-</div>
-    <div class="d-flex justify-content-center mt-3">
-      <button
-        class="btn btn-lg btn-primary btn-block"
-        id="btnLocForm"
-        style="background-color: #ff8000; width: 200px; border-radius: 3px;"
-        type="submit"
-        routerLink="/reservation"
+    <div>
+      <label style="color: white; font-weight: bold">Documentation :</label>
+      <div
+        id="blcDoc"
+        *ngFor="let documentation of locationSelectionne.listeDocumentations"
       >
-     Réserver
-      </button>
+        {{ documentation.nomDocumentation }}
+      </div>
     </div>
- 
+  </div>
+</div>
+<div class="d-flex justify-content-center mt-3">
+  <button
+    class="btn btn-lg btn-primary btn-block"
+    id="btnLocForm"
+    style="background-color: #ff8000; width: 200px; border-radius: 3px"
+    type="submit"
+    routerLink="/reservation"
+  >
+    Réserver
+  </button>
+</div>

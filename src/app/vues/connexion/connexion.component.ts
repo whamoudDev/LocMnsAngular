@@ -20,23 +20,19 @@ export class ConnexionComponent {
     private router: Router
   ) {}
 
-  wrongLogin : boolean = false;
-
+  wrongLogin: boolean = false;
 
   onSubmit(): void {
     if (this.formulaire.valid) {
       this.serviceConnexion.connexion(this.formulaire.value).subscribe({
         next: (jwt) => {
-        
           localStorage.setItem('jwt', jwt);
           this.serviceConnexion.majUtilisateurConnecte();
-          this.router.navigateByUrl(
-            '/accueil'
-          );
+          this.router.navigateByUrl('/accueil');
         },
         error: (erreur) => {
           this.wrongLogin = true;
-         console.log("erreur Login");
+          console.log('erreur Login');
         },
       });
     }

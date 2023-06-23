@@ -24,7 +24,6 @@ import { UtilisateurService } from 'src/app/services/utilisateur.service';
 })
 export class AjoutEditionSuperAdminComponent {
   //Variable permettant de verifier la correspondance des mdp
-  // mdp1: string = '';
 
   //Définition du formulaire et de ses règles de validation
   formulaire: FormGroup = this.formBuilder.group({
@@ -71,7 +70,6 @@ export class AjoutEditionSuperAdminComponent {
   ) {}
 
   ngOnInit() {
-
     //Récupération de la liste des localisation à l'initialisation
     this.serviceLocalisation.getListeLocalisationFromBdd().subscribe({
       next: (listeLocalisation) => {
@@ -100,9 +98,6 @@ export class AjoutEditionSuperAdminComponent {
           gestionnaireSuper.typeUtilisateur = typeUtilisateur;
         }
       }
-
-
-      
 
       //Les donnees sont formaté en Json sont ajouté à un blob et le blob à un formData
       const donneesFormulaire = new FormData();
@@ -171,7 +166,6 @@ export class AjoutEditionSuperAdminComponent {
   verifMdp(
     control: AbstractControl
   ): { [nomValidator: string]: boolean } | null {
-
     // Affichage console des mots de passe quand le champ mot de passe de confirmation change
     // if (this.formulaire && this.formulaire.get("motDePasseUtilisateur")){
     // console.log('Champ1 : ',this.formulaire && this.formulaire.get('motDePasseUtilisateur')?.value);

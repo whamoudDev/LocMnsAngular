@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  Router,
+  RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
 import { Observable } from 'rxjs';
 import { ConnexionService } from '../services/connexion.service';
 import { IsUtilisateurPipe } from '../pipes/is-utilisateur.pipe';
@@ -11,7 +17,7 @@ export class UtilisateurGuard implements CanActivate {
   constructor(
     private serviceConnexion: ConnexionService,
     private router: Router
-  ){};
+  ) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,

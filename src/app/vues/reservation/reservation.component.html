@@ -3,21 +3,23 @@
     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
       <div>
         <div class="card-body p-5 text-center d-flex justify-content-center">
-          <form *ngSwitchDefault class="d-flex flex-column" [formGroup]="formulaire"
-              (ngSubmit)="onSubmit()"
-              
-              >
+          <form
+            *ngSwitchDefault
+            class="d-flex flex-column"
+            [formGroup]="formulaire"
+            (ngSubmit)="onSubmit()"
+          >
             <h1 class="fw-bold mb-2 mb-5" style="color: #fff">Réservation</h1>
             <br />
 
             <mat-form-field appearance="fill">
               <mat-label>N° de série: </mat-label>
               <input
-               formControlName="numSerieLocation"
-                placeholder="Numéro de série" 
+                formControlName="numSerieLocation"
+                placeholder="Numéro de série"
                 required
                 autofocus
-                matInput 
+                matInput
               />
               <mat-error>Le numéro de série est obligatoire</mat-error>
             </mat-form-field>
@@ -28,8 +30,7 @@
                 formControlName="nomLocation"
                 placeholder="Nom de la location"
                 required
-                matInput  
-
+                matInput
               />
               <mat-error
                 >Le nom de la location est obligatoire (minimum 3
@@ -40,39 +41,68 @@
             <mat-form-field appearance="fill">
               <mat-label>Cadre d'utilisation : </mat-label>
               <mat-select formControlName="cadreUtilisation">
-                <mat-option *ngFor="let cadre of listecadreUtilisation" [value]="cadre"> {{cadre}} </mat-option>
+                <mat-option
+                  *ngFor="let cadre of listecadreUtilisation"
+                  [value]="cadre"
+                >
+                  {{ cadre }}
+                </mat-option>
               </mat-select>
               <mat-error>Le cadre d'utilisation est obligatoire</mat-error>
             </mat-form-field>
 
             <mat-form-field>
-            <mat-label>Date début réservation : </mat-label>
+              <mat-label>Date début réservation : </mat-label>
 
-  <input matInput   [matDatepicker]="datepicker1"  formControlName="dateDebutReservation"  type="date"  required>
-  <mat-datepicker-toggle matSuffix [for]="datepicker1"></mat-datepicker-toggle>
-  <mat-datepicker #datepicker1></mat-datepicker>
-  <mat-error  *ngIf="formulaire.get('dateDebutReservation')?.hasError('required')" > 
-                  La date de début est <strong>obligatoire</strong>
-                </mat-error>
-</mat-form-field>
+              <input
+                matInput
+                [matDatepicker]="datepicker1"
+                formControlName="dateDebutReservation"
+                type="date"
+                required
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="datepicker1"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #datepicker1></mat-datepicker>
+              <mat-error
+                *ngIf="
+                  formulaire.get('dateDebutReservation')?.hasError('required')
+                "
+              >
+                La date de début est <strong>obligatoire</strong>
+              </mat-error>
+            </mat-form-field>
 
-<mat-form-field>
-<mat-label>Date fin réservation : </mat-label>
+            <mat-form-field>
+              <mat-label>Date fin réservation : </mat-label>
 
-  <input matInput [matDatepicker]="datepicker2" formControlName="dateFinPrevu"  type="date" required >
-  <mat-datepicker-toggle matSuffix [for]="datepicker2"></mat-datepicker-toggle>
-  <mat-datepicker #datepicker2></mat-datepicker>
-  <mat-error *ngIf="formulaire.get('dateFinPrevu')?.hasError('required')"> 
-                  La date de fin est <strong>obligatoire</strong>
-                </mat-error >
-</mat-form-field>
+              <input
+                matInput
+                [matDatepicker]="datepicker2"
+                formControlName="dateFinPrevu"
+                type="date"
+                required
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="datepicker2"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #datepicker2></mat-datepicker>
+              <mat-error
+                *ngIf="formulaire.get('dateFinPrevu')?.hasError('required')"
+              >
+                La date de fin est <strong>obligatoire</strong>
+              </mat-error>
+            </mat-form-field>
 
             <div>
               <button
                 class="btn btn-lg btn-primary btn-block"
                 id="btnLocForm"
                 style="background-color: #ff8000; width: 200px"
-                type="submit" 
+                type="submit"
               >
                 Demande de Réservation
               </button>

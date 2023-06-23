@@ -13,7 +13,7 @@ export class LocalisationService {
 
   public getListeLocalisationFromBdd(): Observable<Localisation[]> {
     return this.http.get<Localisation[]>(
-      environment.serverUrl + '/liste-localisations'
+      environment.serverUrl + '/users/liste-localisations'
     );
   }
 }

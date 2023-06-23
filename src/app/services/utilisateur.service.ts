@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Utilisateur } from '../modele/utilisateur';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -10,9 +9,25 @@ import { environment } from 'src/environments/environment';
 export class UtilisateurService {
   constructor(private http: HttpClient) {}
 
+  getAllUtilisateurs(): Observable<any> {
+    return this.http.get(environment.serverUrl + '/users/liste-utilisateurs');
+  }
+
+  getUtilisateur(idUtilisateur: number): Observable<any> {
+    return this.http.get(
+      environment.serverUrl + '/users/utilisateur/' + idUtilisateur
+    );
+  }
+
+  getUtilisateurByEmail(email: string): Observable<any> {
+    return this.http.get(
+      environment.serverUrl + '/users/utilisateurByEmail/' + email
+    );
+  }
+
   ajoutEditionUtilisateur(donneesFormulaire: FormData): Observable<any> {
     return this.http.post(
-      environment.serverUrl + '/ajoutEditionUtilisateur',
+      environment.serverUrl + '/gestionnaire/ajoutEditionUtilisateur',
       donneesFormulaire,
       {
         responseType: 'text',
@@ -20,24 +35,9 @@ export class UtilisateurService {
     );
   }
 
-  getAllUtilisateurs(): Observable<any> {
-    return this.http.get(environment.serverUrl + '/liste-utilisateurs');
-  }
-
-  getUtilisateur(idUtilisateur: number): Observable<any> {
-    return this.http.get(
-      environment.serverUrl + '/utilisateur/' + idUtilisateur
-    );
-  }
-  getUtilisateurByEmail(email: string): Observable<any> {
-    return this.http.get(
-      environment.serverUrl + '/utilisateurByEmail/' + email
-    );
-  }
-
   public deleteUtilisateur(idUtilisateur: number): Observable<any> {
     return this.http.delete(
-      environment.serverUrl + '/utilisateur/' + idUtilisateur
+      environment.serverUrl + '/gestionnaire/utilisateur/' + idUtilisateur
     );
   }
 }

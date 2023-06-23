@@ -1,4 +1,4 @@
-export interface TypeAlerte{
-  idTypeAlerte : number;
-  typeAlerte : string;
+export interface TypeAlerte {
+  idTypeAlerte: number;
+  typeAlerte: string;
 }

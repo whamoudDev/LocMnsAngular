@@ -1,22 +1,35 @@
-
-  <div class="container py-5 h-100">
+<div class="container py-5 h-100">
   <div class="row d-flex justify-content-center align-items-center h-100">
     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
       <div>
         <div class="card-body p-5 text-center d-flex justify-content-center">
-          <form class="d-flex flex-column" [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+          <form
+            class="d-flex flex-column"
+            [formGroup]="formulaire"
+            (ngSubmit)="onSubmit()"
+          >
             <img class="mb-4" src="assets/logo.png" alt="logo" />
 
             <h2 class="fw-bold mb-2 mb-5" style="color: #fff">Connexion</h2>
 
             <mat-form-field appearance="fill">
               <mat-label>Email</mat-label>
-              <input formControlName="mailUtilisateur" placeholder="Adresse mail" required autofocus matInput />
+              <input
+                formControlName="mailUtilisateur"
+                placeholder="Adresse mail"
+                required
+                autofocus
+                matInput
+              />
             </mat-form-field>
 
             <mat-form-field appearance="fill">
               <mat-label>Mot de passe</mat-label>
-              <input type="password" formControlName="motDePasseUtilisateur" matInput />
+              <input
+                type="password"
+                formControlName="motDePasseUtilisateur"
+                matInput
+              />
             </mat-form-field>
 
             <div class="alert alert-danger" role="alert" *ngIf="wrongLogin">
@@ -24,7 +37,12 @@
             </div>
 
             <div>
-              <button class="btn btn-lg btn-primary btn-block" id="btnLocForm" style="background-color: #ff8000; width: 200px" type="submit">
+              <button
+                class="btn btn-lg btn-primary btn-block"
+                id="btnLocForm"
+                style="background-color: #ff8000; width: 200px"
+                type="submit"
+              >
                 Log in
               </button>
             </div>

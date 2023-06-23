@@ -69,7 +69,7 @@ export class ReservationComponent {
     private route: ActivatedRoute,
     private servicereservation: ReservationService,
     private servicelocation: LocationService,
-    private serviceUtilisateur: UtilisateurService, //private http: HttpClient,
+    private serviceUtilisateur: UtilisateurService,
     private connexionService: ConnexionService
   ) {}
 

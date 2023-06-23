@@ -26,7 +26,7 @@ export class FicheProduitComponent {
     private servicephoto: PhotoService,
     private servicedocumentation: DocumentationService,
     private router: Router,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -40,19 +40,18 @@ export class FicheProduitComponent {
         );
       });
 
-      //Récupération des informations d'un utilisateur existant pour son edition
+    //Récupération des informations d'un utilisateur existant pour son edition
     this.route.params.subscribe((parametres) => {
       this.idLocation = parametres['id'];
-    if (this.idLocation !== 0) {
-      this.servicelocation
-        .getListeLocationById(this.idLocation)
-        .subscribe((location: Location) => {
-          console.log(location);
-          this.locationSelectionne = location;
-          console.log("LOC : ",this.locationSelectionne);
+      if (this.idLocation !== 0) {
+        this.servicelocation
+          .getListeLocationById(this.idLocation)
+          .subscribe((location: Location) => {
+            console.log(location);
+            this.locationSelectionne = location;
+            console.log('LOC : ', this.locationSelectionne);
           });
-        }
-      });
-    
+      }
+    });
   }
 }

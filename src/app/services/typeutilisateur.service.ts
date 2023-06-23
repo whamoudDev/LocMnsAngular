@@ -9,13 +9,12 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class TypeUtilisateurService {
-  //private listeTypeUtilisateur: TypeUtilisateur[] = [];
 
   constructor(private http: HttpClient) {}
 
   public getListeTypeUtilisateurFromBdd(): Observable<TypeUtilisateur[]> {
     return this.http.get<TypeUtilisateur[]>(
-      environment.serverUrl + '/type-utilisateurs'
+      environment.serverUrl + '/users/type-utilisateurs'
     );
   }
 }

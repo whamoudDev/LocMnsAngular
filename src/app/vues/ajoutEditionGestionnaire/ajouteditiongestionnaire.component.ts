@@ -55,7 +55,6 @@ export class AjoutEditionGestionnaireComponent {
     this.serviceUtilisateur.getAllUtilisateurs().subscribe({
       next: (listeUtilisateur) => {
         this.listeUtilisateur = listeUtilisateur;
-        
       },
       error: (erreur) => console.log(erreur),
     });
@@ -83,7 +82,6 @@ export class AjoutEditionGestionnaireComponent {
       if (this.idUtilisateur != null) {
         this.serviceUtilisateur.getUtilisateur(this.idUtilisateur).subscribe({
           next: (utilisateur: Utilisateur) => {
-
             this.utilisateurSelection = utilisateur;
             this.formulaire
               .get('nomUtilisateur')
